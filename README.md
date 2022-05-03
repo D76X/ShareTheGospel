@@ -58,7 +58,8 @@ This application can be deployed to [Azure Static Web Apps](https://docs.microso
 
 ## Use Multiple Accounts with VS Code
 
-[Git Config User Profiles](https://marketplace.visualstudio.com/items?itemName=onlyutkarsh.git-config-user-profiles)
+[Git Config User Profiles](https://marketplace.visualstudio.com/items?itemName=onlyutkarsh.git-config-user-profiles)  
 [How to configure multiple git accounts in Visual Studio Code workspace](https://stackoverflow.com/questions/55141142/how-to-configure-multiple-git-accounts-in-visual-studio-code-workspace)
+
 
 ---
