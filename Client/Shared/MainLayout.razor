@@ -1,17 +1,23 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<header>
+    <h1>The Gospel</h1>
+</header>
 
+<div>
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+        <article>
             @Body
         </article>
     </main>
 </div>
+
+<footer>
+    @TrademarkMessage
+</footer>
+
+@code {
+    public string TrademarkMessage { get; set; } = 
+        "NTT - New Thinking Technologies " +
+        "https://www.newthinkingtechnologies.com/";
+}
