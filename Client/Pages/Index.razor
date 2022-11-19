@@ -8,3 +8,14 @@
 
 <h1>Hello, this is the index page 2!</h1>
 
+<button class="btn btn-success" onclick="@OnSuccess">Success @Count</button>
+
+@code { 
+	
+	public int Count { get; set; } = 0;
+
+	private void OnSuccess(MouseEventArgs e)
+	{
+		Count++;
+	}
+}
