@@ -1,4 +1,47 @@
-﻿### [Node Version Manager for Windows](https://github.com/coreybutler/nvm-windows)
+﻿# Share The Gospel
+
+The site is published on Azure to an Azure Web App
+[ShareTheGospel](https://gentle-hill-0ba167403.1.azurestaticapps.net/)
+
+To run the application locally cd into the Client folder in which the Client.csproj
+is located and execute the following
+
+```
+cd C:\VSProjects\ShareTheGospel\Client 
+C:\VSProjects\ShareTheGospel\Client> dotnet clean
+C:\VSProjects\ShareTheGospel\Client> dotnet RUN
+```
+
+### Debugging and Hot Reload
+
+It is possible to use 
+
+https://dev.to/sacantrell/vs-code-and-blazor-wasm-debug-with-hot-reload-5317
+https://www.youtube.com/watch?v=4S3vPzawnoQ
+
+```
+dotnet watch -p C:\VSProjects\ShareTheGospel\Client\ run
+```
+
+[Hot Reload](https://stackoverflow.com/questions/65340426/how-to-activate-hot-reload-on-save-with-blazor-wasm)  
+[Debug ASP.NET Core Blazor WebAssembly](https://learn.microsoft.com/en-us/aspnet/core/blazor/debug?view=aspnetcore-6.0&abs=visual-studio-code#debug-a-standalone-blazor-webassembly-app)  
+
+[Troubleshooting .NET Blazor WASM Debugging](https://khalidabuhakmeh.com/troubleshooting-dotnet-blazor-wasm-debugging)  
+
+???
+Detected multiple function projects in the same workspace folder. 
+You must either set the default or use a multi-root workspace.
+
+[Cannot debug Blazor wasm](https://stackoverflow.com/questions/72037423/cannot-debug-blazor-wasm)  
+Unable to launch browser: the URL's protocol must be one of ws wss
+
+[VS Code and Blazor WASM: Debug with Hot Reload](https://dev.to/sacantrell/vs-code-and-blazor-wasm-debug-with-hot-reload-5317)  
+
+---
+
+## Technical Details
+
+### [Node Version Manager for Windows](https://github.com/coreybutler/nvm-windows)
 
 On Windows if there is the need to manage different version of NodeJS on the same machine
 and switch between them according to the project at hand then *before installing any version of NodeJS** 
@@ -118,7 +161,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : CommandNotFoundException
 ```
 
-However, it is still possible to run the **Azure Functions loacl node package** from the `.bin` folder
+However, it is still possible to run the **Azure Functions local node package** from the `.bin` folder
 as illustrated by the following example as `.\func`. It is important to notice that what is found in this
 case is **Azure Functions Core Tools 4** which indeed is teh version of the locally installed node package.
 
@@ -194,7 +237,3 @@ Function Runtime Version: 4.8.1.18957
 ```
 
 ---
-
-
-
-
