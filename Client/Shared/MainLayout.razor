@@ -34,15 +34,16 @@
 	@*XXX I would like the nav bar not to be dark instead I would like I common theme based on harvest gold! The same as the border of the body*@
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<div class="container-fluid">
+		@*<div class="container">*@
 			@*XXX here I would like some kind of icon/brand instead of "The Gospel"*@
 			<a class="navbar-brand" href="#">The Gospel</a>
 			<button class="navbar-toggler collapsed" 
 			        type="button" 
 			        data-bs-toggle="collapse" 
 			        data-bs-target="#navbarCollapse" 
-			        aria-controls="navbarCollapse" 
-			        aria-expanded="false" 
-			        aria-label="Toggle navigation">
+			        aria-controls="navbarCollapse"
+					aria-expanded="false"
+					aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="navbar-collapse collapse" 
@@ -58,21 +59,26 @@
 						<a class="nav-link disabled">Disabled</a>
 					</li>
 				</ul>
-				<form class="d-flex" role="search">
-					<input class="form-control me-2" 
-					       type="search" 
-					       placeholder="Search" 
-					       aria-label="Search">
-					<button class="btn btn-outline-success"
-					        type="submit">
-						Search
-					</button>
-				</form>
-				@* XXX these should go to the bottom on a small screen. I have copied these from the commented part above *@
-				<div class="text-end">
-					<button type="button" class="btn btn-outline-light me-2">Login</button>
-					<button type="button" class="btn btn-warning">Sign-up</button>
-				</div>
+				
+				@*<div class="container">*@
+				<form class="d-flex"
+					  role="search">
+						<input class="form-control me-2"
+						       type="search"
+						       placeholder="Search"
+						       aria-label="Search">
+						<button class="btn btn-outline-success"
+							type="submit">
+							Search
+						</button>
+					</form>
+					@* XXX these should go to the bottom on a small screen. I have copied these from the commented part above *@
+					@*<div class="text-end m-sm-2">*@
+					<div class=" text-center m-2">
+						<button type="button" class="btn btn-outline-light me-2">Login</button>
+						<button type="button" class="btn btn-warning">Sign-up</button>
+					</div>
+				@*</div>*@
 			</div>
 		</div>
 	</nav>
