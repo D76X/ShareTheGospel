@@ -27,7 +27,15 @@ body {
 
 .anchor-plain {
     text-decoration: none;
-} 
+}
+
+/*
+Bootstrap 5 does no longer support text-justify
+https://stackoverflow.com/questions/19144644/is-it-possible-to-justify-text-within-the-bootstrap-framework
+*/
+.text-justify {
+    text-align: justify;
+}
 
 h1:focus {
     outline: none;
