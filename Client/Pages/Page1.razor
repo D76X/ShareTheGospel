@@ -1,0 +1,51 @@
+﻿@page "/page1"
+@layout MainLayout
+
+@*the \@page "/" tells Blazor that this page is the entry page of the application*@
+
+@*<PageTitle>Index</PageTitle>*@
+
+<div class="container-fluid">
+	<main >
+		<div class="row golden-border pt-3">
+			<blockquote class="blockquote text-center">
+				<p class="mb-3">&#8220;Ho! Everyone who thirsts, Come to the waters; And you who have no money, Come, buy and eat. Yes, come, buy wine and milk without money and without price.&#8221;</p>
+				<a href="https://my.bible.com/bible/114/ISA.55.1" class="anchor-plain" target="_blank">
+					<footer class="blockquote-footer text-end">Isaiah 55:1 <cite title="Source Title">NKJV</cite></footer>
+				</a>
+			</blockquote>
+		</div>
+		<div class="row mt-2">
+			<article class="pt-3">
+				<header>
+					<h2 class="text-center">The Article Title</h2>
+				</header>
+			</article>
+		</div>
+		<div class="row mt-2">
+			<div class="col-lg-6">
+				<p class="text-justify">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+			<div class="col-lg-6">
+				<p class="text-justify">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+		</div>
+		<div class="row mt-2 golden-border">
+			<button class="btn btn-success" onclick="@OnSuccess">Success @Count</button>
+		</div>
+	</main>
+</div>
+
+@code { 
+	
+	public int Count { get; set; } = 0;
+
+	private void OnSuccess(MouseEventArgs e)
+	{
+		Count++;
+	}
+}
