@@ -37,6 +37,11 @@ https://stackoverflow.com/questions/19144644/is-it-possible-to-justify-text-with
     text-align: justify;
 }
 
+.flag-icon {
+    width: 30px;
+    height: auto
+}
+
 h1:focus {
     outline: none;
 }
