@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShareTheGospel", "ShareTheGospel", "{93FADD34-6041-4959-A14B-A009DC2661CA}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{E812F731-8492-4C24-A818-97036CD5CB8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiIsolated", "ApiIsolated\ApiIsolated.csproj", "{25458105-7242-4BE7-A33D-FC360BBC4DBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{AE2D8638-02F5-437E-85EE-C054393295BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{9898BA86-1DA5-4850-B713-739ED18E8386}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VirtualMachines", "VirtualMachines", "{3143E81D-1403-46B9-902A-D2CEF604607C}"
+	ProjectSection(SolutionItems) = preProject
+		..\VirtualMachines\README.md = ..\VirtualMachines\README.md
+		..\VirtualMachines\VirtualMachines.ps1 = ..\VirtualMachines\VirtualMachines.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Powershell", "Powershell", "{AFC615A2-4647-4AF4-A251-AE0E3AA1245D}"
+	ProjectSection(SolutionItems) = preProject
+		..\Powershell\PowershellBasics.ps1 = ..\Powershell\PowershellBasics.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA4D2A5D-2966-4581-92F9-8B3449002669}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Razor.ClassLibrary", "..\WebsitesBlazorComponents\Websites.Razor.ClassLibrary\Websites.Razor.ClassLibrary.csproj", "{D10A0A5F-781A-4CE8-979E-BF125CC3228C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E812F731-8492-4C24-A818-97036CD5CB8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E812F731-8492-4C24-A818-97036CD5CB8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E812F731-8492-4C24-A818-97036CD5CB8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E812F731-8492-4C24-A818-97036CD5CB8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25458105-7242-4BE7-A33D-FC360BBC4DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25458105-7242-4BE7-A33D-FC360BBC4DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25458105-7242-4BE7-A33D-FC360BBC4DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25458105-7242-4BE7-A33D-FC360BBC4DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE2D8638-02F5-437E-85EE-C054393295BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2D8638-02F5-437E-85EE-C054393295BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2D8638-02F5-437E-85EE-C054393295BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE2D8638-02F5-437E-85EE-C054393295BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9898BA86-1DA5-4850-B713-739ED18E8386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9898BA86-1DA5-4850-B713-739ED18E8386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9898BA86-1DA5-4850-B713-739ED18E8386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9898BA86-1DA5-4850-B713-739ED18E8386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D10A0A5F-781A-4CE8-979E-BF125CC3228C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D10A0A5F-781A-4CE8-979E-BF125CC3228C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D10A0A5F-781A-4CE8-979E-BF125CC3228C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D10A0A5F-781A-4CE8-979E-BF125CC3228C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E812F731-8492-4C24-A818-97036CD5CB8C} = {93FADD34-6041-4959-A14B-A009DC2661CA}
+		{25458105-7242-4BE7-A33D-FC360BBC4DBB} = {93FADD34-6041-4959-A14B-A009DC2661CA}
+		{AE2D8638-02F5-437E-85EE-C054393295BD} = {93FADD34-6041-4959-A14B-A009DC2661CA}
+		{9898BA86-1DA5-4850-B713-739ED18E8386} = {93FADD34-6041-4959-A14B-A009DC2661CA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BFECDEB-4F7B-4080-BD4E-F5F49CB94D39}
+	EndGlobalSection
+EndGlobal
