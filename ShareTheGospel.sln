@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA4D2A5D-2966-4581-92F9-8B3449002669}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Razor.ClassLibrary", "..\WebsitesBlazorComponents\Websites.Razor.ClassLibrary\Websites.Razor.ClassLibrary.csproj", "{D10A0A5F-781A-4CE8-979E-BF125CC3228C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebsitesSharedLibraries", "WebsitesSharedLibraries", "{1DBEDEBD-9274-4A5E-AB96-19DA3B9F7573}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Razor.ClassLibrary", "WebsitesSharedLibraries\Websites.Razor.ClassLibrary\Websites.Razor.ClassLibrary.csproj", "{189EB274-554F-44CB-9BA1-6C215DCD003E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +45,10 @@ Global
 		{9898BA86-1DA5-4850-B713-739ED18E8386}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9898BA86-1DA5-4850-B713-739ED18E8386}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9898BA86-1DA5-4850-B713-739ED18E8386}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D10A0A5F-781A-4CE8-979E-BF125CC3228C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D10A0A5F-781A-4CE8-979E-BF125CC3228C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D10A0A5F-781A-4CE8-979E-BF125CC3228C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D10A0A5F-781A-4CE8-979E-BF125CC3228C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{189EB274-554F-44CB-9BA1-6C215DCD003E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{189EB274-554F-44CB-9BA1-6C215DCD003E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{189EB274-554F-44CB-9BA1-6C215DCD003E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{189EB274-554F-44CB-9BA1-6C215DCD003E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +58,7 @@ Global
 		{25458105-7242-4BE7-A33D-FC360BBC4DBB} = {93FADD34-6041-4959-A14B-A009DC2661CA}
 		{AE2D8638-02F5-437E-85EE-C054393295BD} = {93FADD34-6041-4959-A14B-A009DC2661CA}
 		{9898BA86-1DA5-4850-B713-739ED18E8386} = {93FADD34-6041-4959-A14B-A009DC2661CA}
+		{189EB274-554F-44CB-9BA1-6C215DCD003E} = {1DBEDEBD-9274-4A5E-AB96-19DA3B9F7573}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4BFECDEB-4F7B-4080-BD4E-F5F49CB94D39}
