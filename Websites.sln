@@ -17,17 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{9898BA86-1DA5-4850-B713-739ED18E8386}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VirtualMachines", "VirtualMachines", "{3143E81D-1403-46B9-902A-D2CEF604607C}"
-	ProjectSection(SolutionItems) = preProject
-		..\VirtualMachines\README.md = ..\VirtualMachines\README.md
-		..\VirtualMachines\VirtualMachines.ps1 = ..\VirtualMachines\VirtualMachines.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Powershell", "Powershell", "{AFC615A2-4647-4AF4-A251-AE0E3AA1245D}"
-	ProjectSection(SolutionItems) = preProject
-		..\Powershell\PowershellBasics.ps1 = ..\Powershell\PowershellBasics.ps1
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA4D2A5D-2966-4581-92F9-8B3449002669}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Razor.ClassLibrary", "..\WebsitesBlazorComponents\Websites.Razor.ClassLibrary\Websites.Razor.ClassLibrary.csproj", "{D10A0A5F-781A-4CE8-979E-BF125CC3228C}"
