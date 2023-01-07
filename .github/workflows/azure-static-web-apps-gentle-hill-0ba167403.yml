@@ -1,6 +1,16 @@
 name: Azure Static Web Apps CI/CD
 
 on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter a name"
+        required: true
+        default: 'GirHub user'
+      deploy:
+        description: "Deploy code after build (yes/no)"
+        required: false
+        default: 'yes'
   push:
     branches:
       - main
