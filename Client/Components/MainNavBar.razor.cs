@@ -34,11 +34,8 @@ namespace BlazorApp.Client.Components
 			}
 			
 			var nextUri = $"{currentUri}/{selectedLanguage}";
+			NavigationManager.NavigateTo(nextUri);
 			
-			NavigationManager.NavigateTo(nextUri, forceLoad: true);
-			
-			//NavigationManager.NavigateTo(nextUri, forceLoad: false);
-			//StateHasChanged();
 		}
 	}
 }
