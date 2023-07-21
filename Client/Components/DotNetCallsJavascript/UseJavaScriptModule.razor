@@ -1,0 +1,43 @@
+﻿@inject IJSRuntime JsRuntime
+@implements IAsyncDisposable
+
+<h2>Use JavaScript Module</h2>
+
+<button class="btn-secondary" @onclick="ShowAlert">
+	Show Alert from JavaScript Module
+</button>
+
+@code {
+
+	/*
+	IMPORTANT!
+
+	-1
+	JS modules are downloaded from the server at runtime the first time
+	that are required. You may see this in teh Network tab of the Browser
+	development tools.
+
+	-2
+	For JS modules it is not required to add the <script> tag in index.html
+	as it is the case for other JavaScript functions.
+	<script src="scripts/my-module.js"></script>
+	*/
+
+	IJSObjectReference alertModule;
+
+	private async Task ShowAlert()
+	{
+		alertModule ??= await JsRuntime.InvokeAsync<IJSObjectReference>(
+			"import",
+			"./scripts/alertModule.js");
+
+
+		await alertModule.InvokeVoidAsync("showAlert","Module successfully loaded!");
+	}
+
+	public async ValueTask DisposeAsync()
+	{
+		if (alertModule != null) await alertModule.DisposeAsync();
+	}
+
+}

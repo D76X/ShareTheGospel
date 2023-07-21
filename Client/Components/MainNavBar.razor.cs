@@ -18,12 +18,6 @@ namespace BlazorApp.Client.Components
 			var currentUri = NavigationManager.Uri;
 			if(currentUri==baseUri) return;
 
-			if (currentUri == $"{baseUri}#")
-			{
-				NavigationManager.NavigateTo($"{baseUri}{selectedLanguage}", forceLoad: true);
-			};
-			
-
 			if (currentUri.EndsWith($"/{selectedLanguage}")) return;
 
 			if (currentUri.EndsWith("/en") ||

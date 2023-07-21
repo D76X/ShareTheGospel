@@ -1,0 +1,58 @@
+﻿<h2>Call Static .Net Method from JavaScript</h2>
+
+ @*this is left here for comparison to highlight the difference*@
+<button class="btn-secondary" @onclick="ShowPrompt">
+	Invoke ShowPrompt
+</button>
+
+@*notice that the onclick here is NOT preceded with @ because we are going to 
+invoke a JS function that invokes a static .Net method on this class*@
+<button class="btn-secondary" onclick="blazorInterop.callStaticDotNetMethod()">
+	Invoke static BuildEmail
+</button>
+<button class="btn-secondary" onclick="blazorInterop.callStaticDotNetMethodCustomIdentifier()">
+	Invoke static BuildEmail overload
+</button>
+
+@code {
+
+	/* [JSInvokable]
+	// this attribute registers .Net static methods on the
+	// window.DotNet scope available to to the Browser and
+	// therefore to JS at runtime.
+	// Each method added to this scope can be invoked at runtime
+	// by JS code by following the pattern below.
+	//
+	// window.DotNet.invokeMethodAsync("assembly_name","method_name","arguments")
+	//
+	// "assembly_name.method_name"
+	//
+	// must be unique, therefore this means that
+	//
+	// "method_name" must be unique in the assembly "assembly_name"
+	//
+	// Notice that teh name of the class that declares the static method
+	// does not matter!
+	//
+	// The invocation returns a Promise object.
+	*/
+	[JSInvokable]
+	public static string BuildEmail(string firstName)
+	{
+		return $"{firstName}@youremailserverdomain.com";
+	}
+
+	/*
+	an overload of teh method above!
+	*/
+	[JSInvokable("BuildEmailWithLastName")]
+	public static string BuildEmail(string firstName, string lastName)
+	{
+		return $"{firstName}.{lastName}@youremailserverdomain.com";
+	}
+
+	private async Task ShowPrompt()
+	{
+		return;
+	}
+}

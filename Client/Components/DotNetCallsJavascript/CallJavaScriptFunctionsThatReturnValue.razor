@@ -1,0 +1,45 @@
+﻿@inject IJSRuntime JsRuntime
+<h2>Call JavaScript Functions That Return a Value</h2>
+
+<button class="btn-secondary" @onclick="ShowPrompt">
+	Show Prompt
+</button>
+<div>Prompt result: @promptResult</div>
+
+<button class="btn-secondary" @onclick="CreateEmployee">
+	Create Employee: get object from JS
+</button>
+<div>Employee: @employee?.FirstName @employee?.LastName @employee?.Email</div>
+
+@code {
+
+	public class Employee
+	{
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public string Email { get; set; }
+	}
+
+	private Employee employee;
+
+	private string promptResult;
+
+	private async Task ShowPrompt()
+	{
+		var result = await JsRuntime.InvokeAsync<string>(
+			"blazorInterop.showPrompt",
+			"What's your name?",
+			promptResult ?? "");
+
+		promptResult = result==null ? promptResult : result;
+	}
+
+	private async Task CreateEmployee()
+	{
+		employee = await JsRuntime.InvokeAsync<Employee>(
+			"blazorInterop.createEmployee",
+			"MyFirstName",
+			"MyLastName");
+	}
+}
+

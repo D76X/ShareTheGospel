@@ -1,0 +1,40 @@
+﻿@using System.Drawing
+@inject IJSRuntime JsRunTime 
+
+<h2>Register Instance .Net Method has handler of JavaScript event</h2>
+<div>Window size received from JavaScript: @_windowSize.Width x @_windowSize.Height</div>
+
+@code {
+
+	private Size _windowSize;
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		/*
+		Simply passing the * this * reference here wod pass to the JavaScript
+		Runtime an object on which the properties of the .Net Component instance
+		are provided.
+		*/
+		if (firstRender)
+		{
+			var dotNetObjectReference = DotNetObjectReference.Create(this);
+			await JsRunTime.InvokeVoidAsync(
+				"blazorInterop.registerResizeHandler",
+				dotNetObjectReference);
+		}
+	}
+
+	[JSInvokable]
+	public void SetWindowSize(Size windowSize)
+	{
+		_windowSize = windowSize;
+		
+		/*
+		When JS calls .Net instance methods that may cause the state of the
+		component and this change must be reflected in the UI then to force
+		a new rendering of the Blazor component a call to StateHasChanged is 
+		required.
+		*/
+		StateHasChanged();
+	}
+}

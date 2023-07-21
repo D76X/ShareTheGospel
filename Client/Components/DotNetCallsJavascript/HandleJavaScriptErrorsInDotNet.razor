@@ -1,0 +1,38 @@
+﻿@inject IJSRuntime JsRuntime
+<h2>Handle JavaScript Errors In .Net</h2>
+
+<button class="btn-secondary" @onclick="ThrowUnhandledError">
+	Call JS function that Throws Unhandled Error
+</button>
+
+
+<button class="btn-secondary" @onclick="ThrowHandledError">
+	Call JS function that Throws Handled Error
+</button>
+<div>Error: @errorMessage</div>
+
+@code {
+
+	private string errorMessage;
+
+	private async Task ThrowUnhandledError()
+	{
+		await JsRuntime.InvokeVoidAsync("blazorInterop.throwsError");
+	}
+
+	private async Task ThrowHandledError()
+	{
+		try
+		{
+			await JsRuntime.InvokeVoidAsync("blazorInterop.throwsError");
+		}
+		//catch (Exception e)
+		catch (JSException e)
+		{
+			errorMessage = e.Message;
+			//Console.WriteLine(e);
+			//throw;
+		}
+		
+	}
+}

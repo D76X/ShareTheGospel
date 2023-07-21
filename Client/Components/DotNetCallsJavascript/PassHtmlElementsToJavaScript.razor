@@ -1,0 +1,52 @@
+﻿@inject IJSRuntime JsRuntime
+<h2>Pass HTML Elements to JavaScript</h2>
+
+<form>
+	<label>Element to focus: </label>
+	<input type="text" class="form-control" @ref="elementToFocus" />
+</form>
+<button class="btn-secondary" @onclick="FocusElement">
+	Focus Element
+</button>
+
+@code {
+
+	// this will in all cases be ready only in the OnAfterRendering(Async) lifecycle method
+	private ElementReference elementToFocus;
+
+	private async Task FocusElement()
+	{
+		await JsRuntime.InvokeVoidAsync(
+			"blazorInterop.focusElement",
+			elementToFocus);
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await base.OnAfterRenderAsync(firstRender);
+		if (firstRender) await FocusElement();
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+
+		await base.OnInitializedAsync();
+
+		// await FocusElement();
+		// html element are not yet available here
+		// neither in Pre-render mode nor in Server mode
+		// and if in Pre-render mode on the host server
+		// also the IJSRuntime would be unavailable
+	}
+
+	protected override async Task OnParametersSetAsync()
+	{
+		await base.OnParametersSetAsync();
+
+		// await FocusElement();
+		// html element are not yet available here
+		// neither in Pre-render mode nor in Server mode
+		// and if in Pre-render mode on the host server
+		// also the IJSRuntime would be unavailable
+	}
+}

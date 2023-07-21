@@ -1,0 +1,91 @@
+﻿@page "/localstorage"
+@using BlazorApp.Client.Services.LocalStorage
+@using BlazorApp.Client.Services.UserSettingsService
+@inject IJSRuntime JsRuntime
+@inject ILocalStorageService LocalStorageService
+@inject IUserSettingsService UserSettingsService
+@implements IDisposable
+
+<h2>Local Storage Demo</h2>
+
+<section>
+
+	@if (userSettings == null)
+	{
+		<p>Loading...</p>
+	}
+	else
+	{
+		<form>
+			<label>User Settings: </label>
+			<input type="text" id="userName" class="form-control" @bind="userSettings.UserName"/>
+			<input type="text" id="userValue" class="form-control" @bind="userSettings.UserValue" />
+			<div class="form-check">
+				<input type="checkbox" id="userActive" class="form-check-input" @bind="userSettings.UserActive" />
+				<label class="form-check-label" for="userActive">
+					User Active
+				</label>
+			</div>
+		</form>
+		<button class="btn-primary" @onclick="SaveSettingsAsync">
+			Save
+		</button>
+	}
+
+</section>
+
+@code {
+
+	UserSettings userSettings;
+
+	/// <summary>
+	/// ASP.NET Core Razor component lifecycle
+	/// https://learn.microsoft.com/en-us/aspnet/core/blazor/components/lifecycle?view=aspnetcore-7.0&source=docs#lifecycle-events
+	/// SetParameterAsync
+	/// OnInitialized(Async)
+	/// OnAfterRenderAsync
+	/// </summary>
+	protected override void OnInitialized()
+	{
+		userSettings = UserSettingsService.UserSettings;
+
+		// register event handlers
+		UserSettingsService.UserSettingsChanged +=UserSettingsServiceOnUserSettingsChanged;
+	}
+
+	protected async override Task OnAfterRenderAsync(bool firstRender)
+	{
+		/*
+		this will not work!
+		userSettings = UserSettingsService.UserSettings;
+		shouldRender();
+		*/
+	}
+
+	private async void SaveSettingsAsync()
+	{
+		await LocalStorageService.SetItemAsync<UserSettings>(
+			$"{nameof(UserSettings)}", 
+			userSettings);
+
+		UserSettingsService.OnSettingsChange();
+	}
+
+	private void UserSettingsServiceOnUserSettingsChanged(
+		object? sender,
+		UserSettingsServicesChangedEventHandlerArgs e)
+	{
+		userSettings = UserSettingsService.UserSettings;
+		StateHasChanged();
+	}
+
+	public void Dispose()
+	{
+		// un-register event handlers : remove the reference to handlers to this page.
+		if (UserSettingsService != null)
+		{
+			UserSettingsService.UserSettingsChanged -= UserSettingsServiceOnUserSettingsChanged;
+		}
+	}
+
+}
