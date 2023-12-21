@@ -109,8 +109,27 @@ blazorInterop.registerResizeHandler = function (dotNetObjectReference) {
     // set up initial values
     resizeHandler();
 
-    // register event handler on the resize event of the window object
+    // register event handler on the "resize" event of the window object
     window.addEventListener("resize", resizeHandler);
+};
+
+blazorInterop.registerOnlineHandler = function (dotNetObjectReference) {
+
+    function onlineHandler() {
+
+        // the navigator object of the window holds the .online bool prop
+        dotNetObjectReference.invokeMethodAsync(
+            "SetOnlineStatus",
+            navigator.onLine);
+    }
+
+    // set up initial values
+    onlineHandler();
+
+    // register event handler on the "online" and "offline" events 
+    // of the window object
+    window.addEventListener("online", onlineHandler);
+    window.addEventListener("offline", onlineHandler);
 };
 
 // this is available on the windows objet therefore on the global scope

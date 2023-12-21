@@ -1,0 +1,62 @@
+﻿@using System.Drawing
+@inject IJSRuntime JsRunTime 
+
+@*
+<h2>Call Instance .Net Method from JavaScript</h2>
+<div>Window size received from JavaScript: @_windowSize.Width x @_windowSize.Height</div>
+<button class="btn-secondary" @onclick="PassDotNetInstanceToJavaScript">
+	Call .Net instance method!
+</button>
+*@
+
+<h2>Online Indicator</h2>
+@if (_isOnline)
+{
+	<div class="isOnline">You are online</div>
+}
+else
+{
+	<div class="isOffline">You are offline</div>
+}
+
+@code {
+
+	private bool _isOnline = true;
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+	    /*
+		The JS Runtime needs a reference to this .Net object in order to be 
+		able to call its methods on the registered JS Runtime events.
+
+		Simply passing the * this * reference here would pass to the JavaScript
+		Runtime an object on which the properties of the .Net Component instance
+		are provided.		
+		*/
+		if (firstRender)
+		{
+			var dotNetObjectReference = DotNetObjectReference.Create(this);
+			await JsRunTime.InvokeVoidAsync(
+				"blazorInterop.registerOnlineHandler",
+				dotNetObjectReference);
+		}
+	}
+
+	//[JSInvokable] is used to make it possible for JS to call a .Net method
+	[JSInvokable]
+	public void SetOnlineStatus(bool isOnline)
+	{
+		// get the status from the navigator's online property
+		// subscribe to the 'online' and 'offline' events to update
+
+		_isOnline = isOnline;
+
+		/*
+		When JS calls .Net instance methods that may cause the state of the
+		component and this change must be reflected in the UI then to force
+		a new rendering of the Blazor component a call to StateHasChanged is 
+		required.
+		*/
+		StateHasChanged();
+	}
+}
