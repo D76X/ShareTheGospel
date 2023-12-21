@@ -1,5 +1,5 @@
 ﻿@using System.Drawing
-@inject IJSRuntime JSRunTime 
+@inject IJSRuntime JsRunTime 
 
 <h2>Call Instance .Net Method from JavaScript</h2>
 <div>Window size received from JavaScript: @_windowSize.Width x @_windowSize.Height</div>
@@ -10,20 +10,28 @@
 @code {
 
 	private Size _windowSize;
-	
+
 	private async Task PassDotNetInstanceToJavaScript()
 	{
 		/*
-		Simply passing the * this * reference here wod pass to the JavaScript
+		Simply passing the * this * reference here would pass to the JavaScript
 		Runtime an object on which the properties of the .Net Component instance
 		are provided.
+
+		In this example there is a button that can be clicked to pass the
+		.Net object reference to JS but the same may be done by overriding
+		the OnAfterRenderAsync
 		*/
 		var dotNetObjectReference = DotNetObjectReference.Create(this);
-		await JSRunTime.InvokeVoidAsync(
+		await JsRunTime.InvokeVoidAsync(
 			"blazorInterop.callInstanceDotNetMethod",
 			dotNetObjectReference);
 	}
 
+	/// <summary>
+	/// [JSInvokable] is used to make it possible for JS to call a .Net method
+	/// </summary>
+	/// <param name="windowSize"></param>
 	[JSInvokable]
 	public void SetWindowSize(Size windowSize)
 	{
@@ -35,6 +43,7 @@
 		a new rendering of the Blazor component a call to StateHasChanged is 
 		required.
 		*/
+
 		StateHasChanged();
 	}
 }
