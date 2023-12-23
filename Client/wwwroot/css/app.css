@@ -5,11 +5,11 @@ html, body {
 }
 
 html {
-    border: solid;
+    /*border: solid;*/
 }
 
 body {
-    border: 5px solid red;
+    /*border: 5px solid red;*/
 }
 
 .golden-border {
