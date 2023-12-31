@@ -1,27 +1,26 @@
 ﻿@inherits MainNavBarBase
 
 <nav class="navbar navbar-expand-md fixed-top bg-yellow">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="#">
-			@*https://icons8.com/icon/xDB3EH9LjXts/cross*@
-			<img class="img-fluid" src="images/icons8-cross-67.png" alt="The Gospel">
-		</a>
-		<button class="navbar-toggler collapsed"
-		        type="button"
-		        data-bs-toggle="collapse"
-		        data-bs-target="#navbarCollapse"
-		        aria-controls="navbarCollapse"
-		        aria-expanded="false"
-		        aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="navbar-collapse collapse"
-		     id="navbarCollapse" style="">
-			<ul class="navbar-nav me-auto mb-2 mb-md-0">
-				<li class="nav-item">
-					@* <NavLink class="nav-link" Match="NavLinkMatch.All" aria-current="page" href="#">Home</NavLink> *@
-					<NavLink class="nav-link" aria-current="page" @onclick='() => LinkSelected("Index")'>Home</NavLink>
-				</li>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            @*https://icons8.com/icon/xDB3EH9LjXts/cross*@
+            <img class="img-fluid" src="images/icons8-cross-67.png" alt="The Gospel">
+        </a>
+        <button class="navbar-toggler collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse"
+             id="navbarCollapse" style="">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <NavLink class="nav-link" aria-current="page" @onclick='() => LinkSelected(PageCatalog.Index)'>@miIndex</NavLink>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"
                        href="#"
@@ -29,47 +28,46 @@
                        role="button"
                        data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        Guided Tour
+                        @miTour
                     </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navDropdown">
-                        @* <li><NavLink class="dropdown-item" href="page1">Page1</NavLink></li> *@
-                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected("Death001")'>Death</NavLink></li>
-                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected("TheLaw001")'>The Law</NavLink></li>
-						<li><NavLink class="dropdown-item" @onclick='() => LinkSelected("TheCross001")'>The Cross</NavLink></li>
-                        <li><hr class="dropdown-divider"/></li>
-						<li><NavLink class="dropdown-item" @onclick='() => LinkSelected("Page1")'>Page1</NavLink></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link"
-                             Match="NavLinkMatch.All"
-                             aria-current="about"
-                             href=about>
-                        About
-                    </NavLink>
-                </li>
-            </ul>
+                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageCatalog.Death001)'>@miDeath</NavLink></li>
+                            <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageCatalog.TheLaw001)'>@miTheLaw</NavLink></li>
+                            <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageCatalog.TheCross001)'>@miTheCross</NavLink></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><NavLink class="dropdown-item" @onclick='() => LinkSelected("Page1")'>Page1</NavLink></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link"
+                                 Match="NavLinkMatch.All"
+                                 aria-current="about"
+                                 href=about>
+                            @miAbout
+                        </NavLink>
+                    </li>
+                </ul>
 
-			<LanguageSelector OnLanguageSelected="LanguageSelected"/>
+                <LanguageSelector OnLanguageSelected="LanguageSelected" />
 
-			<form class="d-flex"
-			      role="search">
-				<input class="form-control me-2"
-				       type="search"
-				       placeholder="Search"
-				       aria-label="Search">
-				<button class="btn btn-outline-success me-1"
-				        type="submit">
-					Search
-				</button>
-			</form>
+                <form class="d-flex"
+                      role="search">
+                    <input class="form-control me-2"
+                           type="search"
+                           placeholder="Search"
+                           aria-label="Search">
+                    <button class="btn btn-outline-success me-1"
+                            type="submit">
+                        Search
+                    </button>
+                </form>
 
-			<div class=" text-center m-1">
-				<button type="button" class="btn btn-outline-primary">Login</button>
-				<button type="button" class="btn btn-outline-primary">Sign-up</button>
-			</div>
+                <div class=" text-center m-1">
+                    <button type="button" class="btn btn-outline-primary">Login</button>
+                    <button type="button" class="btn btn-outline-primary">Sign-up</button>
+                </div>
 
-		</div>
-	</div>
-</nav>
+            </div>
+        </div>
+    </nav>
