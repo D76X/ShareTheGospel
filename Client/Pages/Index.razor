@@ -2,7 +2,19 @@
 @page "/en"
 @page "/index"
 @page "/index/en"
+@using BlazorApp.Client.Translations
+@using BlazorApp.Client.Pages.Models
+
 @layout MainLayout
+
+@code
+{
+    //var sl = LanguageSelectorBase.SelectedLanguage;
+    IndexModel PageModel = new()
+        {
+            SelectedLanguage = LanguageSelectorBase.SelectedLanguage
+        };
+}
 
 <div class="container-fluid">
     <main>
@@ -22,8 +34,8 @@
                     <b>In the first three steps below is all that you need to know in just 5 minutes and everything else is bonus material!</b>
                     It explains who you are, where you come from and are going and why things are the way they are. You will learn what you have to do in order not to die and what comes
                     after you do. It teaches you to reckon with your fears and doubts and shows you what is really important and that there is more to life than you could ever imagine.
-                    No matter what your story or background, religion or faith or lack thereof, no matter whether rich or poor, strong or week, great or small, good or bad, well or ill 
-                    this guide is for you that it may change everything in your life forever and take you and me to the place that we have always meant to be. 
+                    No matter what your story or background, religion or faith or lack thereof, no matter whether rich or poor, strong or week, great or small, good or bad, well or ill
+                    this guide is for you that it may change everything in your life forever and take you and me to the place that we have always meant to be.
 
                 </p>
             </blockquote>
@@ -32,14 +44,17 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
-                        <div class="card shadow-sm">
+                        @* <div class="card shadow-sm">
                             <img src="/images/rip1.svg" alt="Bootstrap" height="225" style="padding: 0.5em">
                             <div class="card-body">
                                 <h5 class="card-title text-center">Death</h5>
                                 <p class="card-text text-center">Are you afraid of death?</p>
                                 <a href="/death001" class="stretched-link"></a>
                             </div>
-                        </div>
+                        </div> *@
+                        <Card Face="CardCatalog.Death001"
+                              SelectedLanguage=@PageModel.SelectedLanguage>
+                        </Card>
                     </div>
                     <div class="col">
                         <div class="card shadow-sm">
@@ -80,5 +95,5 @@
                 </div>
             </div>
         </div>
-        </main>
+    </main>
 </div>

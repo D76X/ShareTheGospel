@@ -1,3 +1,6 @@
+
+https://gentle-hill-0ba167403.1.azurestaticapps.net/
+
 # Blazor Starter Application
 
 This template contains an example .NET 6 [Blazor WebAssembly](https://docs.microsoft.com/aspnet/core/blazor/?view=aspnetcore-6.0#blazor-webassembly) client application, a .NET 6 C# [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview), and a C# class library with shared code.
@@ -63,3 +66,16 @@ This application can be deployed to [Azure Static Web Apps](https://docs.microso
 
 
 ---
+
+https://www.syncfusion.com/faq/blazor/general/how-do-i-intercept-routing-in-blazor-before-it-navigates
+https://stackoverflow.com/questions/54297711/blazor-how-to-pass-arguments-to-onclick-function 
+https://github.com/SyncfusionExamples/Blazor-FAQ-Samples/tree/master/Intercept%20Routing%20in%20Blazor%20Server%20App 
+
+---
+
+https://stackoverflow.com/questions/45592581/cannot-debug-in-vs-code-by-attaching-to-chrome 
+https://stackoverflow.com/questions/56267303/blazor-client-side-debugging  
+https://stackoverflow.com/questions/64826309/blazor-two-way-binding-text-area-inside-component  
+
+---
+
