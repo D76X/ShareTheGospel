@@ -9,15 +9,15 @@ static class CardCatalog
         "/images/rip1.svg",
         new[]
         {
-            $"{PageCatalog.Death001}/{LanguageSelectorBase.LanguageEn}",
-            $"{PageCatalog.Death001}/{LanguageSelectorBase.LanguageDe}",
-            $"{PageCatalog.Death001}/{LanguageSelectorBase.LanguageIt}",
+            $"{PageTranslations.Death001}/{LanguageSelectorBase.LanguageEn}",
+            $"{PageTranslations.Death001}/{LanguageSelectorBase.LanguageDe}",
+            $"{PageTranslations.Death001}/{LanguageSelectorBase.LanguageIt}",
         },
         new[]
         {
-            PageCatalog.Translation(PageCatalog.Death001,LanguageSelectorBase.LanguageEn),
-            PageCatalog.Translation(PageCatalog.Death001,LanguageSelectorBase.LanguageDe),
-            PageCatalog.Translation(PageCatalog.Death001,LanguageSelectorBase.LanguageIt),
+            PageTranslations.Translation(PageTranslations.Death001,LanguageSelectorBase.LanguageEn),
+            PageTranslations.Translation(PageTranslations.Death001,LanguageSelectorBase.LanguageDe),
+            PageTranslations.Translation(PageTranslations.Death001,LanguageSelectorBase.LanguageIt),
         },
         new[]
         {
