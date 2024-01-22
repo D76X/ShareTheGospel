@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Catalogs\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
