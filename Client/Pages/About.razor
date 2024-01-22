@@ -2,7 +2,7 @@
 @page "/about/en"
 @page "/about/de"
 @page "/about/it"
-@using BlazorApp.Client.Pages.Models
+@using BlazorApp.Client.Abstractions.Models
 @layout MainLayout
 @implements IDisposable
 
@@ -20,6 +20,7 @@
     public void Dispose()
     {
         Model.OnLanguageSelection -= StateHasChanged;
+        Model.Dispose();
     }
 }
 
