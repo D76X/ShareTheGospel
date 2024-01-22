@@ -5,7 +5,7 @@ namespace BlazorApp.Client.Components
 {
     public class CardBase : ComponentBase
     {
-         [Inject]
+        [Inject]
         public NavigationManager NavigationManager { get; set; }
 
         [Parameter]
@@ -18,11 +18,5 @@ namespace BlazorApp.Client.Components
         public string PageRef => Face.PageRef(SelectedLanguage);
         public string PageTitle => Face.PageTitle(SelectedLanguage);
         public string Text => Face.PageText(SelectedLanguage);
-
-        //public void LinkSelected(string toPage)
-        //{
-        //    var nextUri = $"{toPage}/{LanguageSelectorBase.SelectedLanguage}";
-        //    NavigationManager.NavigateTo(nextUri);
-        //}
     }
 }
