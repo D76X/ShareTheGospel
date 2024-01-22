@@ -1,4 +1,6 @@
-﻿using BlazorApp.Client.Translations;
+﻿using BlazorApp.Client.Abstractions.Services;
+using BlazorApp.Client.Pages.Models;
+using BlazorApp.Client.Translations;
 using Microsoft.AspNetCore.Components;
 using Websites.Razor.ClassLibrary.Components;
 
@@ -7,17 +9,28 @@ namespace BlazorApp.Client.Components;
 public class MainNavBarBase : ComponentBase
 {
     [Inject]
-    public NavigationManager NavigationManager { get; set; }
-		
+    public NavigationManager? NavigationManager { get; set; }
+
+    [Inject]
+    public ILanguageService? LanguageService { get; set; }
+    
+    protected override void OnInitialized()
+    {
+        LanguageService!.SelectedLanguage = LanguageSelectorBase.LanguageEn;
+        base.OnInitialized();
+    }
+
     public void LinkSelected(string toPage)
     {
         var nextUri = $"{toPage}/{LanguageSelectorBase.SelectedLanguage}";
-        NavigationManager.NavigateTo(nextUri);
+        NavigationManager!.NavigateTo(nextUri);
     }
 
-    public void LanguageSelected(string selectedLanguage)
+    public void LanguageSelected(string? selectedLanguage)
     {
-        var baseUri = NavigationManager.BaseUri;
+        LanguageService!.SelectedLanguage = selectedLanguage;
+        
+        var baseUri = NavigationManager!.BaseUri;
 
         var currentUri = NavigationManager.Uri;
         if (currentUri.EndsWith($"/{selectedLanguage}")) return;
@@ -36,10 +49,10 @@ public class MainNavBarBase : ComponentBase
 			
     }
 
-    public string miTour => MenuCatalog.Translation(MenuCatalog.Tour, LanguageSelectorBase.SelectedLanguage);
-    protected string miIndex => PageCatalog.Translation(PageCatalog.Index, LanguageSelectorBase.SelectedLanguage);
-    public string miDeath => PageCatalog.Translation(PageCatalog.Death001, LanguageSelectorBase.SelectedLanguage);
-    public string miTheLaw => PageCatalog.Translation(PageCatalog.TheLaw001, LanguageSelectorBase.SelectedLanguage);
-    public string miTheCross => PageCatalog.Translation(PageCatalog.TheCross001, LanguageSelectorBase.SelectedLanguage);
-    public string miAbout => PageCatalog.Translation(PageCatalog.Index, LanguageSelectorBase.SelectedLanguage);
+    public string miTour => Catalog.Translation(Catalog.Tour, LanguageSelectorBase.SelectedLanguage);
+    protected string miIndex => PageTranslations.Translation(PageTranslations.Index, LanguageSelectorBase.SelectedLanguage);
+    public string miDeath => PageTranslations.Translation(PageTranslations.Death001, LanguageSelectorBase.SelectedLanguage);
+    public string miTheLaw => PageTranslations.Translation(PageTranslations.TheLaw001, LanguageSelectorBase.SelectedLanguage);
+    public string miTheCross => PageTranslations.Translation(PageTranslations.TheCross001, LanguageSelectorBase.SelectedLanguage);
+    public string miAbout => PageTranslations.Translation(PageTranslations.About, LanguageSelectorBase.SelectedLanguage);
 }

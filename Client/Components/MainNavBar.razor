@@ -1,5 +1,11 @@
 ﻿@using BlazorApp.Client.Translations
+@using BlazorApp.Client.Models
 @inherits MainNavBarBase
+
+@code
+{
+    public Models.MainNavBar Model { get; } = new() { SelectedLanguage = LanguageSelectorBase.SelectedLanguage };
+}
 
 <nav class="navbar navbar-expand-md fixed-top bg-yellow">
     <div class="container-fluid">
@@ -20,55 +26,53 @@
              id="navbarCollapse" style="">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <NavLink class="nav-link" aria-current="page" @onclick='() => LinkSelected(PageCatalog.Index)'>@miIndex</NavLink>
+                    <NavLink class="nav-link" aria-current="page" @onclick='() => LinkSelected(PageTranslations.Index)'>@miIndex</NavLink>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       href="#"
-                       id="navDropdown"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        @miTour
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           id="navDropdown"
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            @miTour
                     </a>
-                    <ul class="dropdown-menu"
-                        aria-labelledby="navDropdown">
-                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageCatalog.Death001)'>@miDeath</NavLink></li>
-                            <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageCatalog.TheLaw001)'>@miTheLaw</NavLink></li>
-                            <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageCatalog.TheCross001)'>@miTheCross</NavLink></li>
+                    <ul class="dropdown-menu" aria-labelledby="navDropdown">
+                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.Death001)'>@miDeath</NavLink></li>
+                            <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.TheLaw001)'>@miTheLaw</NavLink></li>
+                            <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.TheCross001)'>@miTheCross</NavLink></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li><NavLink class="dropdown-item" @onclick='() => LinkSelected("Page1")'>Page1</NavLink></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <NavLink class="nav-link"
-                                 Match="NavLinkMatch.All"
-                                 aria-current="about"
-                                 href=about>
-                            @miAbout
-                        </NavLink>
-                    </li>
-                </ul>
+                        <MenuItem class="nav-link"
+                                  Match="NavLinkMatch.All"
+                                  aria-current="about"
+                                  href=@Model.About.Href>
+                            @Model.About.Text
+                        </MenuItem>
+                </li>
+            </ul>
 
-                <LanguageSelector OnLanguageSelected="LanguageSelected" />
+            <LanguageSelector OnLanguageSelected="LanguageSelected" />
 
-                <form class="d-flex"
-                      role="search">
-                    <input class="form-control me-2"
-                           type="search"
-                           placeholder="Search"
-                           aria-label="Search">
-                    <button class="btn btn-outline-success me-1"
-                            type="submit">
-                        Search
-                    </button>
-                </form>
+            <form class="d-flex"
+                  role="search">
+                <input class="form-control me-2"
+                       type="search"
+                       placeholder="Search"
+                       aria-label="Search">
+                <button class="btn btn-outline-success me-1"
+                        type="submit">
+                    Search
+                </button>
+            </form>
 
-                <div class=" text-center m-1">
-                    <button type="button" class="btn btn-outline-primary">Login</button>
-                    <button type="button" class="btn btn-outline-primary">Sign-up</button>
-                </div>
-
+            <div class=" text-center m-1">
+                <button type="button" class="btn btn-outline-primary">Login</button>
+                <button type="button" class="btn btn-outline-primary">Sign-up</button>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
