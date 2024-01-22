@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorApp.Client.Abstractions.Models;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Routing;
 
@@ -7,7 +8,7 @@ namespace BlazorApp.Client.Components
     public class MenuItemBase : NavLink
     {
         [Parameter]
-        public MenuItem Model { get; set; }
+        public IMenuItem Model { get; set; }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
