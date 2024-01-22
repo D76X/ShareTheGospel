@@ -1,16 +1,22 @@
 ﻿@page "/de" 
 @page "/index/de"
 @using BlazorApp.Client.Translations
+@using BlazorApp.Client.Abstractions.Models
 @using BlazorApp.Client.Pages.Models
+@implements IDisposable
 @layout MainLayout
 
 @code
 {
-    //var sl = LanguageSelectorBase.SelectedLanguage;
-    IndexModel PageModel = new()
+    IIndexPage Model = new IndexPage()
     {
         SelectedLanguage = LanguageSelectorBase.SelectedLanguage
     };
+
+    public void Dispose()
+    {
+        Model.Dispose();
+    }
 }
 
 <div class="container-fluid">
@@ -40,16 +46,8 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
-                        @* <div class="card shadow-sm">
-                            <img src="/images/rip1.svg" alt="Bootstrap" height="225" style="padding: 0.5em">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Death</h5>
-                                <p class="card-text text-center">Are you afraid of death?</p>
-                                <a href="/death001" class="stretched-link"></a>
-                            </div>
-                        </div> *@
                         <Card Face="CardCatalog.Death001"
-                              SelectedLanguage=@PageModel.SelectedLanguage>
+                              SelectedLanguage=@Model.SelectedLanguage>
                         </Card>
                     </div>
                     <div class="col">
@@ -93,4 +91,3 @@
         </div>
     </main>
 </div>
-
