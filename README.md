@@ -67,6 +67,37 @@ This application can be deployed to [Azure Static Web Apps](https://docs.microso
 
 ---
 
+## [Basic component layout inheritance in Blazor](https://stackoverflow.com/questions/59990832/basic-component-layout-inheritance-blazor) 
+
+#### @sw1337 answer
+
+As of this writing, derived razor components implement all methods of their base classes automatically, 
+including **BuildRenderTree** (which renders the HTML markup that you type within the razor file). 
+When you type nothing, that method will make no attempt at calling the base BuildRenderTree method on 
+its own. 
+
+So you need to do it manually like so:
+
+```
+
+@inherits BaseComponent;
+
+@{
+    base.BuildRenderTree(__builder);
+}
+
+@code {
+  protected override void OnInitialized()
+    {
+         base.header = "Setting header for the parent"
+    }
+}
+
+```
+
+
+---
+
 https://www.syncfusion.com/faq/blazor/general/how-do-i-intercept-routing-in-blazor-before-it-navigates
 https://stackoverflow.com/questions/54297711/blazor-how-to-pass-arguments-to-onclick-function 
 https://github.com/SyncfusionExamples/Blazor-FAQ-Samples/tree/master/Intercept%20Routing%20in%20Blazor%20Server%20App 
@@ -78,4 +109,3 @@ https://stackoverflow.com/questions/56267303/blazor-client-side-debugging
 https://stackoverflow.com/questions/64826309/blazor-two-way-binding-text-area-inside-component  
 
 ---
-

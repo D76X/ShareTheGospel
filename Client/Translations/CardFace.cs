@@ -2,10 +2,15 @@
 
 interface ICardFace
 {
-    
+    string ImageSrc { get; }
+    string PageRef(string language);
+    string PageTitle(string language);
+    string PageText(string language);
 }
 
-public class CardFace: ICardFace
+public class CardFace: 
+    ICardFace
+
 {
     private Dictionary<string, string[]> Translations { get; }
 
