@@ -8,7 +8,7 @@ namespace BlazorApp.Client.Components
     public class MenuItemBase : NavLink
     {
         [Parameter]
-        public IMenuItem Model { get; set; }
+        public IMenuItem? Model { get; set; }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
