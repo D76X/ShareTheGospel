@@ -1,9 +1,10 @@
 ﻿using System.Text.Json;
+using BlazorApp.Client.Abstractions.Services;
 using Microsoft.JSInterop;
 
 namespace BlazorApp.Client.Services.LocalStorage
 {
-	public class LocalStorageService: ILocalStorageService
+    public class LocalStorageService: ILocalStorageService
 	{
 		private readonly IJSRuntime _jsRuntime;
 
