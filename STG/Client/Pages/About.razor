@@ -9,24 +9,24 @@
 @code {    
     
     [Inject]
-    public IAboutModel Model { get; set; }
+    public IAboutModel? Model { get; set; }
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Model.OnLanguageSelection += StateHasChanged;
+        Model!.OnLanguageSelection += StateHasChanged;
     }
 
     public void Dispose()
     {
-        Model.OnLanguageSelection -= StateHasChanged;
-        Model.Dispose();
+        Model!.OnLanguageSelection -= StateHasChanged;
+        Model!.Dispose();
     }
 }
 
 <div class="container-fluid">
     <main>        
-        @if (@Model.IsEnglish)
+        @if (@Model!.IsEnglish)
         {
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
@@ -47,7 +47,7 @@
                 </blockquote>
             </section>
         }
-        @if (@Model.IsDeutsch)
+        @if (@Model!.IsDeutsch)
         {
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
@@ -68,7 +68,7 @@
                 </blockquote>
             </section>
         }
-        @if (@Model.IsItalian)
+        @if (@Model!.IsItalian)
         {
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
