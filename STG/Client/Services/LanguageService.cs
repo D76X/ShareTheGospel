@@ -1,9 +1,8 @@
-﻿
-using BlazorApp.Client.Abstractions.Services;
+﻿using BlazorApp.Client.Abstractions.Services;
 
-namespace BlazorApp.Client.Services.LanguageService
+namespace BlazorApp.Client.Services
 {
-    public class LanguageService: ILanguageService
+    public class LanguageService : ILanguageService
     {
         private string? _selectedLanguage;
 

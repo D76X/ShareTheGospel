@@ -2,22 +2,19 @@
 @page "/en"
 @page "/index"
 @page "/index/en"
-@using BlazorApp.Client.Translations
-@using BlazorApp.Client.Pages.Models
 @using BlazorApp.Client.Abstractions.Models
+@using BlazorApp.Client.Common
 @implements IDisposable
 @layout MainLayout
 
 @code
 {
-    IIndexPage Model = new IndexPage()
-    {
-        SelectedLanguage = LanguageSelectorBase.SelectedLanguage
-    };
+    [Inject]
+    private IIndexPage? Model { get; set; }
 
     public void Dispose()
     {
-        Model.Dispose();
+        Model!.Dispose();
     }
 }
 
@@ -49,9 +46,7 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
-                        <Card Face="CardCatalog.Death001"
-                              SelectedLanguage=@Model.SelectedLanguage>
-                        </Card>
+                        <Card Model="@Model!.GetCard(CardCatalog.Death001)"></Card>
                     </div>
                     <div class="col">
                         <div class="card shadow-sm">

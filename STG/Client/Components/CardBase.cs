@@ -1,22 +1,16 @@
-﻿using BlazorApp.Client.Translations;
+﻿using BlazorApp.Client.Abstractions.Models;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorApp.Client.Components
 {
     public class CardBase : ComponentBase
     {
-        [Inject]
-        public NavigationManager NavigationManager { get; set; }
-
         [Parameter]
-        public CardFace Face { get; set; }
+        public ICardModel? Model { get; set; }
 
-        [Parameter]
-        public string SelectedLanguage { get; set; }
-
-        public string ImageSrc => Face.ImageSrc;
-        public string PageRef => Face.PageRef(SelectedLanguage);
-        public string PageTitle => Face.PageTitle(SelectedLanguage);
-        public string Text => Face.PageText(SelectedLanguage);
+        public string ImageSrc => Model!.ImageSrc;
+        public string PageRef => Model!.PageRef;
+        public string PageTitle => Model!.PageTitle;
+        public string Text => Model!.PageText;
     }
 }

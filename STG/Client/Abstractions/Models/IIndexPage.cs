@@ -2,5 +2,5 @@
 
 public interface IIndexPage: IDisposable
 {
-    string SelectedLanguage { get; set; }
+    public ICardModel GetCard(string cardId);
 }

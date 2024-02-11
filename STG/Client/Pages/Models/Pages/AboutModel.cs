@@ -2,9 +2,9 @@
 using BlazorApp.Client.Abstractions.Services;
 using Websites.Razor.ClassLibrary.Components;
 
-namespace BlazorApp.Client.Pages.Models
+namespace BlazorApp.Client.Pages.Models.Pages
 {
-    public class AboutModel: IAboutModel
+    public class AboutModel : IAboutModel
     {
         /// <summary>
         /// the service that notifies this model about the selections of languages made by the user on the UI
@@ -25,7 +25,7 @@ namespace BlazorApp.Client.Pages.Models
         }
 
         private void OnSelectedLanguageChanged(
-            object? sender, 
+            object? sender,
             string e)
         {
             SelectedLanguage = e;

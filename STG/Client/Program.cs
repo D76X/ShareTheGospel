@@ -1,9 +1,8 @@
 using BlazorApp.Client;
 using BlazorApp.Client.Abstractions.Models;
 using BlazorApp.Client.Abstractions.Services;
-using BlazorApp.Client.Pages.Models;
-using BlazorApp.Client.Services.LanguageService;
-using BlazorApp.Client.Services.LocalStorage;
+using BlazorApp.Client.Pages.Models.Pages;
+using BlazorApp.Client.Services;
 using BlazorApp.Client.Services.UserSettingsService;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -17,6 +16,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddSingleton<ILanguageService, LanguageService>();
 builder.Services.AddSingleton<IUserSettingsService, UserSettingsService>();
 builder.Services.AddTransient<ILocalStorageService, LocalStorageService>();
+builder.Services.AddTransient<ICardService, CardService>();
+builder.Services.AddTransient<IIndexPage, IndexModel>();
 
 builder.Services.AddTransient<IAboutModel,AboutModel>();
 
