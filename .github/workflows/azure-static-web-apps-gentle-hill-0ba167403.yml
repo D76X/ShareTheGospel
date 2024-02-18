@@ -15,6 +15,7 @@ on:
     branches: [main]
     paths: 
       - 'STG/**' 
+      - '.github/workflows/azure-static-web-apps-gentle-hill-0ba167403.yml'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
