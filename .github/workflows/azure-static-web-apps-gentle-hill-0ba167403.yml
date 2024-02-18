@@ -12,8 +12,9 @@ on:
         required: false
         default: 'yes'
   push:
-    branches:
-      - main
+    branches: [main]
+    paths: 
+      - 'STG/**' 
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
