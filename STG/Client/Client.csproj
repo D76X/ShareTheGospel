@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\WebsitesSharedLibraries\Websites.Razor.ClassLibrary\Websites.Razor.ClassLibrary.csproj" />
-    <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Shared\Shared\Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
