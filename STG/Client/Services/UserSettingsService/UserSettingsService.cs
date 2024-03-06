@@ -1,4 +1,5 @@
-﻿using BlazorApp.Client.Abstractions.Services;
+﻿using System;
+using BlazorApp.Client.Abstractions.Services;
 using BlazorApp.Client.Shared;
 
 namespace BlazorApp.Client.Services.UserSettingsService;

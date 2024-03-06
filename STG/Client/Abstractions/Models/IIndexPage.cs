@@ -1,4 +1,6 @@
-﻿namespace BlazorApp.Client.Abstractions.Models;
+﻿using System;
+
+namespace BlazorApp.Client.Abstractions.Models;
 
 public interface IIndexPage: IDisposable
 {

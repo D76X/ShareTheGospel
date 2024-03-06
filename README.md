@@ -62,6 +62,71 @@ This application can be deployed to [Azure Static Web Apps](https://docs.microso
 
 ---
 
+## Azure Static Web Apps with Managed Azure Functions Feature
+
+[Deploy .NET 8 Blazor apps and serverless APIs with Azure Static Web Apps](https://www.youtube.com/watch?v=crycB22_58s)   
+[Build and deploy .NET 8 Blazor WASM apps with serverless APIs using Azure Static Web Apps](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/build-and-deploy-net-8-blazor-wasm-apps-with-serverless-apis/ba-p/3988412)  
+
+#### Steps
+
+    - Step 1: add the API Azure Functions project to the solution
+    
+    - Step 2: edit the file `local.settings.json` of the API project to enable CORS
+    
+    ```
+    ...
+    "Host": {
+        "CORS": "*",
+        "CORSCredentials": false
+    }
+    ...
+    ```
+        
+    - Step 3: Add the file `appsettings.Development.json` with the ref to the API Azure Functions AE
+    
+    ```
+    {
+    "API_Prefix": "http://localhost:<YOUR_PORT_HERE>"
+    }
+    ```
+
+    The <YOUR_PORT_HERE> is the port number of the EP that can be found in the file 
+    `launchSettings.json` under Api > Properties.
+
+    ```
+    ...
+    "Api": {
+      "commandName": "Project",
+      "commandLineArgs": "--port <YOUR_PORT>"
+    },
+    ...
+    ```
+---
+
+## Azure Functions Core Tools
+
+[Develop Azure Functions locally using Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#v2)  
+[Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools)  
+[Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools/v/2.7.1149)  
+[Node Version Manager](https://github.com/nvm-sh/nvm)  
+
+#### Uninstall Azure Functions Core Tools v1 from npm v12
+
+```
+node -v
+npm list -g --depth=0
+func --version
+cd 'C:\Users\pb00270\AppData\Roaming\nvm\v12.13.0'
+npm uninstall -g azure-functions-core-tools
+```
+
+#### Install Azure Functions Core Tools on npm v > 12
+
+```
+```
+
+---
+
 ## Use Multiple Accounts with VS Code
 
 [Git Config User Profiles](https://marketplace.visualstudio.com/items?itemName=onlyutkarsh.git-config-user-profiles)  
@@ -111,4 +176,6 @@ https://stackoverflow.com/questions/45592581/cannot-debug-in-vs-code-by-attachin
 https://stackoverflow.com/questions/56267303/blazor-client-side-debugging  
 https://stackoverflow.com/questions/64826309/blazor-two-way-binding-text-area-inside-component  
 
+
 ---
+

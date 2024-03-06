@@ -1,6 +1,7 @@
 ﻿using BlazorApp.Client.Abstractions.Services;
 using Microsoft.JSInterop;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace BlazorApp.Client.Services
 {

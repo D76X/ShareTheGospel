@@ -1,4 +1,5 @@
-﻿using BlazorApp.Client.Translations;
+﻿using System.Collections.Generic;
+using BlazorApp.Client.Translations;
 
 namespace BlazorApp.Client.Pages.Models;
 

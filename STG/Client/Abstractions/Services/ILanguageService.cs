@@ -1,4 +1,6 @@
-﻿namespace BlazorApp.Client.Abstractions.Services;
+﻿using System;
+
+namespace BlazorApp.Client.Abstractions.Services;
 
 public interface ILanguageService
 { 
