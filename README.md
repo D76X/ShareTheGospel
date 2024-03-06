@@ -176,6 +176,10 @@ https://stackoverflow.com/questions/45592581/cannot-debug-in-vs-code-by-attachin
 https://stackoverflow.com/questions/56267303/blazor-client-side-debugging  
 https://stackoverflow.com/questions/64826309/blazor-two-way-binding-text-area-inside-component  
 
+ 
+
+
+---
 
 ---
 
