@@ -1,4 +1,4 @@
-
+﻿
 https://gentle-hill-0ba167403.1.azurestaticapps.net/
 
 # Blazor Starter Application
@@ -27,30 +27,188 @@ Once you clone the project, open the solution in [Visual Studio 2022](https://vi
 
 1. Press **F5** to launch both the client application and the Functions API app.
 
-### Visual Studio Code with Azure Static Web Apps CLI
 
-1. Install the [Azure Static Web Apps CLI](https://www.npmjs.com/package/@azure/static-web-apps-cli) and [Azure Functions Core Tools CLI](https://www.npmjs.com/package/azure-functions-core-tools).
+---
 
-1. Open the folder in Visual Studio Code.
+## Azure Functions Core Tools and Static Web Apps CLI (SWA)
 
-1. In the VS Code terminal, run the following command to start the Static Web Apps CLI, along with the Blazor WebAssembly client application and the Functions API app:
+[Node Version Manager](https://github.com/nvm-sh/nvm)  
 
-    ```bash
-    swa start http://localhost:5000 --run "dotnet run --project Client/Client.csproj" --api-location Api
-    ```
+[Static Web Apps CLI](https://azure.github.io/static-web-apps-cli/)
+[Develop Azure Functions locally using Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#v2)  
 
-    The Static Web Apps CLI (`swa`) first starts the Blazor WebAssembly client application and connects to it at port 5000, and then starts the Functions API app.
+[Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools)  
+[Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools/v/2.7.1149)  
+
+
+---
+
+#### Uninstall Azure Functions Core Tools v1 from npm v12
+
+The following illustrates how to uninstall a package from a version of Node that has been
+registered with NVM.
+
+```
+node -v
+npm list -g --depth=0
+func --version
+cd 'C:\Users\pb00270\AppData\Roaming\nvm\v12.13.0'
+npm uninstall -g azure-functions-core-tools
+```
+
+---
+
+#### Install Azure Functions Core Tools on npm v > 12
+
+The following script illustrates the steps that can be used with **nvm** to setup the npm packages
+that are required to work with Azure Static Web Apps and Azure Functions on the developer machine.
+
+In order to execute some of the commands such as `nvm use` teh Terminal must be executed in Admin mode.
+
+The following links lists all the NodeJS LTS versions: 
+[NodeJS Previous Releases](https://nodejs.org/en/about/previous-releases)  
+
+---
+
+```
+nvm ls
+nvm install 16.20.2
+nvm use 16.20.2
+
+18.12.0
+* 16.20.2 (Currently using 64-bit executable)
+16.16.0
+12.13.0
+
+npm list -g --depth=0
++-- corepack@0.17.0
+`-- npm@8.19.4
+
+npm install -g @azure/static-web-apps-cli
+npm install -g azure-functions-core-tools
+
+npm list -g --depth=0
+C:\Program Files\nodejs -> .\
++-- @azure/static-web-apps-cli@1.1.7
++-- azure-functions-core-tools@4.0.5571
++-- corepack@0.17.0
+`-- npm@8.19.4
+
+```
+
+---
+
+### Visual Studio Code with Azure Static Web Apps CLI local development
+
+The following has been tested on the following versions of Node:
+
+```
+18.12.0
+16.20.2 
+```
+
+After **SWA** and **azure-functions-core-tools@4xx** have been installed on your 
+local machine it is possible to start the client app and the related Azure Functions Api
+through **SWA** either from a Terminal or from the integrated VSCode Terminal.
+
+Details about this command can be found at the following link:
+[swa start](https://azure.github.io/static-web-apps-cli/docs/cli/swa-start/)  
+
+The following is an example of the command that is used to start the PWS app and its AFApi.
+ 
+```
+cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
+bash
+swa start http://localhost:5015 --run "dotnet run --project Client/Client.csproj" --api-location Api --api-port 7174
+```
+
+There are some important details related to this command to notice in order to understand 
+how it works and be able to modify it should the need be.
+
+1. ```cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'```
+
+The command must be executed from the parent folder that contains the subfolders `Client`, `Api`, `Shared`, etc.
+
+2. http://localhost:5015
+
+Is the address on which the Client app is published locally by **SWA**, the port `5015` **must** agree 
+with what is specified in the configuration file `Client\Properties\launchSettings.json`. 
+The following is an excerpt from this file that shows that relevant part of the configuration, in which 
+the  ```"applicationUrl": "https://localhost:7249;http://localhost:5015",``` is where the the port `5015`
+is specified.
+
+```
+"https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+      "applicationUrl": "https://localhost:7249;http://localhost:5015",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+```
+
+3. `--api-location Api --api-port 7174`
+
+The final part of the **SWA** command causes the Azure Function Api consumed by the client app
+to be launched locally from the subfolder `Api` and specifies the publishing port `7174`.
+This port **must** agree with the port on which the Client App expects to find its AFApi.
+**Important:** if the `--api-port` is not specified then `7071` is used by **SWA** by default.
+
+This is specified in the client app by means of the following files:\
+
+`Program.cs`
+
+```
+builder.Services
+	.AddScoped(sp => new HttpClient
+	{
+		BaseAddress = new Uri(builder.Configuration[Constants.ApiPrefix] ??
+		                      builder.HostEnvironment.BaseAddress)
+	});
+```
+
+the configuration file `Client\Properties\launchSettings.json`
+
+```
+{
+  ...
+  "AllowedHosts": "*",
+  "API_Prefix": "http://localhost:7174",
+  ...
+}
+```
+
+4. It may happen that when the **SWA** command above is run the Azure Function Api fails to build.
+`SWA emulator stopped because SWA emulator exited with code 1.`
+
+[Can't determine Project to build. Expected 1 .csproj or .fsproj but found 3 when running "func start" #3594](https://github.com/Azure/azure-functions-core-tools/issues/3594)  
+
+The following comment is the fix and consists of deleting the bin & obj folder in the Api subfolder.  
+
+```
+ryanzwe commented on Feb 16
+Delete the /bin & obj folder
+```
+
+---
+?
+The Static Web Apps CLI (`swa`) first starts the Blazor WebAssembly client application
+and connects to it at port 5000, and then starts the Functions API app.
 
 1. Open a browser and navigate to the Static Web Apps CLI's address at `http://localhost:4280`. You'll be able to access both the client application and the Functions API app in this single address. When you navigate to the "Fetch Data" page, you'll see the data returned by the Functions API app.
 
 1. Enter Ctrl-C to stop the Static Web Apps CLI.
+
+---
 
 ## Template Structure
 
 - **Client**: The Blazor WebAssembly sample application
 - **Api**: A C# Azure Functions API, which the Blazor application will call
 - **Shared**: A C# class library with a shared data model between the Blazor and Functions application
-- **ApiIsolated**: A C# Azure Functions API using the .NET isolated execution model, which the Blazor application will call. This version can be used instead of the in-process function app in `Api`.
+
 
 ---
 
@@ -103,27 +261,16 @@ This application can be deployed to [Azure Static Web Apps](https://docs.microso
     ```
 ---
 
-## Azure Functions Core Tools
 
-[Develop Azure Functions locally using Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#v2)  
-[Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools)  
-[Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools/v/2.7.1149)  
-[Node Version Manager](https://github.com/nvm-sh/nvm)  
 
-#### Uninstall Azure Functions Core Tools v1 from npm v12
+## Authentication in Azure Static Web Apps & Blazor
 
-```
-node -v
-npm list -g --depth=0
-func --version
-cd 'C:\Users\pb00270\AppData\Roaming\nvm\v12.13.0'
-npm uninstall -g azure-functions-core-tools
-```
+[How to setup Built-in Authentication for Azure Static Web Apps with Azure Active Directory](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/how-to-setup-built-in-authentication-for-azure-static-web-apps/ba-p/3734709)  
+[Authenticating in Azure Static Web Apps](https://www.youtube.com/watch?v=KjSY9vmGz24&t=928s)  
+[Build a website using Azure Static Web Apps and Authenticate with AAD](https://www.youtube.com/watch?v=jnwRpEM6GR8)  
+[.NET 8 Blazor Authentication & Authorization with Identity](https://www.youtube.com/watch?v=tNzSuwV62Lw)  
 
-#### Install Azure Functions Core Tools on npm v > 12
 
-```
-```
 
 ---
 
@@ -176,10 +323,7 @@ https://stackoverflow.com/questions/45592581/cannot-debug-in-vs-code-by-attachin
 https://stackoverflow.com/questions/56267303/blazor-client-side-debugging  
 https://stackoverflow.com/questions/64826309/blazor-two-way-binding-text-area-inside-component  
 
- 
-
-
 ---
 
----
+
 
