@@ -114,27 +114,27 @@ through **SWA** either from a Terminal or from the integrated VSCode Terminal.
 Details about this command can be found at the following link:
 [swa start](https://azure.github.io/static-web-apps-cli/docs/cli/swa-start/)  
 
-The following is an example of the command that is used to start the PWS app and its AFApi.
+The following is an example of the command that is used to start the PWS app and its AF Api.
  
 ```
 cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
 bash
-swa start http://localhost:5015 --run "dotnet run --project Client/Client.csproj" --api-location Api --api-port 7174
+swa start http://localhost:5000 --run "dotnet run --project Client/Client.csproj" --api-location Api --api-port 7174
 ```
 
 There are some important details related to this command to notice in order to understand 
 how it works and be able to modify it should the need be.
 
-1. ```cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'```
+1. cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
 
 The command must be executed from the parent folder that contains the subfolders `Client`, `Api`, `Shared`, etc.
 
-2. http://localhost:5015
+2. http://localhost:5000
 
-Is the address on which the Client app is published locally by **SWA**, the port `5015` **must** agree 
+Is the address on which the Client app is published locally by **SWA**, the port `5000` **must** agree 
 with what is specified in the configuration file `Client\Properties\launchSettings.json`. 
 The following is an excerpt from this file that shows that relevant part of the configuration, in which 
-the  ```"applicationUrl": "https://localhost:7249;http://localhost:5015",``` is where the the port `5015`
+the  ```"applicationUrl": "https://localhost:7249;http://localhost:5000",``` is where the the port `5000`
 is specified.
 
 ```
@@ -143,33 +143,46 @@ is specified.
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "applicationUrl": "https://localhost:7249;http://localhost:5015",
+      "applicationUrl": "https://localhost:7249;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+     }
 ```
 
 3. `--api-location Api --api-port 7174`
 
 The final part of the **SWA** command causes the Azure Function Api consumed by the client app
 to be launched locally from the subfolder `Api` and specifies the publishing port `7174`.
-This port **must** agree with the port on which the Client App expects to find its AFApi.
+This port **must** agree with the port on which the Client App expects to find its AF Api.
+
 **Important:** if the `--api-port` is not specified then `7071` is used by **SWA** by default.
 
-This is specified in the client app by means of the following files:\
+This is specified in the client app by means of the following files:
 
-`Program.cs`
+> Program.cs
 
 ```
 builder.Services
 	.AddScoped(sp => new HttpClient
 	{
-		BaseAddress = new Uri(builder.Configuration[Constants.ApiPrefix] ??
-		                      builder.HostEnvironment.BaseAddress)
-	});
+		BaseAddress = new Uri(
+      builder.Configuration[Constants.ApiPrefix] ??
+		  builder.HostEnvironment.BaseAddress)
+	});  
 ```
 
-the configuration file `Client\Properties\launchSettings.json`
+> Costants.cs
+
+```
+namespace Client.Abstractions;
+
+public static class Constants
+{
+	public const string ApiPrefix = "API_Prefix";
+}
+```
+
+> the configuration file `Client\Properties\launchSettings.json`
 
 ```
 {
@@ -185,13 +198,100 @@ the configuration file `Client\Properties\launchSettings.json`
 
 [Can't determine Project to build. Expected 1 .csproj or .fsproj but found 3 when running "func start" #3594](https://github.com/Azure/azure-functions-core-tools/issues/3594)  
 
-The following comment is the fix and consists of deleting the bin & obj folder in the Api subfolder.  
+The following comment is the fix and consists of deleting the **bin & obj** folder in the Api subfolder.  
 
 ```
 ryanzwe commented on Feb 16
 Delete the /bin & obj folder
 ```
 
+This means for example that you do the following:
+
+```
+cd C:\VSProjects\MyProjetcs\Websites\Sites\PWS\Api
+Remove-Item obj -Recurse
+Remove-Item bin -Recurse
+```
+
+---
+
+> Let's now put everythig together:
+
+The following shows how to:
+
+1. the **bin & obj** folder in the Api subfolder
+2. use `swa start` to start the client application on the localhost on port 5000 over http
+3. use `swa start` to start the supporting Azure Function API on port 7174
+
+```
+cd C:\VSProjects\MyProjetcs\Websites\Sites\PWS\Api
+Remove-Item obj -Recurse
+Remove-Item bin -Recurse
+cd ..
+swa start http://localhost:5000 --run "dotnet run --project Client/Client.csproj" --api-location Api --api-port 7174
+```
+
+> Important:
+
+It is crucial to to understand that the port numbers 5000 & 7174 that are used in this example
+can be any available port numbers on the system. However the port numbers used in the `swa start`
+command must agree with the port numbers in:
+
+> the configuration file `Client\Properties\launchSettings.json`
+"applicationUrl": "https://localhost:7249;http://localhost:5000",
+
+
+---
+
+## HTTPS: 
+
+```
+"https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,      
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+      "applicationUrl": "https://localhost:7249;https://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+
+"http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,      
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",      
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+```
+
+---
+
+[SWA start: Server from dev server - Hot Reload](https://azure.github.io/static-web-apps-cli/docs/use/emulator/#23-serve-from-dev-server)
+
+```
+swa start http://localhost:5000 --run "dotnet watch run --project Client/Client.csproj" --api-location Api --api-port 7174
+```
+
+[Unable to Hot Reload on Visual Studio 2022](https://stackoverflow.com/questions/69778272/unable-to-hot-reload-on-visual-studio-2022)  
+
+
+
+[.NET 6 Blazor Hot Reload fails depending on the port specified for the application Url #38029](https://github.com/dotnet/aspnetcore/issues/38029)  
+
+
+[Dotnet watch hangs on blazor web assembly project](https://stackoverflow.com/questions/70549245/dotnet-watch-hangs-on-blazor-web-assembly-project)
+[Net7 Blazor + WebAssembly (Client + Server) + SignalR | Hot reload fail #52605](https://github.com/dotnet/aspnetcore/issues/52605  
+
+[dotnet watch](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-watch)  
+
+
+[dotnet watch WebSockets port configuration for HotReload #39608](https://github.com/dotnet/aspnetcore/issues/39608)  
+
+[.NET Hot Reload support for ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/test/hot-reload?view=aspnetcore-8.0)  
 ---
 ?
 The Static Web Apps CLI (`swa`) first starts the Blazor WebAssembly client application
