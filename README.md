@@ -118,8 +118,7 @@ The following is an example of the command that is used to start the PWS app and
  
 ```
 cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
-bash
-swa start http://localhost:5000 --run "dotnet run --project Client/Client.csproj" --api-location Api --api-port 7174
+swa start http://localhost:5000 --run "dotnet watch run --launch-profile http --project Client/Client.csproj" --api-location Api --api-port 7174
 ```
 
 There are some important details related to this command to notice in order to understand 
@@ -131,22 +130,27 @@ The command must be executed from the parent folder that contains the subfolders
 
 2. http://localhost:5000
 
-Is the address on which the Client app is published locally by **SWA**, the port `5000` **must** agree 
+This is the address on which the Client app is published locally by **SWA**, the port `5000` **must** agree 
 with what is specified in the configuration file `Client\Properties\launchSettings.json`. 
-The following is an excerpt from this file that shows that relevant part of the configuration, in which 
-the  ```"applicationUrl": "https://localhost:7249;http://localhost:5000",``` is where the the port `5000`
-is specified.
+The port number `5000` is a special number as this is the default port of the **Blazor Web Dev Server** on
+the localhost. Any other port nymber can be chosen, for example `5015`, but in order to be able to use the
+Hot Reload only the EP `http://localhost:5000` of the **Blazor Web Dev Server** on the localhost can be used.
+Any other port number such as for example `http://localhost:5015` will not provide the Hot Reload whether or not
+the watch switch is used in: [dotnet watch run].
+Furthemore if the [dotnet run] is used instead of [dotnet watch run] then also the the EP `http://localhost:5000` 
+of the **Blazor Web Dev Server** will not proviode Hot Reload.
+ 
 
 ```
-"https": {
+"http": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "applicationUrl": "https://localhost:7249;http://localhost:5000",
+      "dotnetRunMessages": true,  
+      "launchBrowser": true,          
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",      
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-     }
+      }
+    },
 ```
 
 3. `--api-location Api --api-port 7174`
@@ -227,23 +231,46 @@ The following shows how to:
 cd C:\VSProjects\MyProjetcs\Websites\Sites\PWS\Api
 Remove-Item obj -Recurse
 Remove-Item bin -Recurse
-cd ..
-swa start http://localhost:5000 --run "dotnet run --project Client/Client.csproj" --api-location Api --api-port 7174
+cd C:\VSProjects\MyProjetcs\Websites\Sites\PWS
+swa start http://localhost:5000 --run "dotnet watch run --launch-profile http --project Client/Client.csproj" --api-location Api --api-port 7174
 ```
 
-> Important:
+---
 
-It is crucial to to understand that the port numbers 5000 & 7174 that are used in this example
-can be any available port numbers on the system. However the port numbers used in the `swa start`
-command must agree with the port numbers in:
+## [SWA Endpoint for Hot Reload Emulated Services](https://azure.github.io/static-web-apps-cli/docs/cli/swa-start/) 
 
-> the configuration file `Client\Properties\launchSettings.json`
-"applicationUrl": "https://localhost:7249;http://localhost:5000",
+`swa start http://localhost:5000`
 
+and any of its variants starts the **Blazor WebAssembly Dev Server** as this is by default at the EP `http://localhost:5000`.
+However, SWA provides a **Emulated Service** at the EP: `http://localhost:4280`.
+This behaves as the the **Blazor WebAssembly Dev Server** and therefore provides Hot Reload when the [dotnet watch run] is used
+as in the following example: 
+
+```
+swa start http://localhost:5000 --run "dotnet watch run --launch-profile http --project Client/Client.csproj" --api-location Api --api-port 7174
+```
 
 ---
 
 ## HTTPS: 
+
+
+The following is an excerpt from this file that shows that relevant part of the configuration, in which 
+the  ```"applicationUrl": "https://localhost:7249;http://localhost:5000",``` is where the the port `5000`
+is specified.
+
+
+```
+"https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+      "applicationUrl": "https://localhost:7249;http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+     }
+```
 
 ```
 "https": {
@@ -270,36 +297,6 @@ command must agree with the port numbers in:
 
 ---
 
-[SWA start: Server from dev server - Hot Reload](https://azure.github.io/static-web-apps-cli/docs/use/emulator/#23-serve-from-dev-server)
-
-```
-swa start http://localhost:5000 --run "dotnet watch run --project Client/Client.csproj" --api-location Api --api-port 7174
-```
-
-[Unable to Hot Reload on Visual Studio 2022](https://stackoverflow.com/questions/69778272/unable-to-hot-reload-on-visual-studio-2022)  
-
-
-
-[.NET 6 Blazor Hot Reload fails depending on the port specified for the application Url #38029](https://github.com/dotnet/aspnetcore/issues/38029)  
-
-
-[Dotnet watch hangs on blazor web assembly project](https://stackoverflow.com/questions/70549245/dotnet-watch-hangs-on-blazor-web-assembly-project)
-[Net7 Blazor + WebAssembly (Client + Server) + SignalR | Hot reload fail #52605](https://github.com/dotnet/aspnetcore/issues/52605  
-
-[dotnet watch](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-watch)  
-
-
-[dotnet watch WebSockets port configuration for HotReload #39608](https://github.com/dotnet/aspnetcore/issues/39608)  
-
-[.NET Hot Reload support for ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/test/hot-reload?view=aspnetcore-8.0)  
----
-?
-The Static Web Apps CLI (`swa`) first starts the Blazor WebAssembly client application
-and connects to it at port 5000, and then starts the Functions API app.
-
-1. Open a browser and navigate to the Static Web Apps CLI's address at `http://localhost:4280`. You'll be able to access both the client application and the Functions API app in this single address. When you navigate to the "Fetch Data" page, you'll see the data returned by the Functions API app.
-
-1. Enter Ctrl-C to stop the Static Web Apps CLI.
 
 ---
 
