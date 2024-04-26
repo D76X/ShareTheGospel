@@ -15,11 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebsitesSharedLibraries", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Razor.ClassLibrary", "WebsitesSharedLibraries\Websites.Razor.ClassLibrary\Websites.Razor.ClassLibrary.csproj", "{189EB274-554F-44CB-9BA1-6C215DCD003E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GEOTRAIL", "GEOTRAIL", "{D8EB83EC-928C-4F6D-A905-C709E481BBC9}"
-	ProjectSection(SolutionItems) = preProject
-		GEOTRAIL\README.md = GEOTRAIL\README.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PWS", "PWS", "{42F163A6-1100-4397-A3B5-E9189E616908}"
 	ProjectSection(SolutionItems) = preProject
 		PWS\swa.ps1 = PWS\swa.ps1
