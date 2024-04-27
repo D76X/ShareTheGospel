@@ -276,6 +276,19 @@ is specified.
 "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:7249",
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+      "environmentVariables": {
+      "ASPNETCORE_ENVIRONMENT": "Development",
+      
+     }, 
+```
+
+```
+"https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
       "launchBrowser": true,      
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "applicationUrl": "https://localhost:7249;https://localhost:5000",
