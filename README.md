@@ -252,64 +252,44 @@ swa start http://localhost:5000 --run "dotnet watch run --launch-profile http --
 
 ---
 
-## HTTPS: 
+## HTTPS with the SWA Emulator: 
 
 
-The following is an excerpt from this file that shows that relevant part of the configuration, in which 
-the  ```"applicationUrl": "https://localhost:7249;http://localhost:5000",``` is where the the port `5000`
-is specified.
+The **SWA Emulator** provides an endpoint to test out HTTPS locally.
+This endpoint is fixed at `https://localhost:7249`.
+In order to run the WASM client application on HTTPS at this point the SWA command `swa start`
+must be provided with the correct configuration and options as illustrated below.
+This is separate from the `swa start` to run the site locally over HTTP that was discussed
+earlier, that is it is only possible to run the client app in HTTP or HTTPS at one time.
 
+When local testing over HTTPS is required then this `swa start` must be used.
+
+> the file `swa.ps1` with teh command to start the SWA emulator with HTTPS
+
+```
+# the port to serve HTTPS traffic: 7249 seems to work with SWA 
+# this value must agree with the applicationUrl of the https profile in launchSettings.json 
+[Parameter(Mandatory=$false)]
+[int]$sslport=7249,
+
+
+swa start --ssl https://localhost:$sslport --run "dotnet watch run --launch-profile https --project Client/Client.csproj" --api-location Api --api-port $apiport
+```
+
+> the configuration file `Client\Properties\launchSettings.json`
 
 ```
 "https": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "applicationUrl": "https://localhost:7249;http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-     }
-```
-
-```
-"https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7249",
-      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "environmentVariables": {
-      "ASPNETCORE_ENVIRONMENT": "Development",
-      
-     }, 
-```
-
-```
-"https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,      
-      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "applicationUrl": "https://localhost:7249;https://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-
-"http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,      
+      "dotnetRunMessages": true,  
+      "launchBrowser": true,   
+      "applicationUrl": "https://localhost:7249",       
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",      
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
 ```
-
----
-
 
 ---
 
