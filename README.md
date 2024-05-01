@@ -63,7 +63,7 @@ npm uninstall -g azure-functions-core-tools
 The following script illustrates the steps that can be used with **nvm** to setup the npm packages
 that are required to work with Azure Static Web Apps and Azure Functions on the developer machine.
 
-In order to execute some of the commands such as `nvm use` teh Terminal must be executed in Admin mode.
+In order to execute some of the commands such as `nvm use` the Terminal must be executed in Admin mode.
 
 The following links lists all the NodeJS LTS versions: 
 [NodeJS Previous Releases](https://nodejs.org/en/about/previous-releases)  
@@ -264,7 +264,7 @@ earlier, that is it is only possible to run the client app in HTTP or HTTPS at o
 
 When local testing over HTTPS is required then this `swa start` must be used.
 
-> the file `swa.ps1` with teh command to start the SWA emulator with HTTPS
+> the file `swa.ps1` with the command to start the SWA emulator with HTTPS
 
 ```
 # the port to serve HTTPS traffic: 7249 seems to work with SWA 
