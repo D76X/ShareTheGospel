@@ -371,17 +371,57 @@ This application can be deployed to [Azure Static Web Apps](https://docs.microso
     ```
 ---
 
-
-
 ## Authentication in Azure Static Web Apps & Blazor
 
+[SWA CLI Local Authentication](https://azure.github.io/static-web-apps-cli/docs/cli/local-auth/)
+
+Local Authentication is available locally through the SWA emulator exclusively on the endpoints below:
+
+http://localhost:4280/.auth/login/<PROVIDER_NAME>
+http://localhost:4280/.auth/login/aad
+http://localhost:4280/.auth/login/github
+
+Once you authenticate at one of these endpoints its is possible to retrive the details for the
+locally authenticated users at the endpoint below:
+
+http://localhost:4280/.auth/me
+
+```
+{
+"clientPrincipal": {
+"userId": "097872e1923dc16289bd93c6728576ad",
+"userRoles": [
+"anonymous",
+"authenticated"
+],
+"claims": [],
+"identityProvider": "aad",
+"userDetails": "user1"
+}
+}
+```
+
+> Important: 
+
+It **must** be on the port **4280** which is where the **SWA emulator** runs as a default.
+It **will not work**, for example on portt **5000** which is the default port for the 
+**Blazore Dev Server** - here you get the message: 
+
+`Sorry, there's nothing at this address.`
+
+http://localhost:5000/.auth/login/<PROVIDER_NAME>
+http://localhost:5000/.auth/login/aad
+http://localhost:5000/.auth/login/github
+
+> Other References:
+
 [How to setup Built-in Authentication for Azure Static Web Apps with Azure Active Directory](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/how-to-setup-built-in-authentication-for-azure-static-web-apps/ba-p/3734709)  
+
 [Authenticating in Azure Static Web Apps](https://www.youtube.com/watch?v=KjSY9vmGz24&t=928s)  
+
 [Build a website using Azure Static Web Apps and Authenticate with AAD](https://www.youtube.com/watch?v=jnwRpEM6GR8)  
+
 [.NET 8 Blazor Authentication & Authorization with Identity](https://www.youtube.com/watch?v=tNzSuwV62Lw)  
-
-
-
 ---
 
 ## Use Multiple Accounts with VS Code
