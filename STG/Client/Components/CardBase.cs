@@ -1,7 +1,7 @@
-﻿using BlazorApp.Client.Abstractions.Models;
+﻿using Client.Abstractions.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace BlazorApp.Client.Components
+namespace Client.Components
 {
     public class CardBase : ComponentBase
     {

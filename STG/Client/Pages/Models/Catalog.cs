@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using BlazorApp.Client.Translations;
+using Client.Translations;
 
-namespace BlazorApp.Client.Pages.Models;
+namespace Client.Pages.Models;
 
 public static class Catalog
 {

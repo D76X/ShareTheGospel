@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlazorApp.Client.Abstractions.Services;
+namespace Client.Abstractions.Services;
 
 public interface ILanguageService
 { 

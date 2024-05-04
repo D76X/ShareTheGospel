@@ -1,6 +1,6 @@
-﻿using BlazorApp.Client.Abstractions.Models;
+﻿using Client.Abstractions.Models;
 
-namespace BlazorApp.Client.Pages.Models.Cards;
+namespace Client.Pages.Models.Cards;
 
 public class CardModel : ICardModel
 {

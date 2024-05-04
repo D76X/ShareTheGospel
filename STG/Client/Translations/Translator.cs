@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using Websites.Razor.ClassLibrary.Components;
+
 // ReSharper disable InconsistentNaming
 
-namespace BlazorApp.Client.Translations
+namespace Client.Translations
 {
     static class Translator
     {

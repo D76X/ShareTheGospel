@@ -1,9 +1,9 @@
-﻿using BlazorApp.Client.Abstractions.Services;
-using Microsoft.JSInterop;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Threading.Tasks;
+using Client.Abstractions.Services;
+using Microsoft.JSInterop;
 
-namespace BlazorApp.Client.Services
+namespace Client.Services
 {
     public class LocalStorageService : ILocalStorageService
     {

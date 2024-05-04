@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using BlazorApp.Client.Translations;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Components;
 
-namespace BlazorApp.Client.Models
+namespace Client.Models
 {
     public class MainNavBar
     {

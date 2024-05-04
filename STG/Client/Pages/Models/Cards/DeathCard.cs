@@ -1,8 +1,8 @@
-﻿using BlazorApp.Client.Abstractions.Models;
-using BlazorApp.Client.Translations;
+﻿using Client.Abstractions.Models;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Components;
 
-namespace BlazorApp.Client.Pages.Models.Cards;
+namespace Client.Pages.Models.Cards;
 
 public class DeathCard
 {

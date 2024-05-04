@@ -1,9 +1,9 @@
-﻿using BlazorApp.Client.Abstractions.Models;
+﻿using Client.Abstractions.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Routing;
 
-namespace BlazorApp.Client.Components
+namespace Client.Components
 {
     public class MenuItemBase : NavLink
     {

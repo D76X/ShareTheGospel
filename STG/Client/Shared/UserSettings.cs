@@ -1,5 +1,5 @@
 ﻿
-namespace BlazorApp.Client.Shared
+namespace Client.Shared
 {
 	public class UserSettings
 	{

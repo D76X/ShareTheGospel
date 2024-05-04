@@ -1,6 +1,6 @@
-﻿using BlazorApp.Client.Abstractions.Models;
+﻿using Client.Abstractions.Models;
 
-namespace BlazorApp.Client.Models
+namespace Client.Models
 {
     public class MenuItem : IMenuItem
     {

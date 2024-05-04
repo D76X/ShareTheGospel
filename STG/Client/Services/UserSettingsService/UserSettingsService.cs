@@ -1,8 +1,8 @@
 ﻿using System;
-using BlazorApp.Client.Abstractions.Services;
-using BlazorApp.Client.Shared;
+using Client.Abstractions.Services;
+using Client.Shared;
 
-namespace BlazorApp.Client.Services.UserSettingsService;
+namespace Client.Services.UserSettingsService;
 
 class UserSettingsService : IUserSettingsService
 {

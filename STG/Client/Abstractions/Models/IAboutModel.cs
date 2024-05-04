@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlazorApp.Client.Abstractions.Models;
+namespace Client.Abstractions.Models;
 
 public interface IAboutModel: IDisposable
 {

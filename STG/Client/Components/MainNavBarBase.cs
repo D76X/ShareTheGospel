@@ -1,10 +1,10 @@
-﻿using BlazorApp.Client.Abstractions.Services;
-using BlazorApp.Client.Pages.Models;
-using BlazorApp.Client.Translations;
+﻿using Client.Abstractions.Services;
+using Client.Pages.Models;
+using Client.Translations;
 using Microsoft.AspNetCore.Components;
 using Websites.Razor.ClassLibrary.Components;
 
-namespace BlazorApp.Client.Components;
+namespace Client.Components;
 
 public class MainNavBarBase : ComponentBase
 {

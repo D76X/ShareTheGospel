@@ -1,10 +1,9 @@
-﻿@using BlazorApp.Client.Translations
-@using BlazorApp.Client.Models
+﻿@using Client.Translations
 @inherits MainNavBarBase
 
 @code
 {
-    public BlazorApp.Client.Models.MainNavBar Model { get; } = new() { SelectedLanguage = LanguageSelectorBase.SelectedLanguage };
+    public Models.MainNavBar Model { get; } = new() { SelectedLanguage = LanguageSelectorBase.SelectedLanguage };
 }
 
 <nav class="navbar navbar-expand-md fixed-top bg-yellow">

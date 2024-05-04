@@ -1,6 +1,6 @@
-﻿using BlazorApp.Client.Abstractions.Models;
+﻿using Client.Abstractions.Models;
 
-namespace BlazorApp.Client.Abstractions.Services
+namespace Client.Abstractions.Services
 {
     public interface ICardService
     {

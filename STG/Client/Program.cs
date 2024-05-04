@@ -1,12 +1,11 @@
 using System;
 using System.Net.Http;
-using BlazorApp.Client;
-using BlazorApp.Client.Abstractions.Models;
-using BlazorApp.Client.Abstractions.Services;
-using BlazorApp.Client.Pages.Models.Pages;
-using BlazorApp.Client.Services;
-using BlazorApp.Client.Services.UserSettingsService;
 using Client;
+using Client.Abstractions.Models;
+using Client.Abstractions.Services;
+using Client.Pages.Models.Pages;
+using Client.Services;
+using Client.Services.UserSettingsService;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;

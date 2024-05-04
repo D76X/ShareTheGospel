@@ -1,7 +1,7 @@
 ﻿using System;
-using BlazorApp.Client.Abstractions.Services;
+using Client.Abstractions.Services;
 
-namespace BlazorApp.Client.Services
+namespace Client.Services
 {
     public class LanguageService : ILanguageService
     {

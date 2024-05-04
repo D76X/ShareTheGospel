@@ -1,7 +1,7 @@
-﻿using BlazorApp.Client.Abstractions.Models;
-using BlazorApp.Client.Pages.Models.Cards;
+﻿using Client.Abstractions.Models;
+using Client.Pages.Models.Cards;
 
-namespace BlazorApp.Client.Common
+namespace Client.Common
 {
     public static class CardCatalog 
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BlazorApp.Client.Abstractions.Services
+namespace Client.Abstractions.Services
 {
     public interface ILocalStorageService
     {

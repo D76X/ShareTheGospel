@@ -1,6 +1,6 @@
-﻿using BlazorApp.Client.Shared;
+﻿using Client.Shared;
 
-namespace BlazorApp.Client.Services.UserSettingsService
+namespace Client.Services.UserSettingsService
 {
 	public class UserSettingsServicesChangedEventHandlerArgs
     {

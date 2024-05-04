@@ -1,8 +1,9 @@
 ﻿@page "/localstorage"
-@using BlazorApp.Client.Services.UserSettingsService
-@using BlazorApp.Client.Abstractions.Services
 @inject ILocalStorageService LocalStorageService
 @inject IUserSettingsService UserSettingsService
+@using Client.Abstractions.Services
+@using Client.Services.UserSettingsService
+@using Client.Shared
 @implements IDisposable
 
 <h2>Local Storage Demo</h2>

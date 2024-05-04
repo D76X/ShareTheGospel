@@ -1,8 +1,8 @@
-﻿using BlazorApp.Client.Abstractions.Models;
-using BlazorApp.Client.Abstractions.Services;
-using BlazorApp.Client.Common;
+﻿using Client.Abstractions.Models;
+using Client.Abstractions.Services;
+using Client.Common;
 
-namespace BlazorApp.Client.Services;
+namespace Client.Services;
 
 class CardService : ICardService
 {

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using BlazorApp.Client.Pages;
 
-namespace BlazorApp.Client.Translations;
+namespace Client.Translations;
 
 static class PageTranslations
 {

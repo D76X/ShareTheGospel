@@ -1,7 +1,7 @@
-﻿using BlazorApp.Client.Abstractions.Models;
-using BlazorApp.Client.Abstractions.Services;
+﻿using Client.Abstractions.Models;
+using Client.Abstractions.Services;
 
-namespace BlazorApp.Client.Pages.Models.Pages
+namespace Client.Pages.Models.Pages
 {
     public class IndexModel : IIndexPage
     {
