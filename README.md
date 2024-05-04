@@ -366,18 +366,20 @@ locally authenticated users at the endpoint below:
 
 http://localhost:4280/.auth/me
 
+> from http://localhost:4280/.auth/login/aad
+
 ```
 {
-"clientPrincipal": {
-"userId": "097872e1923dc16289bd93c6728576ad",
-"userRoles": [
-"anonymous",
-"authenticated"
-],
-"claims": [],
-"identityProvider": "aad",
-"userDetails": "user1"
-}
+  "clientPrincipal": {
+    "userId": "097872e1923dc16289bd93c6728576ad",
+    "userRoles": [
+          "anonymous",
+          "authenticated"
+      ],
+      "claims": [],
+      "identityProvider": "aad",
+      "userDetails": "user1"
+  }
 }
 ```
 

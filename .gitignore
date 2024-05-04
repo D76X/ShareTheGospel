@@ -347,3 +347,5 @@ ASALocalRun/
 healthchecksdb
 /.vscode/extensions.json
 /.vscode/settings.json
+localhost-key.pem
+localhost.pem

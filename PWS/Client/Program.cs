@@ -3,6 +3,7 @@ using Client.Abstractions;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 //using AzureStaticWebApps.Blazor.Authentication;
+using Client.StaticWebAppsAuthenticationExtensions;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -13,7 +14,7 @@ builder.Services
 	{
 		BaseAddress = new Uri(builder.Configuration[Constants.ApiPrefix] ??
 		                      builder.HostEnvironment.BaseAddress)
-	});
-	//.AddStaticWebAppsAuthentication();
+	})
+	.AddStaticWebAppsAuthentication();
 
 await builder.Build().RunAsync();
