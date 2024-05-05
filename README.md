@@ -442,8 +442,87 @@ So you need to do it manually like so:
 
 ```
 
+---
+
+[How to prevent default navigation for Blazor NavLink component](https://stackoverflow.com/questions/60653318/how-to-prevent-default-navigation-for-blazor-navlink-component)  
+
+[ASP.NET Core updates in .NET Core 3.1 Preview 2](https://devblogs.microsoft.com/dotnet/asp-net-core-updates-in-net-core-3-1-preview-2/)  
+
+- New component tag helper
+- Prevent default actions for events in Blazor apps
+- Stop event propagation in Blazor apps
+- Validation of nested models in Blazor forms
+- Detailed errors during Blazor app development
+
+[How to cancel navigation when user clicks a link (<a> element)?](https://stackoverflow.com/questions/866583/how-to-cancel-navigation-when-user-clicks-a-link-a-element)  
+
+> 
+
+```
+
+This uses the NavLink directly and works also without 
+providing the href to it. However, because href is missing
+the drowser does not see it as a <a> element and does not 
+shoe the cursor when you hover over the link.
+  
+@* 
+<NavLink class="nav-link"
+aria-current="page"
+@onclick='() => LinkSelected(PageTranslations.Index)'>
+@miIndex
+</NavLink> 
+*@
+
+This restores the <a> pointer in the browser but the 
+href value always wins over the vavigation set by the 
+@onclick lambda.
+
+@* 
+<MenuItem class="nav-link"
+Match="NavLinkMatch.All"
+aria-current="page"
+href=@Model.Index.Href
+@onclick='() => LinkSelected(PageTranslations.Index)'>
+@miIndex
+</MenuItem> 
+*@
+
+This according to: https://stackoverflow.com/questions/60653318/how-to-prevent-default-navigation-for-blazor-navlink-component
+should Stop event propagation in Blazor apps.
+However, it causes the build error: 
+
+The component parameter 'onclick' is used two or more times for this component. 
+Parameters must be unique (case-insensitive)
+
+as noted here: https://stackoverflow.com/questions/60653318/how-to-prevent-default-navigation-for-blazor-navlink-component
+
+@* 
+<MenuItem class="nav-link"
+Match="NavLinkMatch.All"
+aria-current="page"
+@onclick:preventDefault
+@onclick='() => LinkSelected(PageTranslations.Index)'>
+@miIndex
+</MenuItem> 
+*@
+        
+This works and it is based on the very simple line:
+href="javascript:undefined"
+
+It has been suggested here: https://stackoverflow.com/questions/866583/how-to-cancel-navigation-when-user-clicks-a-link-a-element
+by: Kyad
+
+<MenuItem class="nav-link"
+            Match="NavLinkMatch.All"
+            aria-current="page"
+            href="javascript:undefined"
+            @onclick='() => LinkSelected(PageTranslations.Index)'>
+    @miIndex
+</MenuItem>
+```
 
 ---
+
 
 https://www.syncfusion.com/faq/blazor/general/how-do-i-intercept-routing-in-blazor-before-it-navigates
 https://stackoverflow.com/questions/54297711/blazor-how-to-pass-arguments-to-onclick-function 
