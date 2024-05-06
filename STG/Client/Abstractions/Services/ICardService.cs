@@ -1,4 +1,4 @@
-﻿using Client.Abstractions.Models;
+﻿using Websites.Razor.ClassLibrary.Abstractions.Models;
 
 namespace Client.Abstractions.Services
 {

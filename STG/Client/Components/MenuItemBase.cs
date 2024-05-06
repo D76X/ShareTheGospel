@@ -1,7 +1,7 @@
-﻿using Client.Abstractions.Models;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Routing;
+using Websites.Razor.ClassLibrary.Abstractions.Models;
 
 namespace Client.Components
 {

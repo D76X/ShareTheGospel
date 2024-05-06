@@ -1,6 +1,6 @@
 ﻿using System;
-using Client.Abstractions.Models;
 using Client.Abstractions.Services;
+using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
 
 namespace Client.Pages.Models.Pages

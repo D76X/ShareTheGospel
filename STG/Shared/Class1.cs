@@ -1,8 +1,6 @@
 ﻿namespace Shared
 {
-	using System;
-
-	namespace BlazorApp.Shared
+    namespace BlazorApp.Shared
 	{
 		public class WeatherForecast
 		{

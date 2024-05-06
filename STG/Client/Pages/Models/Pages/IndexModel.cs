@@ -1,5 +1,5 @@
-﻿using Client.Abstractions.Models;
-using Client.Abstractions.Services;
+﻿using Client.Abstractions.Services;
+using Websites.Razor.ClassLibrary.Abstractions.Models;
 
 namespace Client.Pages.Models.Pages
 {

@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Abstractions\Models\" />
     <Folder Include="Pages\Catalogs\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>

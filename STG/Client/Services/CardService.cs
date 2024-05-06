@@ -1,6 +1,6 @@
-﻿using Client.Abstractions.Models;
-using Client.Abstractions.Services;
+﻿using Client.Abstractions.Services;
 using Client.Common;
+using Websites.Razor.ClassLibrary.Abstractions.Models;
 
 namespace Client.Services;
 

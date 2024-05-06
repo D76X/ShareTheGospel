@@ -1,7 +1,6 @@
 using System;
 using System.Net.Http;
 using Client;
-using Client.Abstractions.Models;
 using Client.Abstractions.Services;
 using Client.Pages.Models.Pages;
 using Client.Services;
@@ -9,6 +8,7 @@ using Client.Services.UserSettingsService;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Websites.Razor.ClassLibrary.Abstractions.Models;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

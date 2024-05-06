@@ -1,5 +1,5 @@
-﻿using Client.Abstractions.Models;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
+using Websites.Razor.ClassLibrary.Abstractions.Models;
 
 namespace Client.Components
 {
