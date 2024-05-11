@@ -1,6 +1,4 @@
-﻿using AzureStaticWebApps.Blazor.Authentication;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Client.StaticWebAppsAuthenticationExtensions
 {

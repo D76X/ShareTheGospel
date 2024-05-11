@@ -1,16 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Security.Claims;
-using System.Threading.Tasks;
+using Client.StaticWebAppsAuthenticationExtensions.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
-//using AzureStaticWebApps.Blazor.Authentication.Models;
-using Client.StaticWebAppsAuthenticationExtensions.Models;
 
-namespace AzureStaticWebApps.Blazor.Authentication
+namespace Client.StaticWebAppsAuthenticationExtensions
 {
     /// <summary>
     ///
@@ -31,7 +25,7 @@ namespace AzureStaticWebApps.Blazor.Authentication
             this.http = new HttpClient { BaseAddress = new Uri(environment.BaseAddress) };
         }
 
-        public async override Task<AuthenticationState> GetAuthenticationStateAsync()
+        public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             try
             {
