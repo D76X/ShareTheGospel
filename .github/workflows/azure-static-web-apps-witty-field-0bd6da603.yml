@@ -1,9 +1,21 @@
 name: Azure Static Web Apps CI/CD
 
 on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter a name"
+        required: true
+        default: 'GirHub user'
+      deploy:
+        description: "Deploy code after build (yes/no)"
+        required: false
+        default: 'yes'
   push:
-    branches:
-      - main
+    branches: [main]
+    paths: 
+      - 'PWS/**' 
+      - '.github/workflows/azure-static-web-apps-witty-field-0bd6da603.yml'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
