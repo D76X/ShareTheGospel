@@ -1,7 +1,7 @@
-﻿using Client.Abstractions.Services;
-using Client.Pages.Models;
+﻿using Client.Catalogs;
 using Client.Translations;
 using Microsoft.AspNetCore.Components;
+using Websites.Razor.ClassLibrary.Abstractions.Services;
 using Websites.Razor.ClassLibrary.Components;
 
 namespace Client.Components;
@@ -49,7 +49,7 @@ public class MainNavBarBase : ComponentBase
 			
     }
 
-    public string miTour => Catalog.Translation(Catalog.Tour, LanguageSelectorBase.SelectedLanguage);
+    public string miTour => PageCatalog.Translation(PageCatalog.Tour, LanguageSelectorBase.SelectedLanguage);
     protected string miIndex => PageTranslations.Translation(PageTranslations.Index, LanguageSelectorBase.SelectedLanguage);
     public string miDeath => PageTranslations.Translation(PageTranslations.Death001, LanguageSelectorBase.SelectedLanguage);
     public string miTheLaw => PageTranslations.Translation(PageTranslations.TheLaw001, LanguageSelectorBase.SelectedLanguage);

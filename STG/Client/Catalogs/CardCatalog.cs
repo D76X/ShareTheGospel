@@ -1,13 +1,14 @@
 ﻿using Client.Pages.Models.Cards;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
+using Websites.Razor.ClassLibrary.Abstractions.Services;
 
-namespace Client.Common
+namespace Client.Catalogs
 {
-    public static class CardCatalog 
+    public class CardCatalog: ICardCatalog 
     {
         public const string Death001 = "Death001";
 
-        public static ICardModel GetCard(
+        public ICardModel GetCard(
             string cardId,
             string? language)
         {

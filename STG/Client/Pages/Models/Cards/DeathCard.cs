@@ -1,6 +1,7 @@
 ﻿using Client.Translations;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
+using Websites.Razor.ClassLibrary.Models;
 
 namespace Client.Pages.Models.Cards;
 

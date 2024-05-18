@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Client.Translations;
 
-namespace Client.Pages.Models;
+namespace Client.Catalogs;
 
-public static class Catalog
+public static class PageCatalog
 {
     public const string Tour = @"Tour";
     public const string KeyAbout = @"About";
