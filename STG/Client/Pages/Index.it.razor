@@ -1,6 +1,5 @@
 ﻿@page "/it"
 @page "/index/it"
-@using Client.Components
 @using Client.Shared
 @using Websites.Razor.ClassLibrary.Abstractions.Models
 @using Client.Catalogs
@@ -48,40 +47,16 @@
                         <Card Model="@Model!.GetCard(CardCatalog.Death001)"></Card>
                         </div>
                     <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="/images/commandments1.svg" alt="Bootstrap" height="225" style="padding: 0.5em">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">The Law</h5>
-                                <p class="card-text text-center">Are you a good person?</p>
-                            </div>
-                        </div>
+                        <Card Model="@Model!.GetCard(CardCatalog.TheLaw001)"></Card>
                     </div>
                     <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="/images/thecross1.svg" alt="Bootstrap" height="225" style="padding: 0.5em">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">The Cross</h5>
-                                <p class="card-text text-center">Will you accept the free gift of eternal life?</p>
-                            </div>
-                        </div>
+                        <Card Model="@Model!.GetCard(CardCatalog.TheCross001)"></Card>
                     </div>
                     <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="/images/thebible1.svg" alt="Bootstrap" height="225" style="padding: 0.5em">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Scriptures</h5>
-                                <p class="card-text text-center">What are scriptures?</p>
-                            </div>
-                        </div>
+                        <Card Model="@Model!.GetCard(CardCatalog.TheBible001)"></Card>
                     </div>
                     <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="/images/hell1.svg" alt="Bootstrap" height="225" style="padding: 0.5em">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Hell</h5>
-                                <p class="card-text text-center">What is Hell?</p>
-                            </div>
-                        </div>
+                        <Card Model="@Model!.GetCard(CardCatalog.Hell001)"></Card>
                     </div>
                 </div>
             </div>
