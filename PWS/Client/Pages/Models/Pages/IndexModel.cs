@@ -1,22 +1,21 @@
-﻿//using Client.Abstractions.Services;
-using Websites.Razor.ClassLibrary.Abstractions.Models;
+﻿using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Abstractions.Services;
 
 namespace Client.Pages.Models.Pages
 {
     public class IndexModel : IIndexPage
     {
-        private readonly ILanguageService _languageService;
         private readonly ICardService _cardService;
+        private readonly ILanguageService _languageService;
         private readonly ISearchService _searchService;
 
         public IndexModel(
-            ILanguageService languageService,
             ICardService cardService,
+            ILanguageService languageService,
             ISearchService searchService)
         {
-            _languageService = languageService;
             _cardService = cardService;
+            _languageService = languageService;
             _searchService = searchService;
         }
 

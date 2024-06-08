@@ -18,13 +18,15 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 // HttpClient
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration[SharedConstants.ApiPrefix] ?? builder.HostEnvironment.BaseAddress) });
 
-// Services
+// Services as Singletons
 builder.Services.AddSingleton<ILanguageService, LanguageService>();
+builder.Services.AddSingleton<ISearchService, SearchService>();
 //builder.Services.AddSingleton<IUserSettingsService, UserSettingsService>();
 //builder.Services.AddTransient<ILocalStorageService, LocalStorageService>();
+
+// Services as Transient
 builder.Services.AddTransient<ICardCatalog, CardCatalog>();
 builder.Services.AddTransient<ICardService, CardService>();
-builder.Services.AddTransient<ISearchService, SearchService>();
 
 // Models
 builder.Services.AddTransient<IIndexPage, IndexModel>();
