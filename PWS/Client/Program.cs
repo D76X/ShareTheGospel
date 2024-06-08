@@ -24,6 +24,7 @@ builder.Services.AddSingleton<ILanguageService, LanguageService>();
 //builder.Services.AddTransient<ILocalStorageService, LocalStorageService>();
 builder.Services.AddTransient<ICardCatalog, CardCatalog>();
 builder.Services.AddTransient<ICardService, CardService>();
+builder.Services.AddTransient<ISearchService, SearchService>();
 
 // Models
 builder.Services.AddTransient<IIndexPage, IndexModel>();
