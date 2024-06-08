@@ -1,0 +1,62 @@
+﻿@page "/"
+@page "/en"
+@page "/index"
+@page "/index/en"
+@using Client.Shared
+@using Client.Catalogs
+@implements IDisposable
+@layout MainLayout
+
+@code
+{
+    [Inject]
+    private IIndexPage? Model { get; set; }
+
+    public void Dispose()
+    {
+        Model!.Dispose();
+    }
+}
+
+<div class="container-fluid">
+    <main>
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">This is the Index of PWS</h1>
+                    @* <p class="lead text-muted">&#8220;Ho! Everyone who thirsts, Come to the waters; And you who have no money, Come, buy and eat. Yes, come, buy wine and milk without money and without price.&#8221;</p>
+                    <a href="https://my.bible.com/bible/114/ISA.55.1" class="anchor-plain" target="_blank">
+                        <footer class="blockquote-footer text-end">Isaiah 55:1 <cite title="Source Title">NKJV</cite></footer>
+                    </a> *@
+                </div>
+            </div>
+            <blockquote class="blockquote text-justify">
+                <p class="mb-3">
+                    The index of PWS
+                    @* <b>This is a guide that in few simple steps explains how you can live forever and what your life and all that there is in it really means.</b>
+                    <b>In the first three steps below is all that you need to know in just 5 minutes and everything else is bonus material!</b>
+                    It explains who you are, where you come from and are going and why things are the way they are. You will learn what you have to do in order not to die and what comes
+                    after you do. It teaches you to reckon with your fears and doubts and shows you what is really important and that there is more to life than you could ever imagine.
+                    No matter what your story or background, religion or faith or lack thereof, no matter whether rich or poor, strong or week, great or small, good or bad, well or ill
+                    this guide is for you that it may change everything in your life forever and take you and me to the place that we have always meant to be. *@
+
+                </p>
+            </blockquote>
+        </section>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col">
+                        <Card Model="@Model!.GetCard(CardCatalog.Azure001)"></Card>
+                    </div>
+                    <div class="col">
+                        <Card Model="@Model!.GetCard(CardCatalog.CSharp001)"></Card>
+                    </div>
+                    <div class="col">
+                        <Card Model="@Model!.GetCard(CardCatalog.DesignPatterns001)"></Card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

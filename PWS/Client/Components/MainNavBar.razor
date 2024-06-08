@@ -1,0 +1,83 @@
+﻿@using Client.Translations
+@using Websites.Razor.ClassLibrary.Components
+@inherits MainNavBarBase
+
+@code
+{
+    public Models.MainNavBar Model { get; } = new() { SelectedLanguage = LanguageSelectorBase.SelectedLanguage };
+}
+
+<nav class="navbar navbar-expand-md fixed-top bg-azure">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img class="img-fluid" src="images/azure67x67.svg" alt="New Thinking Technologies">
+        </a>
+        <button class="navbar-toggler collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse"
+             id="navbarCollapse" style="">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <MenuItem class="nav-link"
+                              Match="NavLinkMatch.All"
+                              aria-current="page"
+                              href="javascript:undefined"
+                              @onclick='() => LinkSelected(PageTranslations.Index)'>
+                        @miIndex
+                    </MenuItem>
+                </li>
+                @* <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       id="navDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        @miTour
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navDropdown">
+                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.Death001)'>@miDeath</NavLink></li>
+                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.TheLaw001)'>@miTheLaw</NavLink></li>
+                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.TheCross001)'>@miTheCross</NavLink></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected("Page1")'>Page1</NavLink></li>
+                    </ul>
+                </li> *@
+                @* <li class="nav-item">
+                    <MenuItem class="nav-link"
+                              Match="NavLinkMatch.All"
+                              aria-current="about"
+                              href=@Model.About.Href>
+                        @Model.About.Text
+                    </MenuItem>
+                </li> *@
+            </ul>
+
+            @* <LanguageSelector OnLanguageSelected="LanguageSelected" /> *@
+
+            <form class="d-flex"
+                  role="search">
+                <input class="form-control me-2"
+                       type="search"
+                       placeholder="Search"
+                       aria-label="Search">
+                <button class="btn btn-outline-success me-1"
+                        type="submit">
+                    Search
+                </button>
+            </form>
+
+            <div class=" text-center m-1">
+                <button type="button" class="btn btn-outline-primary">Login</button>
+                <button type="button" class="btn btn-outline-primary">Sign-up</button>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -18,8 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Shared\" />
+    <Folder Include="Layout\" />
   </ItemGroup>
 
 </Project>
