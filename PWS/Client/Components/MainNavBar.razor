@@ -33,31 +33,14 @@
                         @miIndex
                     </MenuItem>
                 </li>
-                @* <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       href="#"
-                       id="navDropdown"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        @miTour
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navDropdown">
-                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.Death001)'>@miDeath</NavLink></li>
-                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.TheLaw001)'>@miTheLaw</NavLink></li>
-                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected(PageTranslations.TheCross001)'>@miTheCross</NavLink></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><NavLink class="dropdown-item" @onclick='() => LinkSelected("Page1")'>Page1</NavLink></li>
-                    </ul>
-                </li> *@
-                @* <li class="nav-item">
+                <li class="nav-item">
                     <MenuItem class="nav-link"
                               Match="NavLinkMatch.All"
                               aria-current="about"
                               href=@Model.About.Href>
                         @Model.About.Text
                     </MenuItem>
-                </li> *@
+                </li>
             </ul>
 
             <LanguageSelector OnLanguageSelected="LanguageSelected" />
