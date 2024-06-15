@@ -13,10 +13,11 @@ namespace Client.Pages.Models.Pages
         private readonly ILanguageService _languageService;
 
         /// <summary>
-        /// the event that this model raises to notify the corresponding component StateHasChanged
-        /// that it is time to redraw the UI as the model has changed
+        /// the event that this model raises to notify the corresponding
+        /// component StateHasChanged that it is time to redraw the UI
+        /// as the model has changed.
         /// </summary>
-        public event Action? OnLanguageSelection;
+        public event Action? OnStateHasChanged;
 
         public AboutModel(ILanguageService languageService)
         {
@@ -30,7 +31,7 @@ namespace Client.Pages.Models.Pages
             string e)
         {
             SelectedLanguage = e;
-            OnLanguageSelection?.Invoke();
+            OnStateHasChanged?.Invoke();
         }
 
         public string SelectedLanguage { get; set; }
