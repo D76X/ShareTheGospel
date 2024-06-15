@@ -3,7 +3,6 @@
 @page "/about/de"
 @page "/about/it"
 @using Client.Shared
-@using Websites.Razor.ClassLibrary.Abstractions.Models
 @layout MainLayout
 @implements IDisposable
 
@@ -15,12 +14,12 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Model!.OnLanguageSelection += StateHasChanged;
+        Model!.OnStateHasChanged += StateHasChanged;
     }
 
     public void Dispose()
     {
-        Model!.OnLanguageSelection -= StateHasChanged;
+        Model!.OnStateHasChanged -= StateHasChanged;
         Model!.Dispose();
     }
 }
