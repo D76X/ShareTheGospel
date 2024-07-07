@@ -12,7 +12,7 @@ namespace Client.Catalogs
         public const string TheBible001 = "TheBible001";
         public const string Hell001 = "Hell001";
 
-        public ICardModel GetCard(
+        public ICardModel GetCardModel(
             string cardId,
             string? language)
         {

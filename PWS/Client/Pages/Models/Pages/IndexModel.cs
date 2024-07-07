@@ -26,15 +26,18 @@ namespace Client.Pages.Models.Pages
             _cardService = cardService;
             _languageService = languageService;
             _searchService = searchService;
-            _searchService.SearchResultsChanged += SearchServiceOnSearchResultsChanged;
+            _searchService.SearchResultChanged += SearchServiceOnSearchResultChanged;
         }
 
-        private void SearchServiceOnSearchResultsChanged(
-            object? sender, 
-            IEnumerable<SearchResult> e)
+        private void SearchServiceOnSearchResultChanged(
+            object? sender,
+            ISearchResult e)
         {
-            var test = e.FirstOrDefault()!.Values.FirstOrDefault()!;
-            TestString = test;
+            var searchTerm = e.SearchTerm;
+            var count1 = e.Flatten().Count();
+            var count2 = e.Flatten().Count(i=>i is NullSearchResult);
+            var count3 = e.Flatten().Count(i => !(i is NullSearchResult));
+            TestString = $"{searchTerm}:{count1}:{count2}:{count3}";
             OnStateHasChanged?.Invoke();
         }
 
@@ -43,7 +46,7 @@ namespace Client.Pages.Models.Pages
 
         public void Dispose()
         {
-            _searchService.SearchResultsChanged -= SearchServiceOnSearchResultsChanged;
+            _searchService.SearchResultChanged -= SearchServiceOnSearchResultChanged;
         }
     }
 }

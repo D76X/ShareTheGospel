@@ -1,13 +1,19 @@
 ﻿using Client.Translations;
+using Websites.Razor.ClassLibrary.Abstractions;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
+using Websites.Razor.ClassLibrary.Abstractions.Services;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
 
 namespace Client.Pages.Models.Cards;
 
-public class CSharpCard
+public class CSharpCard:
+    ISearchable
 {
     public const string CSharp001Image = "/images/csharp1.svg";
+    
+    public static IEnumerable<ICardModel> GetCardModels() =>
+        new[] { CSharpEn, CSharpDe, CSharpIt };
 
     public static ICardModel Create(string? language)
     {
@@ -30,6 +36,24 @@ public class CSharpCard
         }
 
         return model;
+    }
+
+    public ISearchResult GetResult(string searchTerm)
+    {
+        var searchResult = new SearchResult(
+            searchTerm,
+            this,
+            nameof(CSharpCard),
+            this.GetType());
+
+        foreach (var cardModel in GetCardModels())
+        {
+            var searchableCard = cardModel as ISearchable;
+            var result = searchableCard?.GetResult(searchTerm);
+            searchResult.Add(result);
+        }
+
+        return searchResult;
     }
 
     private static ICardModel CSharpEn => new CardModel(

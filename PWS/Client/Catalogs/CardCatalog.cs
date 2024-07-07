@@ -1,26 +1,59 @@
 ﻿using Client.Pages.Models.Cards;
+using Websites.Razor.ClassLibrary.Abstractions;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Abstractions.Services;
 
 namespace Client.Catalogs
 {
-    public class CardCatalog: ICardCatalog 
+    public class CardCatalog: 
+        ICardCatalog,
+        ISearchable
     {
         public const string Azure001 = "Azure001";
         public const string CSharp001 = "CSharp001";
         public const string DesignPatterns001 = "DesignPatterns001";
-        
-        public ICardModel GetCard(
+
+        private static IEnumerable<ICardModel> CardModels 
+        {
+            get
+            {
+                var cardModels = new List<ICardModel>();
+                cardModels.AddRange(AzureCard.GetCardModels());
+                cardModels.AddRange(CSharpCard.GetCardModels());
+                cardModels.AddRange(DesignPatternsCard.GetCardModels());
+                return cardModels;
+            }
+        }
+
+        public ICardModel GetCardModel(
             string cardId,
             string? language)
         {
             switch (cardId)
             {
-                case Azure001: return AzureCard.Create(language);
+                case Azure001: return AzureCard.GetCardModel(language);
                 case CSharp001: return CSharpCard.Create(language);
                 case DesignPatterns001: return DesignPatternsCard.Create(language);
                 default: return null;
             }
+        }
+
+        public ISearchResult GetResult(string searchTerm)
+        {
+            var searchResult = new SearchResult(
+                searchTerm,
+                this,
+                nameof(CardCatalog),
+                this.GetType());
+
+            foreach (var cardModel in CardModels)
+            {
+                var searchableCard = cardModel as ISearchable;
+                var result = searchableCard?.GetResult(searchTerm);
+                searchResult.Add(result);
+            }
+
+            return searchResult;
         }
     }
 }
