@@ -1,15 +1,16 @@
-﻿using Client.Translations;
+﻿using System.Collections.Generic;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
 
 namespace Client.Pages.Models.Cards;
 
-public class HellCard
+public class HellCard : CardBase
 {
     public const string Hell001Image = "/images/hell1.svg";
 
-    public static ICardModel Create(string? language)
+    public static ICardModel GetCardModel(string? language)
     {
         ICardModel? model;
 
@@ -31,6 +32,13 @@ public class HellCard
 
         return model;
     }
+
+    public static IEnumerable<ICardModel> GetCardModels() =>
+        new[] { HellEn, HellDe, HellIt };
+
+    public HellCard() : base(nameof(HellCard)) { }
+
+    public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 
     private static ICardModel HellEn => new CardModel(
         Hell001Image,

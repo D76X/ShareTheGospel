@@ -1,4 +1,5 @@
-﻿using Websites.Razor.ClassLibrary.Abstractions.Models;
+﻿using Websites.Razor.ClassLibrary.Abstractions.Extensions;
+using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Abstractions.Services;
 
 namespace Client.Pages.Models.Pages
@@ -34,9 +35,13 @@ namespace Client.Pages.Models.Pages
             ISearchResult e)
         {
             var searchTerm = e.SearchTerm;
-            var count1 = e.Flatten().Count();
-            var count2 = e.Flatten().Count(i=>i is NullSearchResult);
-            var count3 = e.Flatten().Count(i => !(i is NullSearchResult));
+
+            var flatResults = e.Flatten();
+
+            var count1 = flatResults.Count();
+            var count2 = flatResults.Count(i=>i is NullSearchResult);
+            var count3 = flatResults.Count(i => !(i is NullSearchResult));
+            
             TestString = $"{searchTerm}:{count1}:{count2}:{count3}";
             OnStateHasChanged?.Invoke();
         }

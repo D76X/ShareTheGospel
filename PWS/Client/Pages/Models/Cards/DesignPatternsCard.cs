@@ -1,14 +1,11 @@
 ﻿using Client.Translations;
-using Websites.Razor.ClassLibrary.Abstractions;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
-using Websites.Razor.ClassLibrary.Abstractions.Services;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
 
 namespace Client.Pages.Models.Cards;
 
-public class DesignPatternsCard :
-    ISearchable
+public class DesignPatternsCard : CardBase
 {
     public const string DesignPatterns001Image = "/images/designpatterns1.svg";
 
@@ -38,24 +35,10 @@ public class DesignPatternsCard :
         return model;
     }
 
-    public ISearchResult GetResult(string searchTerm)
-    {
-        var searchResult = new SearchResult(
-            searchTerm,
-            this,
-            nameof(DesignPatternsCard),
-            this.GetType());
+    public DesignPatternsCard() : base(nameof(DesignPatternsCard)) { }
 
-        foreach (var cardModel in GetCardModels())
-        {
-            var searchableCard = cardModel as ISearchable;
-            var result = searchableCard?.GetResult(searchTerm);
-            searchResult.Add(result);
-        }
-
-        return searchResult;
-    }
-
+    public override IEnumerable<ICardModel> GetModels() => GetCardModels();
+    
     private static ICardModel DesignPatternEn => new CardModel(
         DesignPatterns001Image,
         $"{PageTranslations.DesignPatterns001}/{LanguageSelectorBase.LanguageEn}",

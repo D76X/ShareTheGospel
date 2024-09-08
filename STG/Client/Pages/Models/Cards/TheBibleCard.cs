@@ -1,15 +1,16 @@
-﻿using Client.Translations;
+﻿using System.Collections.Generic;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
 
 namespace Client.Pages.Models.Cards;
 
-public class TheBibleCard
+public class TheBibleCard: CardBase
 {
     public const string Bible001Image = "/images/thebible1.svg";
 
-    public static ICardModel Create(string? language)
+    public static ICardModel GetCardModel(string? language)
     {
         ICardModel? model;
 
@@ -31,6 +32,13 @@ public class TheBibleCard
 
         return model;
     }
+
+    public static IEnumerable<ICardModel> GetCardModels() =>
+        new[] { TheBibleEn, TheBibleDe, TheBibleIt };
+
+    public TheBibleCard() : base(nameof(TheBibleCard)) { }
+
+    public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 
     private static ICardModel TheBibleEn => new CardModel(
         Bible001Image,

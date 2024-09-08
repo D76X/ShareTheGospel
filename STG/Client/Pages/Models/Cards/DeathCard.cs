@@ -1,15 +1,16 @@
-﻿using Client.Translations;
+﻿using System.Collections.Generic;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
 
 namespace Client.Pages.Models.Cards;
 
-public class DeathCard
+public class DeathCard: CardBase
 {
     public const string Death001Image = "/images/rip1.svg";
 
-    public static ICardModel Create(string? language)
+    public static ICardModel GetCardModel(string? language)
     {
         ICardModel? model;
 
@@ -30,7 +31,14 @@ public class DeathCard
         }
 
         return model;
-    }
+    }    
+
+    public static IEnumerable<ICardModel> GetCardModels() =>
+        new[] { DeathEn, DeathDe, DeathIt };
+
+    public DeathCard() : base(nameof(DeathCard)) { }
+
+    public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 
     private static ICardModel DeathEn => new CardModel(
         Death001Image,

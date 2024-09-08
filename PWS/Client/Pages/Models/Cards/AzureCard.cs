@@ -1,14 +1,12 @@
 ﻿using Client.Translations;
-using Websites.Razor.ClassLibrary.Abstractions;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
-using Websites.Razor.ClassLibrary.Abstractions.Services;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
+using CardBase = Websites.Razor.ClassLibrary.Abstractions.Models.CardBase;
 
 namespace Client.Pages.Models.Cards;
 
-public class AzureCard:
-    ISearchable 
+public class AzureCard: CardBase
 {
     public const string Azure001Image = "/images/azure1.svg";
 
@@ -38,23 +36,9 @@ public class AzureCard:
         return model;
     }
 
-    public ISearchResult GetResult(string searchTerm)
-    {
-        var searchResult = new SearchResult(
-            searchTerm,
-            this,
-            nameof(AzureCard),
-            this.GetType());
+    public AzureCard():base(nameof(AzureCard)){ }
 
-        foreach (var cardModel in GetCardModels())
-        {
-            var searchableCard = cardModel as ISearchable;
-            var result = searchableCard?.GetResult(searchTerm);
-            searchResult.Add(result);
-        }
-
-        return searchResult;
-    }
+    public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 
     private static ICardModel AzureEn => new CardModel(
         Azure001Image,

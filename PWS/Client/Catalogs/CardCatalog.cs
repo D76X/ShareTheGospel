@@ -25,7 +25,7 @@ namespace Client.Catalogs
             }
         }
 
-        public ICardModel GetCardModel(
+        public ICardModel GetModel(
             string cardId,
             string? language)
         {
@@ -38,13 +38,28 @@ namespace Client.Catalogs
             }
         }
 
+        public IEnumerable<ICardModel> GetModels() => CardModels;
+
+        private ISearchable[]? _searchables;
+
+        public ISearchable[]? Searchables
+        {
+            get
+            {
+                if (_searchables != null) return _searchables;
+                _searchables = GetModels().OfType<ISearchable>().ToArray();
+                return _searchables;
+            }
+        }
+
         public ISearchResult GetResult(string searchTerm)
         {
             var searchResult = new SearchResult(
                 searchTerm,
                 this,
                 nameof(CardCatalog),
-                this.GetType());
+                this.GetType(),
+                false);
 
             foreach (var cardModel in CardModels)
             {
