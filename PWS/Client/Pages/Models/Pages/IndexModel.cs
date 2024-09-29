@@ -41,8 +41,9 @@ namespace Client.Pages.Models.Pages
             var count1 = flatResults.Count();
             var count2 = flatResults.Count(i=>i is NullSearchResult);
             var count3 = flatResults.Count(i => !(i is NullSearchResult));
-            
-            TestString = $"{searchTerm}:{count1}:{count2}:{count3}";
+            var count4 = flatResults.Count(i => (i is MatchSearchResult));
+
+            TestString = $"{searchTerm}:{count1}:{count2}:{count3}:{count4}";
             OnStateHasChanged?.Invoke();
         }
 
