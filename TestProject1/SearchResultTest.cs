@@ -4,10 +4,150 @@ using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Abstractions.Services;
 using Websites.Razor.ClassLibrary.Models;
 
-namespace TestProject1
+namespace Websites.Razor.ClassLibrary.Test
 {
     public class SearchResultTest
     {
+        [Fact]
+        public void CardBase_Is_Searchable()
+        {
+            // arrange
+            string typeStrTestCard = nameof(TestCardFactory.TestCard);
+            string typeStrCardModel = nameof(CardModel);
+
+            var testCard = TestCardFactory.GetTestCard();
+            var testCardSearchables = testCard.Searchables;
+            var searchableTestCard = testCard as ISearchable;
+
+            // CASE-0: no match for search term
+            string keyword0 = @"keyword0";
+            string searchTerm0 = $"{keyword0}";
+
+            // act 
+            var results0 = searchableTestCard.GetResult(searchTerm0);
+
+            // assert
+            testCardSearchables.Should().NotBeNull();
+            testCardSearchables.Should().BeOfType<ISearchable[]>();
+
+            results0.Type.Should().Be<SearchableBase>();
+            results0.TypeStr.Should().Be(typeStrTestCard);              
+            results0.IsMatch.Should().BeFalse();
+            results0.SearchResults.Should().BeEmpty();
+
+            results0.Should().NotBeNull();
+            results0.Should().BeOfType<NullSearchResult>();
+            results0.SearchTerm.Should().Be(searchTerm0);
+            results0.Value.Should().NotBeNull();
+            results0.Value.Should().BeOfType<SearchableBase>();
+
+            var result0Searchables = results0.Value as SearchableBase;
+            result0Searchables!.Searchables.Should().BeOfType<ISearchable[]>();
+            result0Searchables.Searchables.Should().NotBeNullOrEmpty();
+            result0Searchables.Searchables.Should().AllBeOfType<CardModel>();
+            result0Searchables.Searchables.Should().HaveCount(3);
+            result0Searchables.Searchables.Should().HaveCount(testCard.Searchables!.Length);
+            
+            var cardModels = testCard.GetModels().OrderBy(m => m.PageRef).ToArray();
+            
+
+            var searchableModels = result0Searchables
+                .Searchables!
+                .Select(i => i as CardModel)
+                .OrderBy(m => m?.PageRef)
+                .ToArray();
+
+            
+            searchableModels[0].Should().BeEquivalentTo(cardModels[0]);
+            searchableModels[0].Should().NotBe(cardModels[0]);
+
+            searchableModels[1].Should().BeEquivalentTo(cardModels[1]);
+            searchableModels[1].Should().NotBe(cardModels[1]);
+
+            searchableModels[2].Should().BeEquivalentTo(cardModels[2]);
+            searchableModels[2].Should().NotBe(cardModels[2]);
+
+            // -----------------------------------------------------------------------------------------------
+            // CASE-1: there is a match for search term 1 in the page text of one of the models of the card
+            
+            // arrange
+            string keyword1 = @"keyword1";
+            string searchTerm1 = $"{keyword1}";
+            string keyword2 = @"keyword2";
+            string searchTerm2 = $"{keyword2}";
+            string keyword3 = @"keyword3";
+            string searchTerm3 = $"{keyword3}";
+
+            var cardModelWithKeyword1 = cardModels.Single(i => i.PageText.Contains(searchTerm1));
+            var cardModelWithKeyword2 = cardModels.Single(i => i.PageText.Contains(searchTerm2));
+            var cardModelWithKeyword3 = cardModels.Single(i => i.PageText.Contains(searchTerm3));
+
+            // act 
+            var results1 = searchableTestCard.GetResult(searchTerm1);
+
+            // assert
+            results1.Should().NotBeNull();
+            // there is a match for the card
+            results1.Should().BeOfType<MatchSearchResult>();
+            results1.IsMatch.Should().BeTrue();
+            results1.SearchTerm.Should().Be(searchTerm1);
+            results1.Type.Should().Be<SearchableBase>();
+            results1.TypeStr.Should().Be(typeStrTestCard);
+            results1.SearchResults.Should().NotBeEmpty();
+
+            // ?
+            results1.Value.Should().NotBeNull();
+            results1.Value.Should().BeOfType<SearchableBase>();
+
+            // there is a match for the card which has 3 searchables in it 
+            // these searchables are its 3 contained card models
+            results1.SearchResults.Should().HaveCount(3);
+            var typeStrSearchResults1 = results1.SearchResults.Select(i=>i.TypeStr).ToArray();
+            typeStrSearchResults1.Should().AllBe(typeStrCardModel);
+
+            // there is only one matching card 
+            var match1 = results1.SearchResults.Single(i => i.IsMatch);
+            match1.Should().BeOfType<MatchSearchResult>();
+            match1.SearchTerm.Should().Be(searchTerm1);
+            match1.Type.Should().Be<CardModel>();
+            match1.TypeStr.Should().Be(typeStrCardModel);
+            var match1Value = match1.Value as CardModel;
+            match1Value.Should().NotBeNull();
+            match1Value!.PageText.Should().Contain(searchTerm1);
+            match1Value.Should().BeEquivalentTo(cardModelWithKeyword1);
+            match1Value.Should().NotBe(cardModelWithKeyword1);
+
+            // the remaining 2 card models are not matches for this keyword
+            var noMatches = results1.SearchResults.Where(i => !i.IsMatch).ToArray();
+            noMatches.Should().AllBeOfType<NullSearchResult>();
+            var noMatch0 = noMatches[0];
+            var noMatch1 = noMatches[1];
+            noMatch0.SearchTerm.Should().Be(searchTerm1);
+            noMatch1.SearchTerm.Should().Be(searchTerm1);
+            
+            var noMatchesValues = noMatches
+                .Select(i => i.Value as CardModel)
+                .OrderBy(i => i!.PageRef)
+                .ToArray();
+            noMatchesValues.Should().HaveCount(2);
+            var noMatchesValuesKeyword2 = noMatchesValues.Single(i => i!.PageText.Contains(searchTerm2));
+            var noMatchesValuesKeyword3 = noMatchesValues.Single(i => i!.PageText.Contains(searchTerm3));
+
+            noMatchesValuesKeyword2.Should().BeEquivalentTo(cardModelWithKeyword2);
+            noMatchesValuesKeyword2.Should().NotBe(cardModelWithKeyword2);
+
+            noMatchesValuesKeyword3.Should().BeEquivalentTo(cardModelWithKeyword3);
+            noMatchesValuesKeyword3.Should().NotBe(cardModelWithKeyword3);
+
+            // -----------------------------------------------------------------------------------------------
+            // CASE-2: there is a match for search term 2 in the page text of one of the models of the card
+
+
+            // -----------------------------------------------------------------------------------------------
+            // CASE-3: there is a match for search term 3 in the page text of one of the models of the card
+
+        }
+
         [Fact]
         public void CardModel_Is_Searchable()
         {
@@ -16,23 +156,23 @@ namespace TestProject1
             string typeStr = nameof(CardModel);
 
             // searchable properties of ICardModel
-            string image = @"image"; 
-            string pageRef = @"pageRef"; 
+            string image = @"image";
+            string pageRef = @"pageRef";
             string pageTitle = @"pageTitle";
             string pageText = @"pageText";
 
             string keyword1 = @"keyword1";
             string keyword2 = @"keyword2";
             string keyword3 = @"keyword3";
-            
+
             string searchTerm1 = $"{keyword1}";
 
             // -------------------------------------------------------------------------
             // CASE-0
             // the search produces no results when the search term does not have a match
-            
-            var cardModel0 = new CardModel(image,pageRef,pageTitle,pageText);
-            
+
+            var cardModel0 = new CardModel(image, pageRef, pageTitle, pageText);
+
             // act
             var cardModelInterface = cardModel0 as ICardModel;
             var searchable0 = cardModel0 as ISearchable;
@@ -134,7 +274,7 @@ namespace TestProject1
 
             // arrange
             string searchTerm2 = $"{keyword2}";
-            
+
             var cardModel2A = new CardModel($"{image} {keyword1}", pageRef, pageTitle, pageText);
             var searchable2A = cardModel2A as ISearchable;
 
@@ -148,7 +288,7 @@ namespace TestProject1
             var results2B2 = searchable2B.GetResult(searchTerm2);
 
             // assert
-            
+
             // search finds a match for ST1 on modelA
             results2A1.IsMatch.Should().BeTrue();
             results2A1.Value.Should().Be(cardModel2A);

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Client.Translations;
+using Websites.Razor.ClassLibrary.Translations;
 
 namespace Client.Catalogs;
 
