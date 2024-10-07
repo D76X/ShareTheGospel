@@ -1,4 +1,5 @@
-﻿namespace Client.Translations;
+﻿using Websites.Razor.ClassLibrary.Translations;
+namespace Client.Translations;
 
 static class PageTranslations
 {

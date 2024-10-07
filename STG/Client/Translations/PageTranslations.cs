@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Websites.Razor.ClassLibrary.Translations;
 
 namespace Client.Translations;
 
