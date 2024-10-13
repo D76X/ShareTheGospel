@@ -145,7 +145,7 @@ namespace Websites.Razor.ClassLibrary.Test
             var results2 = searchableTestCard.GetResult(searchTerm2);
 
             // assert
-            results1.Should().NotBeNull();
+            results2.Should().NotBeNull();
             // there is a match for the card
             results2.Should().BeOfType<MatchSearchResult>();
             results2.IsMatch.Should().BeTrue();
@@ -199,6 +199,60 @@ namespace Websites.Razor.ClassLibrary.Test
             // -----------------------------------------------------------------------------------------------
             // CASE-3: there is a match for search term 3 in the page text of one of the models of the card
 
+            // act 
+            var results3 = searchableTestCard.GetResult(searchTerm3);
+
+            // assert
+            results3.Should().NotBeNull();
+            // there is a match for the card
+            results3.Should().BeOfType<MatchSearchResult>();
+            results3.IsMatch.Should().BeTrue();
+            results3.SearchTerm.Should().Be(searchTerm3);
+            results3.Type.Should().Be<SearchableBase>();
+            results3.TypeStr.Should().Be(typeStrTestCard);
+            results3.SearchResults.Should().NotBeEmpty();
+            results3.Value.Should().NotBeNull();
+            results3.Value.Should().BeOfType<SearchableBase>();
+
+            // there is a match for the card which has 3 searchables in it 
+            // these searchables are its 3 contained card models
+            results3.SearchResults.Should().HaveCount(3);
+            var typeStrSearchResults3 = results3.SearchResults.Select(i => i.TypeStr).ToArray();
+            typeStrSearchResults3.Should().AllBe(typeStrCardModel);
+
+            // there is only one matching card 
+            var match3 = results3.SearchResults.Single(i => i.IsMatch);
+            match3.Should().BeOfType<MatchSearchResult>();
+            match3.SearchTerm.Should().Be(searchTerm3);
+            match3.Type.Should().Be<CardModel>();
+            match3.TypeStr.Should().Be(typeStrCardModel);
+            var match3Value = match3.Value as CardModel;
+            match3Value.Should().NotBeNull();
+            match3Value!.PageText.Should().Contain(searchTerm3);
+            match3Value.Should().BeEquivalentTo(cardModelWithKeyword3);
+            match3Value.Should().NotBe(cardModelWithKeyword3);
+
+            // the remaining 2 card models are not matches for this keyword
+            var noMatches3 = results3.SearchResults.Where(i => !i.IsMatch).ToArray();
+            noMatches3.Should().AllBeOfType<NullSearchResult>();
+            var noMatch3_0 = noMatches3[0];
+            var noMatch3_1 = noMatches3[1];
+            noMatch3_0.SearchTerm.Should().Be(searchTerm3);
+            noMatch3_1.SearchTerm.Should().Be(searchTerm3);
+
+            var noMatchesValues3 = noMatches3
+                .Select(i => i.Value as CardModel)
+                .OrderBy(i => i!.PageRef)
+                .ToArray();
+            noMatchesValues3.Should().HaveCount(2);
+            var noMatchesValues3Keyword1 = noMatchesValues3.Single(i => i!.PageText.Contains(searchTerm1));
+            var noMatchesValues3Keyword2 = noMatchesValues3.Single(i => i!.PageText.Contains(searchTerm2));
+
+            noMatchesValues3Keyword1.Should().BeEquivalentTo(cardModelWithKeyword1);
+            noMatchesValues3Keyword1.Should().NotBe(cardModelWithKeyword1);
+
+            noMatchesValues3Keyword2.Should().BeEquivalentTo(cardModelWithKeyword2);
+            noMatchesValues3Keyword2.Should().NotBe(cardModelWithKeyword2);
         }
 
         [Fact]
