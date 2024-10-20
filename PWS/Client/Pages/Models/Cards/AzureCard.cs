@@ -44,18 +44,18 @@ public class AzureCard: CardBase
         Azure001Image,
         $"{PageTranslations.Azure001}/{LanguageSelectorBase.LanguageEn}",
         PageTranslations.Translation(PageTranslations.Azure001, LanguageSelectorBase.LanguageEn),
-        @"Azure Series");
+        @"In this Azure Series");
 
     private static ICardModel AzureDe => new CardModel(
         Azure001Image,
         $"{PageTranslations.Azure001}/{LanguageSelectorBase.LanguageDe}",
         PageTranslations.Translation(PageTranslations.Azure001, LanguageSelectorBase.LanguageDe),
-        @"Azure Reihe");
+        @"In diese Azure Reihe");
 
     private static ICardModel AzureIt => new CardModel(
         Azure001Image,
         $"{PageTranslations.Azure001}/{LanguageSelectorBase.LanguageIt}",
         PageTranslations.Translation(PageTranslations.Azure001, LanguageSelectorBase.LanguageIt),
-        @"Azure Serie");
+        @"In questa Azure Serie");
 }
 
