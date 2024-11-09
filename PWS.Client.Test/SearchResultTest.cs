@@ -4,11 +4,50 @@ using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Websites.Razor.ClassLibrary.Abstractions;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Models;
+// ReSharper disable InconsistentNaming
 
 namespace PWS.Client.Test
 {
+    public interface IDependency
+    {
+        int Value { get; }
+    }
+
+    internal class DependencyClass : IDependency
+    {
+        public int Value => 1;
+    }
+
+    public class MyAwesomeTests
+    {
+        private readonly IDependency _d;
+
+        public MyAwesomeTests(IDependency d) => _d = d;
+
+        [Fact]
+        public void AssertThatWeDoStuff()
+        {
+            Assert.Equal(1, _d.Value);
+        }
+    }
+
     public class SearchResultTest
     {
+        [Fact]
+        public void SearchService_Searches_CardCatalog()
+        {
+            // arrange
+            
+            // Moq Dependencies
+            // invoke UUT constructor
+            // resolve dependencies
+
+            // act
+
+            // assert
+
+        }
+
         [Fact]
         public void AzureCard_Is_Searchable()
         {
@@ -139,7 +178,63 @@ namespace PWS.Client.Test
             noMatchesValues1Keyword3.Should().BeEquivalentTo(cardModelWithKeyword3);
             noMatchesValues1Keyword3.Should().NotBe(cardModelWithKeyword3);
 
-            throw new NotImplementedException();
+            // -----------------------------------------------------------------------------------------------
+            // CASE-2: there is a match for search term 2 in the page text of one of the models of the card
+
+            // act 
+            var results2 = searchableCard.GetResult(searchTerm2);
+
+            // assert
+            results2.Should().NotBeNull();
+            // there is a match for the card
+            results2.Should().BeOfType<MatchSearchResult>();
+            results2.IsMatch.Should().BeTrue();
+            results2.SearchTerm.Should().Be(searchTerm2);
+            results2.Type.Should().Be<SearchableBase>();
+            results2.TypeStr.Should().Be(typeStrAzureCard);
+            results2.SearchResults.Should().NotBeEmpty();
+            results2.Value.Should().NotBeNull();
+            results2.Value.Should().BeOfType<SearchableBase>();
+
+            // there is a match for the card which has 3 searchables in it 
+            // these searchables are its 3 contained card models
+            results2.SearchResults.Should().HaveCount(3);
+            var typeStrSearchResults2 = results2.SearchResults.Select(i => i.TypeStr).ToArray();
+            typeStrSearchResults2.Should().AllBe(typeStrCardModel);
+
+            // there is only one matching card 
+            var match2 = results2.SearchResults.Single(i => i.IsMatch);
+            match2.Should().BeOfType<MatchSearchResult>();
+            match2.SearchTerm.Should().Be(searchTerm2);
+            match2.Type.Should().Be<CardModel>();
+            match2.TypeStr.Should().Be(typeStrCardModel);
+            var match2Value = match2.Value as CardModel;
+            match2Value.Should().NotBeNull();
+            match2Value!.PageText.Should().Contain(searchTerm2);
+            match2Value.Should().BeEquivalentTo(cardModelWithKeyword2);
+            match2Value.Should().NotBe(cardModelWithKeyword2);
+
+            // the remaining 2 card models are not matches for this keyword
+            var noMatches2 = results2.SearchResults.Where(i => !i.IsMatch).ToArray();
+            noMatches2.Should().AllBeOfType<NullSearchResult>();
+            var noMatch2_0 = noMatches2[0];
+            var noMatch2_1 = noMatches2[1];
+            noMatch2_0.SearchTerm.Should().Be(searchTerm2);
+            noMatch2_1.SearchTerm.Should().Be(searchTerm2);
+
+            var noMatchesValues2 = noMatches2
+                .Select(i => i.Value as CardModel)
+                .OrderBy(i => i!.PageRef)
+                .ToArray();
+            noMatchesValues2.Should().HaveCount(2);
+            var noMatchesValues2Keyword1 = noMatchesValues2.Single(i => i!.PageText.Contains(searchTerm1));
+            var noMatchesValues2Keyword3 = noMatchesValues2.Single(i => i!.PageText.Contains(searchTerm3));
+
+            noMatchesValues2Keyword1.Should().BeEquivalentTo(cardModelWithKeyword1);
+            noMatchesValues2Keyword1.Should().NotBe(cardModelWithKeyword1);
+
+            noMatchesValues2Keyword3.Should().BeEquivalentTo(cardModelWithKeyword3);
+            noMatchesValues2Keyword3.Should().NotBe(cardModelWithKeyword3);
         }
     }
 }
