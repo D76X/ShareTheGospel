@@ -5,7 +5,7 @@ using Websites.Razor.ClassLibrary.Abstractions.Services;
 
 namespace Client.Pages.Models.Pages
 {
-    public class IndexModel : IIndexPage
+    public class IndexModel : IIndexModel
     {
         private readonly ICardService _cardService;
         private readonly ILanguageService _languageService;

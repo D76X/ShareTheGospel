@@ -32,7 +32,7 @@ builder.Services.AddTransient<ICardCatalog, CardCatalog>();
 builder.Services.AddTransient<ICardService, CardService>();
 
 // Models
-builder.Services.AddTransient<IIndexPage, IndexModel>();
+builder.Services.AddTransient<IIndexModel, IndexModel>();
 builder.Services.AddTransient<IAboutModel,AboutModel>();
 
 // Authentication
