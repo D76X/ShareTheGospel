@@ -133,13 +133,15 @@ The command must be executed from the parent folder that contains the subfolders
 This is the address on which the Client app is published locally by **SWA**, the port `5000` **must** agree 
 with what is specified in the configuration file `Client\Properties\launchSettings.json`. 
 The port number `5000` is a special number as this is the default port of the **Blazor Web Dev Server** on
-the localhost. Any other port nymber can be chosen, for example `5015`, but in order to be able to use the
+the localhost. Any other port number can be chosen, for example `5015`, but in order to be able to use the
 Hot Reload only the EP `http://localhost:5000` of the **Blazor Web Dev Server** on the localhost can be used.
 Any other port number such as for example `http://localhost:5015` will not provide the Hot Reload whether or not
 the watch switch is used in: [dotnet watch run].
-Furthemore if the [dotnet run] is used instead of [dotnet watch run] then also the the EP `http://localhost:5000` 
-of the **Blazor Web Dev Server** will not proviode Hot Reload.
+Furthermore if the [dotnet run] is used instead of [dotnet watch run] then also the the EP `http://localhost:5000` 
+of the **Blazor Web Dev Server** will not provide Hot Reload.
  
+The following is the excerpt from the the configuration file `Client\Properties\launchSettings.json` where the 
+`http` launch profile is defined.
 
 ```
 "http": {
@@ -219,11 +221,11 @@ Remove-Item bin -Recurse
 
 ---
 
-> Let's now put everythig together:
+> Let's now put everything together:
 
 The following shows how to:
 
-1. the **bin & obj** folder in the Api subfolder
+1. remove the **bin & obj** folder in the Api subfolder
 2. use `swa start` to start the client application on the localhost on port 5000 over http
 3. use `swa start` to start the supporting Azure Function API on port 7174
 
@@ -256,7 +258,7 @@ swa start http://localhost:5000 --run "dotnet watch run --launch-profile http --
 
 
 The **SWA Emulator** provides an endpoint to test out HTTPS locally.
-This endpoint is fixed at `https://localhost:7249`.
+This **endpoint is fixed** at `https://localhost:7249`.
 In order to run the WASM client application on HTTPS at this point the SWA command `swa start`
 must be provided with the correct configuration and options as illustrated below.
 This is separate from the `swa start` to run the site locally over HTTP that was discussed
@@ -269,9 +271,12 @@ When local testing over HTTPS is required then this `swa start` must be used.
 ```
 # the port to serve HTTPS traffic: 7249 seems to work with SWA 
 # this value must agree with the applicationUrl of the https profile in launchSettings.json 
+
 [Parameter(Mandatory=$false)]
 [int]$sslport=7249,
 
+[Parameter(Mandatory=$false)]
+[int]$apiport=7174
 
 swa start --ssl https://localhost:$sslport --run "dotnet watch run --launch-profile https --project Client/Client.csproj" --api-location Api --api-port $apiport
 ```
@@ -533,6 +538,22 @@ https://github.com/SyncfusionExamples/Blazor-FAQ-Samples/tree/master/Intercept%2
 https://stackoverflow.com/questions/45592581/cannot-debug-in-vs-code-by-attaching-to-chrome 
 https://stackoverflow.com/questions/56267303/blazor-client-side-debugging  
 https://stackoverflow.com/questions/64826309/blazor-two-way-binding-text-area-inside-component  
+
+---
+
+# Unit Tests
+
+[Xunit.DependencyInjection 9.6.0](https://www.nuget.org/packages/Xunit.DependencyInjection/)
+
+[moq: The most popular and friendly mocking library for .NET](https://github.com/devlooped/moq)  
+[moq: Quickstart](https://github.com/devlooped/moq/wiki/Quickstart)
+[Unit Testing: Moq Framework - Visual Studio ToolBox](https://learn.microsoft.com/en-us/shows/visual-studio-toolbox/unit-testing-moq-framework)  
+
+[Is it possible to use Dependency Injection with xUnit?](https://stackoverflow.com/questions/39131219/is-it-possible-to-use-dependency-injection-with-xunit)  
+[Implementation of Unit Test using xUnit and Moq in .NET Core 6 Web API](https://medium.com/@jaydeepvpatil225/implementation-of-unit-test-using-xunit-and-moq-in-net-core-6-web-api-539205f1d38f)  
+
+[How to use Moq to mock xUnit tests for a .NET project](https://www.youtube.com/watch?v=NEtEmHgJBDQ)  
+[How to mock the dependency injection object in unit test](https://stackoverflow.com/questions/68275461/how-to-mock-the-dependency-injection-object-in-unit-test)   
 
 ---
 

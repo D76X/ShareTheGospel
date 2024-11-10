@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Client.Catalogs;
+using Microsoft.Extensions.DependencyInjection;
+using Websites.Razor.ClassLibrary.Abstractions.Services;
 
 namespace PWS.Client.Test
 {
@@ -7,6 +9,7 @@ namespace PWS.Client.Test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IDependency, DependencyClass>();
+            services.AddTransient<ICardCatalog, CardCatalog>();
         }
     }
 }
