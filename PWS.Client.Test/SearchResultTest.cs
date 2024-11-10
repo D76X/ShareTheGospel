@@ -25,6 +25,8 @@ namespace PWS.Client.Test
 
             // assert
 
+            throw new NotImplementedException("must implement this test");
+
         }
 
         [Fact]
