@@ -34,6 +34,15 @@ namespace PWS.Client.Test
     /// </summary>
     public class MoqExampleTest
     {
+        [Fact]
+        public void Moq_Test05_Async()
+        {
+            // arrange
+
+            // act 
+
+            // assert
+        }
 
         [Fact]
         public void Moq_Test05_ThrowOnSpecificArgs()
@@ -42,28 +51,49 @@ namespace PWS.Client.Test
             var mock = new Mock<IFoo>();
             string throwArg1 = "reset";
             string throwArg2 = string.Empty;
-            string argExeptionMsg = "cannot use empty string as an argument";
+            string argExceptionMsg = "cannot use empty string as an argument";
 
-            // throwing when invoked with specific parameters
-            mock.Setup(foo => foo.DoSomething(throwArg1)).Throws<InvalidOperationException>();
-            mock.Setup(foo => foo.DoSomething(throwArg2)).Throws(new ArgumentException(argExeptionMsg));
+            // for any args return true
             mock.Setup(x => x.DoSomething(It.IsAny<string>())).Returns(true);
+
+            // but for specific args override by throwing a specific exception
+            mock.Setup(foo => foo.DoSomething(throwArg1)).Throws<InvalidOperationException>();
+            mock.Setup(foo => foo.DoSomething(throwArg2)).Throws(new ArgumentException(argExceptionMsg));
+            //mock.Setup(x => x.DoSomething(It.IsAny<string>())).Returns(true);
 
             // https://fluentassertions.com/exceptions/
             Func<bool> func1 = () => mock.Object.DoSomething(throwArg1);
             Func<bool> func2 = () => mock.Object.DoSomething(throwArg2);
-            
+
             // act
             var result3 = mock.Object.DoSomething("value1");
 
-            // act + assert
-            func1.Should().Throw<InvalidOperationException>();
-            func2.Should().Throw<AggregateException>().WithMessage(argExeptionMsg);
+            // assert
             result3.Should().BeTrue();
+
+            // act + assert
+            // https://fluentassertions.com/exceptions/
+
+            // style-1
+            mock.Object.Invoking(m => m.DoSomething(throwArg1))
+                .Should()
+                .Throw<InvalidOperationException>();
+
+            // style-2
+            func1.Should().Throw<InvalidOperationException>();
+
+            // style-1
+            mock.Object.Invoking(m => m.DoSomething(throwArg2))
+                .Should()
+                .Throw<ArgumentException>()
+                .WithMessage(argExceptionMsg);
+
+            // style-2
+            func2.Should().Throw<ArgumentException>().WithMessage(argExceptionMsg);
         }
 
         [Fact]
-        public void Moq_Test04_AccessInvocationArgs() 
+        public void Moq_Test04_AccessInvocationArgs()
         {
             // arrange
             var mock = new Mock<IFoo>();
@@ -76,7 +106,7 @@ namespace PWS.Client.Test
             var upperCaseValue = "ANYSTRING";
 
             // act
-            var result=mock.Object.DoSomethingStringy(upperCaseValue);
+            var result = mock.Object.DoSomethingStringy(upperCaseValue);
 
             // assert
             result.Should().NotBe(upperCaseValue);

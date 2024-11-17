@@ -1,6 +1,5 @@
 using Client.Pages.Models.Cards;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Websites.Razor.ClassLibrary.Abstractions;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Models;
@@ -8,27 +7,9 @@ using Websites.Razor.ClassLibrary.Models;
 
 namespace PWS.Client.Test
 {
-    
 
     public class SearchResultTest
     {
-        [Fact]
-        public void SearchService_Searches_CardCatalog()
-        {
-            // arrange
-            
-            // Moq Dependencies
-            // invoke UUT constructor
-            // resolve dependencies
-
-            // act
-
-            // assert
-
-            throw new NotImplementedException("must implement this test");
-
-        }
-
         [Fact]
         public void AzureCard_Is_Searchable()
         {
