@@ -11,6 +11,7 @@ namespace PWS.Client.Test
         bool DoSomething(string value);
         bool DoSomething(int number, string value);
         Task<bool> DoSomethingAsync();
+        Task<object> DoSomethingAsync2(string value);
         string DoSomethingStringy(string value);
         bool TryParse(string value, out string outputValue);
         bool Submit(ref Bar bar);
@@ -34,14 +35,38 @@ namespace PWS.Client.Test
     /// </summary>
     public class MoqExampleTest
     {
+        /// <summary>
+        /// https://github.com/devlooped/moq/wiki/Quickstart#matching-arguments
+        /// </summary>
         [Fact]
-        public void Moq_Test05_Async()
+        public async void Moq_Test06_MatchingArguments()
+        {
+        }
+
+        /// <summary>
+            /// https://github.com/devlooped/moq/wiki/Quickstart#async-methods
+            /// </summary>
+            [Fact]
+        public async void Moq_Test05_Async()
         {
             // arrange
+            var mock = new Mock<IFoo>();
+            mock.Setup(foo => foo.DoSomethingAsync().Result).Returns(true);
+            
+            var anonymous1 = new { Name = "anonymous1", Value=101 };
+            var anonymous2 = new { Name = "anonymous2", Value = 102 };
+            mock.Setup(foo => foo.DoSomethingAsync2(It.IsAny<string>()).Result).Returns(anonymous1);
+            mock.Setup(foo => foo.DoSomethingAsync2(nameof(anonymous2)).Result).Returns(anonymous2);
 
             // act 
+            var result0 = await mock.Object.DoSomethingAsync();
+            var result1 = await mock.Object.DoSomethingAsync2("some");
+            var result2 = await mock.Object.DoSomethingAsync2(nameof(anonymous2));
 
             // assert
+            result0.Should().BeTrue();
+            result1.Should().Be(anonymous1);
+            result2.Should().Be(anonymous2);
         }
 
         [Fact]
