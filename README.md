@@ -284,10 +284,11 @@ SWA CLI.
 All that is required is illustrated in the following examples:
 
 ```
-cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
+cd 'C:\VSProjects\MyProjetcs\Websites\Sites'
 
 .\swa.ps1       # start the SWA emulator with the http profile
-.\swa.ps1 -ssl  # start the SWA emulator with the https profile (must be on port: 7249)
+.\swa.ps1       -site `PWS` # start the SWA emulator with the http profile
+.\swa.ps1 -ssl  -site `STG` # start the SWA emulator with the https profile (must be on port: 7249)
 ```
 
 ```

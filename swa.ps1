@@ -1,4 +1,27 @@
-﻿param (
+﻿<#
+.Synopsis
+   runs the SWA CLI emulator
+.DESCRIPTION
+   runs the SWA CLI emulator wit HTTP(S) profiles and perform upkeeping
+.EXAMPLE
+    cd 'C:\VSProjects\MyProjetcs\Websites\Sites'
+   .\swa.ps1       # start the SWA emulator with the http profile
+   .\swa.ps1       -site `PWS` # start the SWA emulator with the http profile
+   .\swa.ps1 -ssl  -site `STG` # start the SWA emulator with the https profile (must be on port: 7249)
+.INPUTS
+   Inputs to this cmdlet (if any)
+.OUTPUTS
+   Output from this cmdlet (if any)
+.NOTES
+   General notes
+.COMPONENT
+   The component this cmdlet belongs to
+.ROLE
+   The role this cmdlet belongs to
+.FUNCTIONALITY
+   The functionality that best describes this cmdlet
+#>
+param (
     
     # if you want to run SSL locally
     [switch]$opentab,
