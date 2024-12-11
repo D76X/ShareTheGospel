@@ -10,15 +10,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "STG", "STG", "{93FADD34-604
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA4D2A5D-2966-4581-92F9-8B3449002669}"
+	ProjectSection(SolutionItems) = preProject
+		swa.ps1 = swa.ps1
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebsitesSharedLibraries", "WebsitesSharedLibraries", "{1DBEDEBD-9274-4A5E-AB96-19DA3B9F7573}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Razor.ClassLibrary", "WebsitesSharedLibraries\Websites.Razor.ClassLibrary\Websites.Razor.ClassLibrary.csproj", "{189EB274-554F-44CB-9BA1-6C215DCD003E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PWS", "PWS", "{42F163A6-1100-4397-A3B5-E9189E616908}"
-	ProjectSection(SolutionItems) = preProject
-		PWS\swa.ps1 = PWS\swa.ps1
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "PWS\Api\Api.csproj", "{E89BC13D-AAAF-40D2-9128-29FF75ED1E7E}"
 EndProject
