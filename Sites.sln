@@ -6,11 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "STG", "STG", "{93FADD34-6041-4959-A14B-A009DC2661CA}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA4D2A5D-2966-4581-92F9-8B3449002669}"
 	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
 		swa.ps1 = swa.ps1
 	EndProjectSection
 EndProject
