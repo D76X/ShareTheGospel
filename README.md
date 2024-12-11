@@ -244,9 +244,14 @@ swa start http://localhost:5000 --run "dotnet watch run --launch-profile http --
 `swa start http://localhost:5000`
 
 and any of its variants starts the **Blazor WebAssembly Dev Server** as this is by default at the EP `http://localhost:5000`.
-However, SWA provides a **Emulated Service** at the EP: `http://localhost:4280`.
-This behaves as the the **Blazor WebAssembly Dev Server** and therefore provides Hot Reload when the [dotnet watch run] is used
-as in the following example: 
+
+However, SWA provides a **Emulated Service** also at the EP: `http://localhost:4280` and this endpoint is always available
+for local testing even when you start use `swa start http://localhost:5000`.
+
+The EP `http://localhost:4280` behaves as the the **Blazor WebAssembly Dev Server** and therefore provides Hot Reload when 
+the [dotnet watch run] is used as in the example below. However, the `http://localhost:4280` is **special** as it offers 
+out-of-the-box integration of authentication emulation for the default authentication providers - more information on this 
+is provided later in this document.
 
 ```
 swa start http://localhost:5000 --run "dotnet watch run --launch-profile http --project Client/Client.csproj" --api-location Api --api-port 7174
@@ -259,14 +264,31 @@ swa start http://localhost:5000 --run "dotnet watch run --launch-profile http --
 
 The **SWA Emulator** provides an endpoint to test out HTTPS locally.
 This **endpoint is fixed** at `https://localhost:7249`.
-In order to run the WASM client application on HTTPS at this point the SWA command `swa start`
-must be provided with the correct configuration and options as illustrated below.
-This is separate from the `swa start` to run the site locally over HTTP that was discussed
-earlier, that is it is only possible to run the client app in HTTP or HTTPS at one time.
+
+In order to run the WASM client application on HTTPS at this EP the SWA command 
+`swa start`must be provided with the correct configuration and options as 
+illustrated below.
+
+This is separate from the `swa start` to run the site locally over HTTP that was 
+discussed earlier.
+
+It is possible to run the client app in HTTP or HTTPS at any one time.
 
 When local testing over HTTPS is required then this `swa start` must be used.
 
-> the file `swa.ps1` with the command to start the SWA emulator with HTTPS
+> the file `swa.ps1` included in this solution offers a convenient way to start 
+the SWA emulator with HTTPS with the right commands and to perform some necessary
+upkeeping operations that are not mentioned in the official documentation of the
+SWA CLI.
+
+All that is required is illustrated in the following examples:
+
+```
+cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
+
+.\swa.ps1       # start the SWA emulator with the http profile
+.\swa.ps1 -ssl  # start the SWA emulator with the https profile (must be on port: 7249)
+```
 
 ```
 # the port to serve HTTPS traffic: 7249 seems to work with SWA 
@@ -281,7 +303,11 @@ When local testing over HTTPS is required then this `swa start` must be used.
 swa start --ssl https://localhost:$sslport --run "dotnet watch run --launch-profile https --project Client/Client.csproj" --api-location Api --api-port $apiport
 ```
 
-> the configuration file `Client\Properties\launchSettings.json`
+The configuration file `Client\Properties\launchSettings.json` for each project 
+provides the http and https profiles that are used by the SWA CLI emulator.
+The following is an example of https profile which has the only restriction 
+that port `7249` must be used for local https as this is where the SWA CLI
+HTTPS enable web server runs by default and cannot be changed.
 
 ```
 "https": {
@@ -298,12 +324,49 @@ swa start --ssl https://localhost:$sslport --run "dotnet watch run --launch-prof
 
 ---
 
+# SWA CLI Error: Could not find openssl on your system on this path:  
+
+It may happen that the following command that attempts to start the SWA CLI HTTPS
+emulator may result in an error like the one below:
+
+```
+cd 'C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
+.\swa.ps1 -ssl  # start the SWA emulator with the https profile (must be on port: 7249)
+
+SWA CLI Error: Could not find openssl on your system on this path: .....
+cannot find openssl in folder ...  
+C:\Users\pb00270\AppData\Roaming\nvm\v18.12.0\node_modules\@azure\static-web-apps-cli\node_modules\pem
+```
+
+This problem is fixed by installing the **OpenSSL** even when [Node Version Manager](https://github.com/nvm-sh/nvm) 
+is used to support multiple NodeJs versions on the same OS.
+
+[How to install OpenSSL in windows 10?](https://stackoverflow.com/questions/50625283/how-to-install-openssl-in-windows-10)  
+
+Installing **OpenSSL** on Windows may be complicated as it can be seen by reading the 
+Stack Overflow article given above. However, there is a easy and painless option that works 
+and that is one of the solutions offered in the same article.
+
+From an Admin PowerShell console install [Chocolatey](https://chocolatey.org/install) or 
+upgrade it [Chocolatey: Upgrade](https://docs.chocolatey.org/en-us/choco/commands/upgrade/).
+Then use Chocolatey to install **OpenSLL** for you without having to know the details of 
+a complete setup.
+
+```
+choco upgrade chocolatey
+choco install openssl
+```
+
+Once this is done the and **OpenSSL** is installed the SWA CLI emulatro should work also 
+with the built-in HTTPS server without the error mentioned above.
+
+---
+
 ## Template Structure
 
 - **Client**: The Blazor WebAssembly sample application
 - **Api**: A C# Azure Functions API, which the Blazor application will call
 - **Shared**: A C# class library with a shared data model between the Blazor and Functions application
-
 
 ---
 
@@ -360,13 +423,13 @@ This application can be deployed to [Azure Static Web Apps](https://docs.microso
 
 [SWA CLI Local Authentication](https://azure.github.io/static-web-apps-cli/docs/cli/local-auth/)
 
-Local Authentication is available locally through the SWA emulator exclusively on the endpoints below:
+Local Authentication is available locally through the SWA emulator exclusively on the fixed endpoints below:
 
 http://localhost:4280/.auth/login/<PROVIDER_NAME>
 http://localhost:4280/.auth/login/aad
 http://localhost:4280/.auth/login/github
 
-Once you authenticate at one of these endpoints its is possible to retrive the details for the
+Once you authenticate at one of these endpoints its is possible to retrieve the details for the
 locally authenticated users at the endpoint below:
 
 http://localhost:4280/.auth/me
@@ -391,8 +454,8 @@ http://localhost:4280/.auth/me
 > Important: 
 
 It **must** be on the port **4280** which is where the **SWA emulator** runs as a default.
-It **will not work**, for example on portt **5000** which is the default port for the 
-**Blazore Dev Server** - here you get the message: 
+It **will not work**, for example on port **5000** which is the default port for the 
+**Blazor Dev Server** - here you get the message: 
 
 `Sorry, there's nothing at this address.`
 
@@ -403,19 +466,16 @@ http://localhost:5000/.auth/login/github
 > Other References:
 
 [How to setup Built-in Authentication for Azure Static Web Apps with Azure Active Directory](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/how-to-setup-built-in-authentication-for-azure-static-web-apps/ba-p/3734709)  
-
 [Authenticating in Azure Static Web Apps](https://www.youtube.com/watch?v=KjSY9vmGz24&t=928s)  
-
 [Build a website using Azure Static Web Apps and Authenticate with AAD](https://www.youtube.com/watch?v=jnwRpEM6GR8)  
-
 [.NET 8 Blazor Authentication & Authorization with Identity](https://www.youtube.com/watch?v=tNzSuwV62Lw)  
+
 ---
 
 ## Use Multiple Accounts with VS Code
 
 [Git Config User Profiles](https://marketplace.visualstudio.com/items?itemName=onlyutkarsh.git-config-user-profiles)  
 [How to configure multiple git accounts in Visual Studio Code workspace](https://stackoverflow.com/questions/55141142/how-to-configure-multiple-git-accounts-in-visual-studio-code-workspace)
-
 
 ---
 
