@@ -135,8 +135,8 @@ with what is specified in the configuration file `Client\Properties\launchSettin
 The port number `5000` is a special number as this is the default port of the **Blazor Web Dev Server** on
 the localhost. Any other port number can be chosen, for example `5015`, but in order to be able to use the
 Hot Reload only the EP `http://localhost:5000` of the **Blazor Web Dev Server** on the localhost can be used.
-Any other port number such as for example `http://localhost:5015` will not provide the Hot Reload whether or not
-the watch switch is used in: [dotnet watch run].
+Any other port number such as for example `http://localhost:5015` will not provide the Hot Reload whether or 
+not the watch switch is used in: [dotnet watch run].
 Furthermore if the [dotnet run] is used instead of [dotnet watch run] then also the the EP `http://localhost:5000` 
 of the **Blazor Web Dev Server** will not provide Hot Reload.
  
@@ -470,6 +470,13 @@ http://localhost:5000/.auth/login/github
 [Authenticating in Azure Static Web Apps](https://www.youtube.com/watch?v=KjSY9vmGz24&t=928s)  
 [Build a website using Azure Static Web Apps and Authenticate with AAD](https://www.youtube.com/watch?v=jnwRpEM6GR8)  
 [.NET 8 Blazor Authentication & Authorization with Identity](https://www.youtube.com/watch?v=tNzSuwV62Lw)  
+
+# [ASP.NET Core Blazor authentication and authorization](https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#client-side-blazor-authentication)  
+
+[Server-side Blazor authentication](https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#server-side-blazor-authentication)  
+[Client-side Blazor authentication](https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#client-side-blazor-authentication)
+[Securing a Blazor WASM app on Azure Static Web App - Part 1](https://www.hackmum.in/blog/azureswa_cli_customauthentication)  
+[Securing a Blazor WASM app on Azure Static Web App - Part 2](https://www.hackmum.in/blog/azureswa_customauthentication_part2)  
 
 ---
 
