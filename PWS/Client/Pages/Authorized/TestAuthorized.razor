@@ -1,0 +1,100 @@
+﻿@page "/authorized/test"
+@page "/authorized/test/en"
+@page "/authorized/test/de"
+@page "/authorized/test/it"
+@using Client.Shared
+@layout MainLayout
+@implements IDisposable
+
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@attribute [Authorize]
+
+<h1>ClaimsPrincipal Data</h1>
+<button @onclick="GetClaimsPrincipalData">Get ClaimsPrincipal Data</button>
+
+@code {    
+    
+    [Inject]
+    public ITestAuthenticatedModel? Model { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Model!.OnStateHasChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        Model!.OnStateHasChanged -= StateHasChanged;
+        Model!.Dispose();
+    }
+
+    /*
+    Client-side Blazor authentication
+        https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#client-side-blazor-authentication
+    Obtain a user's claims principal data
+        https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#obtain-a-users-claims-principal-data
+    */
+    private string? authMessage;
+    private string? surname;
+    private IEnumerable<Claim> claims = Enumerable.Empty<Claim>();
+
+    private async Task GetClaimsPrincipalData()
+    {
+        var authState = await AuthenticationStateProvider
+            .GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity is not null && user.Identity.IsAuthenticated)
+        {
+            authMessage = $"{user.Identity.Name} is authenticated.";
+            claims = user.Claims;
+            surname = user.FindFirst(c => c.Type == ClaimTypes.Surname)?.Value;
+        }
+        else
+        {
+            authMessage = "The user is NOT authenticated.";
+        }
+    }
+}
+
+<div class="container-fluid">
+    <main>  
+        
+
+        @* --------------------------------------------------- *@
+
+        @* 
+        Client-side Blazor authentication
+        https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#client-side-blazor-authentication
+        Obtain a user's claims principal data
+        https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#obtain-a-users-claims-principal-data 
+        *@
+
+        @if (claims.Any())
+        {
+            <ul>
+                @foreach (var claim in claims)
+                {
+                    <li>@claim.Type: @claim.Value</li>
+                }
+            </ul>
+        }
+        
+        @* --------------------------------------------------- *@
+
+        @if (@Model!.IsEnglish)
+        {
+            <h1>@nameof(TestAuthorized):@Model.SelectedLanguage</h1>
+        }
+        @if (@Model!.IsDeutsch)
+        {
+            <h1>@nameof(TestAuthorized):@Model.SelectedLanguage</h1>
+        }
+        @if (@Model!.IsItalian)
+        {
+            <h1>@nameof(TestAuthorized):@Model.SelectedLanguage</h1>
+        }
+    </main>
+</div>

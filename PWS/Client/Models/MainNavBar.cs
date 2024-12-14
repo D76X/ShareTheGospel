@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Client.Translations;
+﻿using Client.Translations;
 using Websites.Razor.ClassLibrary.Components;
 
 namespace Client.Models

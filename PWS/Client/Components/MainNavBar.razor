@@ -2,9 +2,26 @@
 @using Websites.Razor.ClassLibrary.Components
 @inherits MainNavBarBase
 
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
 @code
 {
     public Models.MainNavBar Model { get; } = new() { SelectedLanguage = LanguageSelectorBase.SelectedLanguage };
+
+    private bool? isAuthenticated;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider
+            .GetAuthenticationStateAsync();
+
+        var user = authState.User;
+
+        if (user.Identity is not null && user.Identity.IsAuthenticated)
+        {
+            isAuthenticated = true;
+        }
+    }
 }
 
 <nav class="navbar navbar-expand-md fixed-top bg-azure">
@@ -48,8 +65,14 @@
             <SearchBox></SearchBox>
 
             <div class=" text-center m-1">
-                <button type="button" class="btn btn-outline-primary">Login</button>
-                <button type="button" class="btn btn-outline-primary">Sign-up</button>
+                @if (isAuthenticated.HasValue && isAuthenticated.Value)
+                {
+                    <a href="/.auth/logout"><i class="bi bi-box-arrow-left h1"></i></a>
+                }
+                else
+                {
+                    <a href="/.auth/login/aad"><i class="bi bi-box-arrow-right h1"></i></a>
+                }
             </div>
         </div>
     </div>
