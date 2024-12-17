@@ -41,6 +41,7 @@ param (
 $path="C:\VSProjects\MyProjetcs\Websites\Sites\PWS\Client\obj\"+$configuration+"\"+$targetFramework+"\scopedcss\bundle\"+$assemblyName+".styles.css"
 $destination="C:\VSProjects\MyProjetcs\Websites\Sites\"+$site+"\"+$assemblyName+"\wwwroot\css"
 
+# C:\VSProjects\MyProjetcs\Websites\Sites\PWS\Client\obj\Debug\net8.0\scopedcss\projectbundle
 Write-Host "copy: " $path
 Write-Host "to: " $destination
 
