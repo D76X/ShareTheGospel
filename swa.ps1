@@ -45,8 +45,7 @@ param (
     [int]$apiport=7174,
 
     [Parameter(Mandatory=$false)]
-    [string]$site='PWS'
-    # [string]$location='C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
+    [string]$site='PWS'    
 )
 
 $location='C:\VSProjects\MyProjetcs\Websites\Sites\PWS'

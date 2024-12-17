@@ -18,6 +18,13 @@
 
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/bootstrap-override.css" rel="stylesheet" />
+
+    <!--ASP.NET Core Blazor CSS isolation-->
+    <!-- https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation?view=aspnetcore-9.0#css-isolation-bundling -->
+    <!--Blazor CSS Isolation not working and not adding scope identifiers after migrating to .NET 5.0 and using SASS-->
+    <!-- https://stackoverflow.com/questions/64833632/blazor-css-isolation-not-working-and-not-adding-scope-identifiers-after-migratin -->
+    <link href="css/Client.styles.css" rel="stylesheet" />
+
 </head>
 
 <body>
