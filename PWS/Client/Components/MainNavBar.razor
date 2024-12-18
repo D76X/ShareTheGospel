@@ -67,17 +67,18 @@
             <div class=" text-center m-1">
                 @if (isAuthenticated.HasValue && isAuthenticated.Value)
                 {
-                    <a href="/.auth/logout"><i class="bi bi-box-arrow-left h1"></i></a>
+                    <a href="/.auth/logout" title="Log out"><i class="bi bi-box-arrow-left h1"></i></a>
                 }
                 else
                 {
-                    <a href="/.auth/login/aad"><i class="bi bi-box-arrow-right h1"></i></a>
+                    <a><i href="javascript:undefined"
+                          title="Log in"
+                          class="bi bi-box-arrow-right h1" 
+                          data-bs-toggle="modal"
+                          data-bs-target="#loginModal" style="color:#0077cc"></i></a>
                 }
             </div>
         </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-            Login
-        </button>
     </div>
 </nav>
 
@@ -91,10 +92,10 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="d-grid gap-2 mb-3">
-                        <a href="#" class="btn btn-social btn-microsoft" id="signin-btn-microsoft">
+                        <a href="/.auth/login/aad" class="btn btn-social btn-microsoft" id="signin-btn-microsoft">
                             <i class="bi bi-microsoft me-2"></i> Sign in with Microsoft
                         </a>
-                        <a href="#" class="btn btn-social btn-github" id="signin-btn-github">
+                        <a href="/.auth/login/github" class="btn btn-social btn-github" id="signin-btn-github">
                             <i class="bi bi-github me-2"></i> Sign in with GitHub
                         </a>
                         <a href="#" class="btn btn-social btn-google" id="signin-btn-google">
