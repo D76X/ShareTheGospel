@@ -1,4 +1,13 @@
-﻿.btn-social {
+﻿#signin-btn-microsoft:hover, 
+#signin-btn-github:hover, 
+#signin-btn-google:hover, 
+#signin-btn-facebook:hover, 
+#signin-btn-twitter:hover {
+    background: #abc;
+    border: 1px solid #fff;
+}
+
+.btn-social {
      color: #fff;
      padding: 10px 15px;
  }
@@ -46,5 +55,3 @@
     left: 0;
     z-index: 1;
 }
-
-

@@ -1,6 +1,15 @@
 @import '_content/Websites.Razor.ClassLibrary/Websites.Razor.ClassLibrary.cfr5tyep06.bundle.scp.css';
 
 /* /Components/MainNavBar.razor.rz.scp.css */
+#signin-btn-microsoft:hover[mnb-20241217-1], 
+#signin-btn-github:hover[mnb-20241217-1], 
+#signin-btn-google:hover[mnb-20241217-1], 
+#signin-btn-facebook:hover[mnb-20241217-1], 
+#signin-btn-twitter:hover[mnb-20241217-1] {
+    background: #abc;
+    border: 1px solid #fff;
+}
+
 .btn-social[mnb-20241217-1] {
      color: #fff;
      padding: 10px 15px;
@@ -49,8 +58,6 @@
     left: 0;
     z-index: 1;
 }
-
-
 /* /Pages/Tests/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-89ebs4jwfl] {
     background-color: rgba(255, 255, 255, 0.1);
