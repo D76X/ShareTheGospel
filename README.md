@@ -493,12 +493,42 @@ http://localhost:5000/.auth/login/github
 
 ---
 
-# Balzoer CSS Isolation
+# Blazor CSS Isolation
 
 [ASP.NET Core Blazor CSS isolation](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation?view=aspnetcore-9.0)
 [Blazor Web Assembly CSS isolation doesn't work](https://stackoverflow.com/questions/78171904/blazor-web-assembly-css-isolation-doesnt-work)  
 [Blazor CSS Isolation not working and not adding scope identifiers after migrating to .NET 5.0 and using SASS](https://stackoverflow.com/questions/64833632/blazor-css-isolation-not-working-and-not-adding-scope-identifiers-after-migratin)  
 
+In this project the identifiers that are created by the .Net Compiler for the CSS associated to 
+Blazor components are customized so that the generation of random identifiers that is used as 
+default by the the .net compiler is replaced by identifiers that are controlled at a component
+level. 
+
+This is done as it results to have a much simpler test-deploy workflow, with fewer errors as 
+the default mechanism has proven to be not very reliable, difficult to understand and control
+and prone to breaking with new releases of .Net.
+
+[Blazor CSS Isolation: Customize scope identifier format](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation?view=aspnetcore-9.0#customize-scope-identifier-format)  
+
+This is achieved by editing the `csproj` file as shown by the example below:
+
+`C:\VSProjects\MyProjetcs\Websites\Sites\PWS\Client\Client.csproj`
+
+```
+<ItemGroup>
+    <None Update="Components/MainNavBar.razor.css" CssScope="mnb-20241217-1" />
+</ItemGroup>
+```
+
+The `CssScope="mnb-20241217-1"` applied to `Components/MainNavBar.razor.css` results 
+in the identifier `mnb-20241217-1` being applied to the HTML element of the corresponding
+component `Components/MainNavBar.razor`.
+
+## Deploy the CSS Isolation Bundle
+
+The PowerShell file below contains teh logic that ...
+
+`css-isolation-client-bundle-copy.ps1`
 
 ---
 
