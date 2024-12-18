@@ -480,6 +480,34 @@ http://localhost:5000/.auth/login/github
 
 ---
 
+# Login
+
+[Bootstrap: Modal](https://getbootstrap.com/docs/4.4/components/modal/)  
+[Bootstrap: Open an Modal window from Navigation bar](https://stackoverflow.com/questions/23685837/open-an-modal-window-from-navigation-bar)  
+[Bootstrap 5 Login Modal](https://bootstrapexamples.com/@anonymous/bootstrap-5-login-modal)  
+
+[Sign in with Microsoft Button Design Guidelines](https://learn.microsoft.com/en-us/entra/identity-platform/howto-add-branding-in-apps)  
+
+[Bootstrap: Login form with social login buttons](https://bootstrapexamples.com/@juanmz/login-form-with-social-login-buttons)  
+[CSS hover not working, inside a bootstrap modal overlay](https://stackoverflow.com/questions/33233609/css-hover-not-working-inside-a-bootstrap-modal-overlay) 
+
+---
+
+# Balzoer CSS Isolation
+
+[ASP.NET Core Blazor CSS isolation](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation?view=aspnetcore-9.0)
+[Blazor Web Assembly CSS isolation doesn't work](https://stackoverflow.com/questions/78171904/blazor-web-assembly-css-isolation-doesnt-work)  
+[Blazor CSS Isolation not working and not adding scope identifiers after migrating to .NET 5.0 and using SASS](https://stackoverflow.com/questions/64833632/blazor-css-isolation-not-working-and-not-adding-scope-identifiers-after-migratin)  
+
+
+---
+
+# Blazor Bootstrap Libraries
+
+[Getting started - Blazor WebAssembly (.NET 8)](https://docs.blazorbootstrap.com/getting-started/blazor-webassembly-net-8)  
+
+---
+
 ## Use Multiple Accounts with VS Code
 
 [Git Config User Profiles](https://marketplace.visualstudio.com/items?itemName=onlyutkarsh.git-config-user-profiles)  
