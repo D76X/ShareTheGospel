@@ -4,8 +4,8 @@
 .DESCRIPTION
    # ASP.NET Core Blazor CSS isolation
    https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation?view=aspnetcore-9.0#css-isolation-bundling
-.EXAMPLE
-   .\css-isolation-client-bundle-copy.ps1
+.EXAMPLE   
+   .\css-isolation-client-bundle-copy.ps1 -site PWS
    .\css-isolation-client-bundle-copy.ps1 -site STG -$configuration Release
 .INPUTS
    Inputs to this cmdlet (if any)
@@ -22,7 +22,7 @@
 #>
 param (   
 
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [string]$site='PWS',
     # [string]$location='C:\VSProjects\MyProjetcs\Websites\Sites\PWS'
 
