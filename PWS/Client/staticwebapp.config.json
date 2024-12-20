@@ -12,5 +12,16 @@
       "route": "/custom/*",
       "allowedRoles": [ "custom" ]
     }
-  ]
+  ],
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/981b07d1-b261-4c3e-a400-b86f7809d9bc/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET_APP_SETTING_NAME"
+        }
+      }
+    }
+  }
 }
