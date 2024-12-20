@@ -468,15 +468,26 @@ http://localhost:5000/.auth/login/github
 
 [How to setup Built-in Authentication for Azure Static Web Apps with Azure Active Directory](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/how-to-setup-built-in-authentication-for-azure-static-web-apps/ba-p/3734709)  
 [Authenticating in Azure Static Web Apps](https://www.youtube.com/watch?v=KjSY9vmGz24&t=928s)  
-[Build a website using Azure Static Web Apps and Authenticate with AAD](https://www.youtube.com/watch?v=jnwRpEM6GR8)  
+
 [.NET 8 Blazor Authentication & Authorization with Identity](https://www.youtube.com/watch?v=tNzSuwV62Lw)  
 
 # [ASP.NET Core Blazor authentication and authorization](https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#client-side-blazor-authentication)  
 
 [Server-side Blazor authentication](https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#server-side-blazor-authentication)  
 [Client-side Blazor authentication](https://learn.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-8.0&tabs=visual-studio#client-side-blazor-authentication)
+
 [Securing a Blazor WASM app on Azure Static Web App - Part 1](https://www.hackmum.in/blog/azureswa_cli_customauthentication)  
 [Securing a Blazor WASM app on Azure Static Web App - Part 2](https://www.hackmum.in/blog/azureswa_customauthentication_part2)  
+
+# Custom Authentication
+
+[Custom authentication in Azure Static Web Apps](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-custom?tabs=aad%2Cinvitations)  
+[Blazor Web Assembly Static Web App Custom Authentication](https://www.reddit.com/r/dotnet/comments/1cyjghv/need_help_setting_up_authentication_for_azure/)
+
+# Custom Authentication with Microsoft Account on Microsoft Entra ID
+
+[Build a website using Azure Static Web Apps and Authenticate with AAD-Doug Does Tech](https://www.youtube.com/watch?v=jnwRpEM6GR8)  
+[Azure function app secured by AAD: You do not have permission to view this directory or page](https://learn.microsoft.com/en-us/answers/questions/93243/azure-function-app-secured-by-aad-you-do-not-have)
 
 ---
 
