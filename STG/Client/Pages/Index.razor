@@ -2,6 +2,7 @@
 @page "/en"
 @page "/index"
 @page "/index/en"
+@using Client.Components
 @using Client.Shared
 @using Client.Catalogs
 @implements IDisposable
@@ -23,48 +24,55 @@
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">The Guide on How to live forever in Heaven</h1>
+                    <h1 class="fw-light">How to live forever in Heaven</h1>
+                    <p class="lead text-muted">&#8220;Today, if you hear his voice, do not harden your hearts as you did in the rebellion.&#8221;</p>
+                    <a href="https://www.bible.com/bible/111/HEB.3.15.NIV" class="anchor-plain" target="_blank">
+                        <footer class="blockquote-footer text-end">Hebrews 3:15 <cite title="Source Title">NIV</cite></footer>
+                    </a>
                 </div>
             </div>
             <blockquote class="blockquote text-justify">
                 <p class="mb-3">
-                    This is a <b>free guide</b> that in few simple steps explains how you can live forever after you die.
-                    It takes you only five minutes to guarantee that you will go to Heaven and live there forever. 
-                    No matter who you are as today, even if you are the worst of the worst, you **can** have this gift 
-                    today, right now, if you want it and will cost you nothing at all.
-                </p>
-
-                <p class="mb-3">
-                    There is no control over when this event occurs or the circumstances that lead
-                    to our death, it is just a fact of life that everyone must die and it will certainly
-                    happen to you one day.
-
-                    People avoid thinking and talking about it, if possible, and try to "deal" with it somehow.
-
-                    One example is to push it farther in the future, another is to accept it as a natural event
-                    or try not to think and worry about it, some try to ignore it altogether as if it is something that happens to others, not to them.
-
-                    Therefore most people focus on their life and avoid the fruitless worry about their death
-                    as no one can control, influence or change this fact. However, the thought of it does not
-                    completely go away and sticks at the back of our minds as its meaning and importance
-                    eludes us for most of our lives.
+                    This is a <b>free guide</b> that explains how you can live forever after you die.
+                    It takes you only five minutes to guarantee that you will go to Heaven and live there forever.
+                    No matter who you are today or what you have done with your life so far, how bad you have been,
+                    even if you are the worst of the worst of human kind, you <b>can</b> have this gift today, right now,
+                    if you want it and will cost you nothing at all.
                 </p>
                 <p>
-                    I invite you today to instead take a moment to seriously consider what will happen to you on that day.
-                    The day you die all will be lost, what you have done you will no longer be able to change it, to improve
-                    it, fix it, there will be no second chance. Furthermore, all your plans and expectations will no longer
-                    mean anything and all that you have achieved will also mean little as the very day of your death you will
-                    begin at best to be a memory in those you leave behind and as such you will soon fade and eventually
-                    disappear in the fold of time, no matter how great and high up in the history of mankind you have managed
-                    to place yourself.
+                    I know that you are busy and you'd rather do something else today and go about your business,
+                    therefore you can find here below the short answer to the question <b><i>"what fo I have to do to get it?"</i></b>.
+                    You can, of course, come back to this site whenever you wish to find out more and to try to understand
+                    why it is so.
                 </p>
-                <p>
-                    <b>It will be all gone.</b>
-                </p>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed d-block text-center"
+                                    id="btn-quick-list"
+                                    type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne"
+                                    aria-expanded="false"
+                                    aria-controls="flush-collapseOne" 
+                                    style="font-size : 20px; width: 100%; height: 100px;">
+                                The Quick List
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <p>
+                                    <div>
+                                        <GradientList></GradientList>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </blockquote>
         </section>
-        
-        <section class="py-5 text-center container">
+
+        @* <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">God's Invitation</h1>
@@ -85,7 +93,8 @@
 
                 </p>
             </blockquote>
-        </section>
+        </section> *@
+
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -110,3 +119,11 @@
         </div>
     </main>
 </div>
+
+<style>
+    #btn-quick-list::after {
+        position: absolute;
+        z-index: 100;
+        right: 16px;
+    }
+</style>

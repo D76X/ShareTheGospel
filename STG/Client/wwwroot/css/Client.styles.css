@@ -1,0 +1,236 @@
+@import '_content/Websites.Razor.ClassLibrary/Websites.Razor.ClassLibrary.cfr5tyep06.bundle.scp.css';
+
+/* /Components/GradientList.razor.rz.scp.css */
+ol.gradient-list > li[gl-20241220-1], ol.gradient-list > li[gl-20241220-1]::before {
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+}
+
+ol.gradient-list[gl-20241220-1] {
+    counter-reset: gradient-counter;
+    list-style: none;
+    margin: 1.75rem 0;
+    padding-left: 1rem;
+}
+
+    ol.gradient-list > li[gl-20241220-1] {
+        background: white;
+        border-radius: 0 0.5rem 0.5rem 0.5rem;
+        counter-increment: gradient-counter;
+        margin-top: 1rem;
+        min-height: 3rem;
+        padding: 1rem 1rem 1rem 3rem;
+        position: relative;
+    }
+
+        ol.gradient-list > li[gl-20241220-1]::before, ol.gradient-list > li[gl-20241220-1]::after {
+            background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%);
+            border-radius: 1rem 1rem 0 1rem;
+            content: '';
+            height: 3rem;
+            left: -1rem;
+            overflow: hidden;
+            position: absolute;
+            top: -1rem;
+            width: 3rem;
+        }
+
+        ol.gradient-list > li[gl-20241220-1]::before {
+            align-items: flex-end;
+            content: counter(gradient-counter);
+            color: #1d1f20;
+            display: flex;
+            font: 900 1.5em/1 'Montserrat';
+            justify-content: flex-end;
+            padding: 0.125em 0.25em;
+            z-index: 1;
+        }
+
+        ol.gradient-list > li:nth-child(10n+1)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.2) 0%, rgba(253, 220, 50, 0.2) 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+2)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.4) 0%, rgba(253, 220, 50, 0.4) 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+3)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.6) 0%, rgba(253, 220, 50, 0.6) 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+4)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.8) 0%, rgba(253, 220, 50, 0.8) 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+5)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, #a2ed56 0%, #fddc32 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+6)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.8) 0%, rgba(253, 220, 50, 0.8) 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+7)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.6) 0%, rgba(253, 220, 50, 0.6) 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+8)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.4) 0%, rgba(253, 220, 50, 0.4) 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+9)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.2) 0%, rgba(253, 220, 50, 0.2) 100%);
+        }
+
+        ol.gradient-list > li:nth-child(10n+10)[gl-20241220-1]:before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0) 0%, rgba(253, 220, 50, 0) 100%);
+        }
+
+        ol.gradient-list > li + li[gl-20241220-1] {
+            margin-top: 2rem;
+        }
+
+/* /Pages/Tests/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-89ebs4jwfl] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-89ebs4jwfl] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-89ebs4jwfl] {
+    font-size: 1.1rem;
+}
+
+.oi[b-89ebs4jwfl] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-89ebs4jwfl] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-89ebs4jwfl] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-89ebs4jwfl] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-89ebs4jwfl]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-89ebs4jwfl]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-89ebs4jwfl]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-89ebs4jwfl] {
+        display: none;
+    }
+
+    .collapse[b-89ebs4jwfl] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}
+/* /Pages/Tests/XMainLayout.razor.rz.scp.css */
+.page[b-4h7w51u7qo] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-4h7w51u7qo] {
+    flex: 1;
+}
+
+.sidebar[b-4h7w51u7qo] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-4h7w51u7qo] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-4h7w51u7qo]  a, .top-row[b-4h7w51u7qo]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-4h7w51u7qo]  a:hover, .top-row[b-4h7w51u7qo]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-4h7w51u7qo]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-4h7w51u7qo] {
+        display: none;
+    }
+
+    .top-row.auth[b-4h7w51u7qo] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-4h7w51u7qo]  a, .top-row[b-4h7w51u7qo]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-4h7w51u7qo] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-4h7w51u7qo] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-4h7w51u7qo] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-4h7w51u7qo]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-4h7w51u7qo], article[b-4h7w51u7qo] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}

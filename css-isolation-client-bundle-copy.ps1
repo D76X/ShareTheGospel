@@ -38,7 +38,7 @@ param (
 
 # ASP.NET Core Blazor CSS isolation
 # https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation?view=aspnetcore-9.0#css-isolation-bundling
-$path="C:\VSProjects\MyProjetcs\Websites\Sites\PWS\Client\obj\"+$configuration+"\"+$targetFramework+"\scopedcss\bundle\"+$assemblyName+".styles.css"
+$path="C:\VSProjects\MyProjetcs\Websites\Sites\"+$site+"\Client\obj\"+$configuration+"\"+$targetFramework+"\scopedcss\bundle\"+$assemblyName+".styles.css"
 $destination="C:\VSProjects\MyProjetcs\Websites\Sites\"+$site+"\"+$assemblyName+"\wwwroot\css"
 
 # C:\VSProjects\MyProjetcs\Websites\Sites\PWS\Client\obj\Debug\net8.0\scopedcss\projectbundle

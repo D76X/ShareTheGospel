@@ -10,8 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "STG", "STG", "{93FADD34-604
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA4D2A5D-2966-4581-92F9-8B3449002669}"
 	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
 		css-isolation-client-bundle-copy.ps1 = css-isolation-client-bundle-copy.ps1
+		README.md = README.md
 		swa.ps1 = swa.ps1
 	EndProjectSection
 EndProject
