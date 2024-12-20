@@ -20,7 +20,7 @@ ol.gradient-list {
     }
 
         ol.gradient-list > li::before, ol.gradient-list > li::after {
-            background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%);
+            background: linear-gradient(135deg, #FF8333 0%, #FFA022 100%);
             border-radius: 1rem 1rem 0 1rem;
             content: '';
             height: 3rem;
@@ -43,46 +43,45 @@ ol.gradient-list {
         }
 
         ol.gradient-list > li:nth-child(10n+1):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0.2) 0%, rgba(253, 220, 50, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0.2) 0%, rgba(255, 219, 1, 0.2) 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+2):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0.4) 0%, rgba(253, 220, 50, 0.4) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0.4) 0%, rgba(255, 219, 1, 0.4) 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+3):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0.6) 0%, rgba(253, 220, 50, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0.6) 0%, rgba(255, 219, 1, 0.6) 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+4):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0.8) 0%, rgba(253, 220, 50, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0.8) 0%, rgba(255, 219, 1, 0.8) 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+5):before {
-            background: linear-gradient(135deg, #a2ed56 0%, #fddc32 100%);
+            background: linear-gradient(135deg, #ffa022 0%, #ffdb01 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+6):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0.8) 0%, rgba(253, 220, 50, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0.8) 0%, rgba(255, 219, 1, 0.8) 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+7):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0.6) 0%, rgba(253, 220, 50, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0.6) 0%, rgba(255, 219, 1, 0.6) 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+8):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0.4) 0%, rgba(253, 220, 50, 0.4) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0.4) 0%, rgba(255, 219, 1, 0.4) 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+9):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0.2) 0%, rgba(253, 220, 50, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0.2) 0%, rgba(255, 219, 1, 0.2) 100%);
         }
 
         ol.gradient-list > li:nth-child(10n+10):before {
-            background: linear-gradient(135deg, rgba(162, 237, 86, 0) 0%, rgba(253, 220, 50, 0) 100%);
+            background: linear-gradient(135deg, rgba(255, 160, 34, 0) 0%, rgba(255, 219, 1, 0) 100%);
         }
 
         ol.gradient-list > li + li {
             margin-top: 2rem;
         }
-
