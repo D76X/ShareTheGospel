@@ -66,8 +66,7 @@ namespace Client.Catalogs
                 searchTerm,
                 this,
                 nameof(CardCatalog),
-                this.GetType(),
-                false);
+                this.GetType());
 
             foreach (var cardModel in CardModels)
             {
