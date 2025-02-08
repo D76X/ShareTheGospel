@@ -5,21 +5,12 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-html {
-    /*border: solid;*/
-}
-
-body {
-    /*border: 5px solid red;*/
-}
-
 .golden-border {
     border-radius: 5px;
     /*https: //www.computerhope.com/cgi-bin/htmlcolor.pl?c=AA6C39*/
     /*border: 5px solid #FFD700;*/  /*Gold (W3C)*/
     border: 5px solid #EDE275;     /*Harvest Gold*/
 }
-
 
 .body-razor {
     padding-top: 6rem

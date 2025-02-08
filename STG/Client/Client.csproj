@@ -29,6 +29,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Update="Pages\TheBible001.it.razor">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	  </Content>
+	  <Content Update="Pages\TheBible001.razor">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Update="Components/GradientList.razor.css" CssScope="gl-20241220-1" />
 	</ItemGroup>
 

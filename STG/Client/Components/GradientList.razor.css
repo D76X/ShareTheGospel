@@ -36,7 +36,7 @@ ol.gradient-list {
             content: counter(gradient-counter);
             color: #1d1f20;
             display: flex;
-            font: 900 1.5em/1 'Montserrat';
+            /*font: 900 1.5em/1 'Montserrat';*/
             justify-content: flex-end;
             padding: 0.125em 0.25em;
             z-index: 1;
