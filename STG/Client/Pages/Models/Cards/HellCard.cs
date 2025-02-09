@@ -8,7 +8,7 @@ namespace Client.Pages.Models.Cards;
 
 public class HellCard : CardBase
 {
-    public const string Hell001Image = "/images/hell1.svg";
+    public const string Hell001Image = "/images/hell2.svg";
 
     public static ICardModel GetCardModel(string? language)
     {
