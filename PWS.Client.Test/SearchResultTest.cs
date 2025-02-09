@@ -14,9 +14,9 @@ namespace PWS.Client.Test
         public void AzureCard_Is_Searchable()
         {
             // arrange 
-            string typeStrAzureCard = nameof(AzureCard);
+            string typeStrAzureCard = nameof(AzureSeriesCard);
             string typeStrCardModel = nameof(CardModel);
-            var card = new AzureCard();
+            var card = new AzureSeriesCard();
 
             // act 
             var cardSearchables = card.Searchables;

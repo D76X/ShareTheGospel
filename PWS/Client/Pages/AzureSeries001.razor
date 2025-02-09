@@ -1,0 +1,40 @@
+﻿@page "/azureseries001"
+@page "/azureseries001/en"
+@using Client.Shared
+@using Client.Catalogs
+@layout MainLayout
+
+@code
+{
+    [Inject]
+    private ISeriesModel? Model { get; set; }
+
+    public void Dispose()
+    {
+        Model!.Dispose();
+    }
+}
+
+<div class="container-fluid">
+    <main>
+        <div class="row mt-2">
+            <article class="pt-3">
+                <header>
+                    <h1 class="text-center">Azure Series</h1>
+                </header>
+                <div class="album py-5 bg-light">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            <div class="col">
+                                <Card Model="@Model!.GetCard(CardCatalog.AzureBackup001)"></Card>
+                            </div>
+                            <div class="col">
+                                <Card Model="@Model!.GetCard(CardCatalog.AzureStorage001)"></Card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+</div>

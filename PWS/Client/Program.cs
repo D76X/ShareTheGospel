@@ -31,6 +31,7 @@ builder.Services.AddTransient<ICardService, CardService>();
 // Models
 builder.Services.AddTransient<IIndexModel, IndexModel>();
 builder.Services.AddTransient<IAboutModel, AboutModel>();
+builder.Services.AddTransient<ISeriesModel, SeriesModel>();
 builder.Services.AddTransient<ITestAuthenticatedModel, TestAuthenticatedModel>();
 builder.Services.AddTransient<ITestAuthorizedModel, TestAuthorizedModel>();
 

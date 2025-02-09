@@ -9,18 +9,23 @@ namespace Client.Catalogs
         ICardCatalog,
         ISearchable
     {
-        public const string Azure001 = "Azure001";
+        public const string Azure001 = "AzureSeries001";
+        public const string Security001 = "Security001";
         public const string CSharp001 = "CSharp001";
         public const string DesignPatterns001 = "DesignPatterns001";
+        public const string AzureBackup001 = "AzureBackup001";
+        public const string AzureStorage001 = "AzureStorage001";
 
         private static IEnumerable<ICardModel> CardModels 
         {
             get
             {
                 var cardModels = new List<ICardModel>();
-                cardModels.AddRange(AzureCard.GetCardModels());
+                cardModels.AddRange(AzureSeriesCard.GetCardModels());
+                cardModels.AddRange(SecurityCard.GetCardModels());
                 cardModels.AddRange(CSharpCard.GetCardModels());
                 cardModels.AddRange(DesignPatternsCard.GetCardModels());
+                cardModels.AddRange(AzureBackupCard.GetCardModels());
                 return cardModels;
             }
         }
@@ -31,9 +36,12 @@ namespace Client.Catalogs
         {
             switch (cardId)
             {
-                case Azure001: return AzureCard.GetCardModel(language);
+                case Azure001: return AzureSeriesCard.GetCardModel(language);
+                case Security001: return SecurityCard.Create(language);
                 case CSharp001: return CSharpCard.Create(language);
                 case DesignPatterns001: return DesignPatternsCard.Create(language);
+                case AzureBackup001: return AzureBackupCard.Create(language);
+                case AzureStorage001: return AzureStorageCard.Create(language);
                 default: return null;
             }
         }

@@ -6,7 +6,7 @@ using CardBase = Websites.Razor.ClassLibrary.Abstractions.Models.CardBase;
 
 namespace Client.Pages.Models.Cards;
 
-public class AzureCard: CardBase
+public class AzureSeriesCard: CardBase
 {
     public const string Azure001Image = "/images/azure1.svg";
 
@@ -36,26 +36,26 @@ public class AzureCard: CardBase
         return model;
     }
 
-    public AzureCard():base(nameof(AzureCard)){ }
+    public AzureSeriesCard():base(nameof(AzureSeriesCard)){ }
 
     public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 
     private static ICardModel AzureEn => new CardModel(
         Azure001Image,
-        $"{PageTranslations.Azure001}/{LanguageSelectorBase.LanguageEn}",
-        PageTranslations.Translation(PageTranslations.Azure001, LanguageSelectorBase.LanguageEn),
-        @"In this Azure Series");
+        $"{PageTranslations.AzureSeries001}/{LanguageSelectorBase.LanguageEn}",
+        PageTranslations.Translation(PageTranslations.AzureSeries001, LanguageSelectorBase.LanguageEn),
+        @"Azure Series");
 
     private static ICardModel AzureDe => new CardModel(
         Azure001Image,
-        $"{PageTranslations.Azure001}/{LanguageSelectorBase.LanguageDe}",
-        PageTranslations.Translation(PageTranslations.Azure001, LanguageSelectorBase.LanguageDe),
-        @"In diese Azure Reihe");
+        $"{PageTranslations.AzureSeries001}/{LanguageSelectorBase.LanguageDe}",
+        PageTranslations.Translation(PageTranslations.AzureSeries001, LanguageSelectorBase.LanguageDe),
+        @"Azure Reihe");
 
     private static ICardModel AzureIt => new CardModel(
         Azure001Image,
-        $"{PageTranslations.Azure001}/{LanguageSelectorBase.LanguageIt}",
-        PageTranslations.Translation(PageTranslations.Azure001, LanguageSelectorBase.LanguageIt),
-        @"In questa Azure Serie");
+        $"{PageTranslations.AzureSeries001}/{LanguageSelectorBase.LanguageIt}",
+        PageTranslations.Translation(PageTranslations.AzureSeries001, LanguageSelectorBase.LanguageIt),
+        @"Azure Serie");
 }
 
