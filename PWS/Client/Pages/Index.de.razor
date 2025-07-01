@@ -1,8 +1,6 @@
 ﻿@page "/de" 
 @page "/index/de"
 @using Client.Shared
-@using Websites.Razor.ClassLibrary.Abstractions.Models
-@using Websites.Razor.ClassLibrary.Components
 @using Client.Catalogs
 @implements IDisposable
 @layout MainLayout
@@ -24,10 +22,6 @@
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">God's Invitation</h1>
-                    @* <p class="lead text-muted">&#8220;Ho! Everyone who thirsts, Come to the waters; And you who have no money, Come, buy and eat. Yes, come, buy wine and milk without money and without price.&#8221;</p>
-                    <a href="https://my.bible.com/bible/114/ISA.55.1" class="anchor-plain" target="_blank">
-                        <footer class="blockquote-footer text-end">Isaiah 55:1 <cite title="Source Title">NKJV</cite></footer>
-                    </a> *@
                 </div>
             </div>
             <blockquote class="blockquote text-justify">
@@ -41,6 +35,9 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
                         <Card Model="@Model!.GetCard(CardCatalog.Azure001)"></Card>
+                    </div>
+                    <div class="col">
+                        <Card Model="@Model!.GetCard(CardCatalog.Security001)"></Card>
                     </div>
                     <div class="col">
                         <Card Model="@Model!.GetCard(CardCatalog.CSharp001)"></Card>

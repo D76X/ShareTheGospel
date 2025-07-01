@@ -6,9 +6,7 @@ namespace Client.Pages.Models.Pages;
 public class SeriesModel : ISeriesModel
 {
     private readonly ICardService _cardService;
-
-    public event Action? OnStateHasChanged;
-
+    
     public SeriesModel(ICardService cardService)
     {
         _cardService = cardService;
@@ -18,7 +16,8 @@ public class SeriesModel : ISeriesModel
     {
         //?
     }
+    
 
-    public ICardModel GetCard(string cardId) =>
-        _cardService.GetCard(cardId);
+    public IEnumerable<ICardModel> GetCards(IEnumerable<ITag> tags) =>
+        _cardService.GetCards(tags);
 }

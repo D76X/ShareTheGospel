@@ -1,4 +1,5 @@
-﻿using Client.Translations;
+﻿using Client.Catalogs;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
@@ -35,7 +36,12 @@ public class CSharpCard: CardBase
         return model;
     }
 
-    public CSharpCard():base(nameof(CSharpCard)) { }
+    public CSharpCard():base(nameof(CSharpCard)
+        ,
+        new ITag[]
+        {
+            TagCatalog.TagCSharp,
+        }) { }
 
     public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 

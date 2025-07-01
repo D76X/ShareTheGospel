@@ -1,4 +1,5 @@
-﻿using Client.Translations;
+﻿using Client.Catalogs;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
@@ -7,6 +8,7 @@ using CardBase = Websites.Razor.ClassLibrary.Abstractions.Models.CardBase;
 namespace Client.Pages.Models.Cards;
 
 public class AzureSeriesCard: CardBase
+    
 {
     public const string Azure001Image = "/images/azure1.svg";
 
@@ -36,7 +38,14 @@ public class AzureSeriesCard: CardBase
         return model;
     }
 
-    public AzureSeriesCard():base(nameof(AzureSeriesCard)){ }
+    public AzureSeriesCard():base(
+        nameof(AzureSeriesCard),
+        new[] { TagCatalog.TagAzure}) { }
+
+    public void Dispose()
+    {
+        throw new NotImplementedException();
+    }
 
     public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 

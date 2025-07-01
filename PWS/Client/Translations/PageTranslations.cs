@@ -11,6 +11,7 @@ static class PageTranslations
     public const string DesignPatterns001 = @"DesignPatterns001";
     public const string AzureBackup001 = @"AzureBackup001";
     public const string AzureStorage001 = @"AzureStorage001";
+    public const string ServiceEndpoint001 = @"ServiceEndpoint001";
 
     public static Dictionary<string, string[]> Translations = new()
     {
@@ -22,6 +23,7 @@ static class PageTranslations
         {DesignPatterns001, new [] { @"Design Patterns", @"Designmuster", @"Design Patterns" }},
         {AzureBackup001, new [] { @"Azure Backup", @"Azure Backup", @"Azure Backup" }},
         {AzureStorage001, new [] { @"Azure Storage", @"Azure Storage", @"Azure Storage" }},
+        {ServiceEndpoint001, new [] { @"Service Endpoint", @"Service Endpoint", @"Service Endpoint" }},
     };
 
     public static string Translation(string id, string language) => Translator.Get(id, language, Translations);

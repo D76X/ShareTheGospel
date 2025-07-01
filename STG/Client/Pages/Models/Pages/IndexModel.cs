@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Abstractions.Services;
 
@@ -27,10 +26,6 @@ namespace Client.Pages.Models.Pages
 
         public ICardModel GetCard(string cardId) => 
             _cardService.GetCard(cardId);
-        
-        public IEnumerable<ICardModel> GetCards(IEnumerable<string> cardIds) => 
-            _cardService.GetCards(cardIds);
-
         public void Dispose()
         {
             //

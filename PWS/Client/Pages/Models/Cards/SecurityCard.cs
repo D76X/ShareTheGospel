@@ -1,4 +1,5 @@
-﻿using Client.Translations;
+﻿using Client.Catalogs;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
@@ -40,7 +41,13 @@ public class SecurityCard : CardBase
         return model;
     }
 
-    public SecurityCard() : base(nameof(SecurityCard)) { }
+    public SecurityCard() : base(nameof(SecurityCard)
+        ,
+        new ITag[]
+        {
+            TagCatalog.TagSecurity,
+        })
+    { }
 
     public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 

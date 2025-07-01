@@ -6,15 +6,16 @@ using Websites.Razor.ClassLibrary.Models;
 
 namespace Client.Pages.Models.Cards;
 
-public class AzureStorageCard() :
-    CardBase(nameof(AzureStorageCard), Tags)
+public class ServiceEndpointAzureStorageCard() :
+    CardBase(nameof(ServiceEndpointAzureStorageCard), Tags)
 {
-    public const string AzureStorage001Image = "/images/storage1.svg";
+    public const string ServiceEndpointAzureStorage001Image = "/images/storage1.padlock1.svg";
 
     public new static IEnumerable<ITag> Tags { get; } =
     [
         TagCatalog.TagAzure,
         TagCatalog.TagAzureStorage,
+        TagCatalog.TagSecurity,
     ];
 
     public static IEnumerable<ICardModel> GetCardModels() =>
@@ -50,23 +51,23 @@ public class AzureStorageCard() :
     public override IEnumerable<ICardModel> GetModels() => GetCardModels();
 
     private static ICardModel AzureStorageEn => new CardModel(
-        AzureStorage001Image,
-        $"{PageTranslations.AzureStorage001}/{LanguageSelectorBase.LanguageEn}",
-        PageTranslations.Translation(PageTranslations.AzureStorage001, LanguageSelectorBase.LanguageEn),
-        @"Blobs, Files, Tables, Queues",
+        ServiceEndpointAzureStorage001Image,
+        $"{PageTranslations.ServiceEndpoint001}/{LanguageSelectorBase.LanguageEn}",
+        PageTranslations.Translation(PageTranslations.ServiceEndpoint001, LanguageSelectorBase.LanguageEn),
+        @"Storage Account Access",
         Tags);
 
     private static ICardModel AzureStorageDe => new CardModel(
-        AzureStorage001Image,
-        $"{PageTranslations.AzureStorage001}/{LanguageSelectorBase.LanguageDe}",
-        PageTranslations.Translation(PageTranslations.AzureStorage001, LanguageSelectorBase.LanguageDe),
-        @"Blobs, Files, Tables, Queues",
+        ServiceEndpointAzureStorage001Image,
+        $"{PageTranslations.ServiceEndpoint001}/{LanguageSelectorBase.LanguageDe}",
+        PageTranslations.Translation(PageTranslations.ServiceEndpoint001, LanguageSelectorBase.LanguageDe),
+        @"Storage Account Access",
         Tags);
 
     private static ICardModel AzureStorageIt => new CardModel(
-        AzureStorage001Image,
-        $"{PageTranslations.AzureStorage001}/{LanguageSelectorBase.LanguageIt}",
-        PageTranslations.Translation(PageTranslations.AzureStorage001, LanguageSelectorBase.LanguageIt),
-        @"Blobs, Files, Tables, Queues",
+        ServiceEndpointAzureStorage001Image,
+        $"{PageTranslations.ServiceEndpoint001}/{LanguageSelectorBase.LanguageIt}",
+        PageTranslations.Translation(PageTranslations.ServiceEndpoint001, LanguageSelectorBase.LanguageIt),
+        @"Storage Account Access",
         Tags);
 }

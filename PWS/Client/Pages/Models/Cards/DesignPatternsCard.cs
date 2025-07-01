@@ -1,4 +1,5 @@
-﻿using Client.Translations;
+﻿using Client.Catalogs;
+using Client.Translations;
 using Websites.Razor.ClassLibrary.Abstractions.Models;
 using Websites.Razor.ClassLibrary.Components;
 using Websites.Razor.ClassLibrary.Models;
@@ -35,7 +36,13 @@ public class DesignPatternsCard : CardBase
         return model;
     }
 
-    public DesignPatternsCard() : base(nameof(DesignPatternsCard)) { }
+    public DesignPatternsCard() : base(nameof(DesignPatternsCard)
+        ,
+        new ITag[]
+        {
+            TagCatalog.TagDesignPattern
+        })
+    { }
 
     public override IEnumerable<ICardModel> GetModels() => GetCardModels();
     
